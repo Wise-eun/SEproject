@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -8,41 +9,121 @@
         android:id="@+id/id_tv_join"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
         android:text="ID"
-        tools:layout_editor_absoluteX="35dp"
-        tools:layout_editor_absoluteY="104dp" />
+        app:layout_constraintEnd_toStartOf="@+id/id_insert_join"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/id_insert_join"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
         android:ems="10"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="140dp"
-        tools:layout_editor_absoluteY="95dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.412"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/name_insert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="336dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.417"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/pwd_insert_join"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="176dp"
+        android:layout_marginEnd="40dp"
         android:ems="10"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="140dp"
-        tools:layout_editor_absoluteY="280dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/pwd_check_insert_join"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="256dp"
+        android:layout_marginEnd="40dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/pwd_tv_join"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="188dp"
         android:text="Password"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="288dp" />
+        app:layout_constraintEnd_toStartOf="@+id/pwd_insert_join"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/id_overlap_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="188dp"
-        tools:layout_editor_absoluteY="146dp" />
+        android:layout_marginTop="92dp"
+        android:text="중복 검사"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.36"
+        app:layout_constraintStart_toEndOf="@+id/id_insert_join"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/name_overlap_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="332dp"
+        android:text="중복 검사"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.304"
+        app:layout_constraintStart_toEndOf="@+id/name_insert" />
+
+    <TextView
+        android:id="@+id/pwd_check_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="256dp"
+        android:text="Password\n확인"
+        app:layout_constraintEnd_toStartOf="@+id/pwd_check_insert_join"
+        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="344dp"
+        android:text="닉네임"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/join_btn_join"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="120dp"
+        android:text="join"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
