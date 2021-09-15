@@ -6,9 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.Serializable;
 
-public class MainActivity extends AppCompatActivity implements Serializable {
+public class JoinActivity  extends AppCompatActivity implements Serializable {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.join);
     }
 }
