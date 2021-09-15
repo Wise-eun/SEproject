@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity  implements Serializable {
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //EditText에 현재 입력되어 있는 값을 get해옴옴
+                //EditText에 현재 입력되어 있는 값을 get해옴
                 String userID = id_insert.getText().toString();
                 String userPassword = pwd_insert.getText().toString();
 
@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity  implements Serializable {
                                 String userID = jsonObject.getString("userID");
                                 String userPassword = jsonObject.getString("userPassword");
 
-                                Toast.makeText(getApplicationContext(),"로그인에 성공하였습니다.",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),"로그인에 성공하였습니다.",Toast.LENGTH_SHORT).show(); //팝업창
                                 Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                                 intent.putExtra("userId",userID);
                                 intent.putExtra("userPassword",userPassword);
