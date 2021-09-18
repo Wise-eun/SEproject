@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class JoinRequest extends StringRequest {
     // 서버 URL설정 (PHP 파일 연동)
-    final static private  String URL = "http://steak2021.ivyro.net/join.php";
+    final static private  String URL = "http://steak2121.ivyro.net/join.php";
     private Map<String,String> map;
 
     public JoinRequest(String userID, String userPassword,String userName, Response.Listener<String> listener){

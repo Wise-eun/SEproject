@@ -2,6 +2,7 @@ package com.example.seproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,7 +21,7 @@ import java.io.Serializable;
 
 public class JoinActivity  extends AppCompatActivity implements Serializable {
 
-    private EditText id_insert_join, pwd_insert_join, name_insert;
+    private EditText id_insert_join, pwd_insert_join, pwd_check_insert_join, name_insert;
     private Button join_btn_join, id_overlap_btn, name_overlap_btn;
 
 
@@ -30,11 +31,14 @@ public class JoinActivity  extends AppCompatActivity implements Serializable {
 
         id_insert_join = findViewById(R.id.id_insert_join);
         pwd_insert_join = findViewById(R.id.pwd_insert_join);
+        pwd_check_insert_join = findViewById(R.id.pwd_check_insert_join);
         name_insert = findViewById(R.id.name_insert);
-
         join_btn_join = findViewById(R.id.join_btn_join);
-        pwd_insert_join = findViewById(R.id.pwd_insert_join);
-        name_insert = findViewById(R.id.name_insert);
+
+        id_overlap_btn = findViewById(R.id.id_overlap_btn);
+        name_overlap_btn = findViewById(R.id.name_overlap_btn);
+
+
 
         //회원가입 버튼 클릭 시 수행
         join_btn_join.setOnClickListener(new View.OnClickListener() {
@@ -46,12 +50,17 @@ public class JoinActivity  extends AppCompatActivity implements Serializable {
                 String userName = name_insert.getText().toString();
 
 
+
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             boolean success = jsonObject.getBoolean("success");
+                            if(!(pwd_insert_join.getText().toString().equals(pwd_check_insert_join.getText().toString()))){
+                                Toast.makeText(getApplicationContext(), "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
                             if (success) {
                                 Toast.makeText(getApplicationContext(), "회원 등록에 성공하였습니다.", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(JoinActivity.this, LoginActivity.class);
@@ -74,6 +83,8 @@ public class JoinActivity  extends AppCompatActivity implements Serializable {
                 queue.add(joinRequest);
             }
         });
+
+
 
 
     }

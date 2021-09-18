@@ -12,7 +12,7 @@ public class LoginRequest extends StringRequest {
         super(url, listener, errorListener);
     }
     // 서버 URL설정 (PHP 파일 연동)
-    final static private  String URL = "http://steak2021.ivyro.net/login.php";
+    final static private  String URL = "http://steak2121.ivyro.net/login.php";
     private Map<String,String> map;
 
 
