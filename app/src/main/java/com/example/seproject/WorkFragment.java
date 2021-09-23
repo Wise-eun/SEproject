@@ -13,6 +13,10 @@ public class WorkFragment extends Fragment {
 
     public WorkFragment() {}
 
+    public static WorkFragment newInstance(){
+        return new WorkFragment();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment

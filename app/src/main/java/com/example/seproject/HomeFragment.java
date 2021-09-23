@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment;
 
 public class HomeFragment extends Fragment {
     public HomeFragment(){}
-
+    public static HomeFragment newInstance(){
+        return new HomeFragment();
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment

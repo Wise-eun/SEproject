@@ -10,8 +10,10 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,16 +24,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="10dp"
                 android:text="닉네임"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:padding="10dp"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="User_name"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:text="User_name" />
         </LinearLayout>
 
         <LinearLayout
@@ -43,28 +45,28 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="10dp"
                 android:text="프로필 사진"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:padding="10dp" />
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                app:srcCompat="@drawable/ic_round_account_circle_24"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="8dp"
-                />
+                app:srcCompat="@drawable/ic_round_account_circle_24" />
 
             <Button
                 android:id="@+id/button3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="사진 불러오기"
-                android:textSize="13dp"
+                android:layout_marginLeft="6dp"
                 android:layout_marginTop="30dp"
-                android:layout_marginLeft="6dp"/>
+                android:text="사진 불러오기"
+                android:backgroundTint="#FF9800"
+                android:textSize="13dp" />
 
         </LinearLayout>
 
@@ -77,18 +79,18 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="10dp"
                 android:text="직업"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:padding="10dp"/>
+                android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/job_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:dropDownWidth="200dp"
-                android:spinnerMode="dropdown"
-                android:padding="10dp"/>
+                android:padding="10dp"
+                android:spinnerMode="dropdown" />
 
         </LinearLayout>
 
@@ -101,10 +103,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="10dp"
                 android:text="학교"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:padding="10dp"/>
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/editTextTextPersonName"
@@ -125,18 +127,18 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="10dp"
                 android:text="지역"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:padding="10dp"/>
+                android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/local_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:dropDownWidth="200dp"
-                android:spinnerMode="dropdown"
-                android:padding="10dp"/>
+                android:padding="10dp"
+                android:spinnerMode="dropdown" />
         </LinearLayout>
 
     </LinearLayout>

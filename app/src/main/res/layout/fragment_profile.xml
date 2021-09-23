@@ -53,7 +53,7 @@
 
             <Button
                 android:background="@drawable/round_btn"
-                android:id="@+id/button"
+                android:id="@+id/profile_edit_btn"
                 android:layout_width="130dp"
                 android:layout_height="38dp"
                 android:text="profile_edit"

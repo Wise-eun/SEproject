@@ -5,6 +5,7 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -27,7 +28,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main);
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.flFragment, homeFragment).commitAllowingStateLoss();
+        transaction.add(R.id.flFragment, homeFragment.newInstance()).commit();
+
+//        transaction.replace(R.id.flFragment, homeFragment).commitAllowingStateLoss();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnItemSelectedListener(new ItemSelectedListener());
@@ -54,6 +57,13 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     }
-}
+
+    public void replaceFragment(Fragment fragment)
+    {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.flFragment, fragment).addToBackStack(null).commit();
+//                commitAllowingStateLoss();
+    }}
 
 
