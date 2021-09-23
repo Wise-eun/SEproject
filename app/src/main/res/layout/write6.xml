@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/et_title"
+        android:layout_width="315dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="36dp"
+        android:layout_weight="1"
+
+        android:background="@drawable/roundline_gray"
+        android:ems="10"
+        android:hint="제목을 입력해주세요"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/back" />
+
+    <EditText
+        android:id="@+id/et_content"
+        android:layout_width="315dp"
+        android:layout_height="350dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="24dp"
+
+        android:layout_weight="1"
+        android:background="@drawable/roundline_gray"
+        android:ems="10"
+        android:hint="내용을 입력해주세요"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_peopleNum" />
+
+    <TextView
+        android:id="@+id/back"
+
+        android:layout_width="411dp"
+        android:layout_height="57dp"
+
+
+        android:background="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="30dp"
+        android:text="IT/컴퓨터"
+        android:textSize="30dp"
+
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/back"
+        app:layout_constraintStart_toStartOf="@+id/back"
+        app:layout_constraintTop_toTopOf="@+id/back" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="마감일"
+        android:textSize="18dp"
+
+        app:layout_constraintStart_toStartOf="@+id/et_title"
+        app:layout_constraintTop_toBottomOf="@+id/et_title" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="모집인원"
+
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="@+id/et_title"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:background="@drawable/roundline_gray"
+        android:layout_width="60dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintTop_toTopOf="@+id/textView10" />
+
+    <Spinner
+        android:id="@+id/spinner3"
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="15dp"
+        android:background="@drawable/roundline_gray"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="@+id/textView10" />
+
+    <Spinner
+        android:id="@+id/spinner4"
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="15dp"
+        android:background="@drawable/roundline_gray"
+        app:layout_constraintStart_toEndOf="@+id/textView13"
+        app:layout_constraintTop_toTopOf="@+id/textView10" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="년"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/spinner"
+        app:layout_constraintTop_toTopOf="@+id/spinner" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="월"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/spinner3"
+        app:layout_constraintTop_toTopOf="@+id/spinner3" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="일"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="@+id/et_title"
+        app:layout_constraintStart_toEndOf="@+id/spinner4"
+        app:layout_constraintTop_toTopOf="@+id/spinner3" />
+
+    <Button
+        android:id="@+id/btn_minus"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/gray"
+        android:text="-"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/textView15"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+    <Button
+        android:id="@+id/btn_plus"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="12dp"
+        android:backgroundTint="@color/gray"
+        android:text="+"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/tv_peopleNum"
+        app:layout_constraintTop_toTopOf="@+id/btn_minus" />
+
+    <TextView
+        android:id="@+id/tv_peopleNum"
+        android:layout_width="40dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/roundline_gray"
+        android:text="0"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/btn_minus"
+        app:layout_constraintTop_toTopOf="@+id/btn_minus" />
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="315dp"
+        android:layout_height="60dp"
+        android:text="등록"
+        android:textSize="18dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:backgroundTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/et_content"
+        app:layout_constraintStart_toStartOf="@+id/et_content"
+        app:layout_constraintTop_toBottomOf="@+id/et_content" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
