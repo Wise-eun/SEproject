@@ -28,6 +28,7 @@ public class ProfileEditFragment extends Fragment {
         View view = inflater.inflate(R.layout.profile_edit, container, false);
 
 
+
         Spinner job_spinner = (Spinner) view.findViewById(R.id.job_spinner);
 
         ArrayAdapter<String> job_adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,job_items);

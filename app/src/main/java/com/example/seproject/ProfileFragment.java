@@ -33,6 +33,7 @@ public class ProfileFragment extends Fragment {
         profile_edit_btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 ((MainActivity)getActivity()).replaceFragment(ProfileEditFragment.newInstance());
+
             }
         });
 

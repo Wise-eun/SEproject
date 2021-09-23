@@ -15,6 +15,7 @@ public class WorkFragment extends Fragment {
 
     public static WorkFragment newInstance(){
         return new WorkFragment();
+
     }
 
     @Override
