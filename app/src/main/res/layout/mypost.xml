@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:text="나의 활동"
+            android:text="내가 쓴 게시글"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -35,46 +35,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             />
-        <RadioGroup
-            android:id="@+id/radio_group"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.00999999">
-
-            <RadioButton
-                android:id="@+id/radio_button_all"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:text="전체" />
-
-            <RadioButton
-                android:id="@+id/radio_button_ing"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:text="진행중" />
-
-            <RadioButton
-                android:id="@+id/radio_button_complete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:text="완료" />
-
-        </RadioGroup>
-
         <ListView
-            android:id="@+id/listView"
+            android:id="@+id/post_listview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/radio_group"
 
             android:layout_marginTop="55dp"
             app:layout_constraintBottom_toBottomOf="parent"

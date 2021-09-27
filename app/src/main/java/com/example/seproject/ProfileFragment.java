@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
+
 import androidx.fragment.app.FragmentManager;
 
 
@@ -34,6 +36,30 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v){
                 ((MainActivity)getActivity()).replaceFragment(ProfileEditFragment.newInstance());
 
+            }
+        });
+
+        TextView about_me_tv = (TextView)v.findViewById(R.id.about_me_tv);
+        about_me_tv.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).replaceFragment(SelfIntroductionEditFragment.newInstance());
+            }
+        });
+
+        TextView pwd_change_tv = (TextView)v.findViewById(R.id.pwd_change_tv);
+        pwd_change_tv.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).replaceFragment(PwdChangeFragment.newInstance());
+            }
+        });
+
+        TextView writing_tv = (TextView)v.findViewById(R.id.writing_tv);
+        writing_tv.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).replaceFragment(MyPostFragment.newInstance());
             }
         });
 

@@ -14,8 +14,9 @@ import androidx.fragment.app.Fragment;
 
 public class ProfileEditFragment extends Fragment {
 
-    String[] job_items = {"고등학생", "대학생", "직장인", "기타"};
-    String[] local_items = {"서울특별시", "경북", "경남", "기타"};
+    String[] job_items = {"-", "고등학생", "대학생", "직장인", "기타"};
+    String[] local_items = {"-", "서울특별시", "부산광역시", "대구광역시", "인천광역시", "광주광역시", "대전광역시", "울산광역시",
+            "세종특별자치시", "경기도", "강원도", "충청북도", "충청남도", "전라북도", "전라남도", "경상북도", "경상남도", "제주도", "기타"};
 
     public ProfileEditFragment(){}
 
