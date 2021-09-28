@@ -11,12 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:text="내 프로필"
+            android:text="프로필 보기"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -26,14 +27,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
+
         <TextView
             android:layout_width="400dp"
             android:layout_height="2dp"
             android:layout_margin="10dp"
             android:background="@color/dark_gray"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintStart_toStartOf="parent" />
+
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="360dp"
@@ -80,11 +82,11 @@
                     tools:layout_editor_absoluteY="57dp" />
 
                 <Button
-                    android:background="@drawable/round_btn"
                     android:id="@+id/profile_edit_btn"
                     android:layout_width="130dp"
                     android:layout_height="38dp"
-                    android:text="profile_edit"
+                    android:background="@drawable/round_btn"
+                    android:text="메시지 보내기"
                     android:textAllCaps="false"
                     tools:layout_editor_absoluteX="157dp"
                     tools:layout_editor_absoluteY="78dp" />
@@ -110,67 +112,23 @@
                 tools:layout_editor_absoluteY="32dp" />
 
         </LinearLayout>
+
         <TextView
+            android:id="@+id/line"
             android:layout_width="400dp"
             android:layout_height="2dp"
             android:layout_margin="10dp"
             android:background="@color/dark_gray"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            />
-        <LinearLayout
+            app:layout_constraintStart_toStartOf="parent"></TextView>
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            android:orientation="vertical"
-            android:padding="40dp"
-            >
-
-            <TextView
-                android:id="@+id/writing_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_marginBottom="15dp"
-                android:textSize="18dp"
-                android:text="  ●  내가 쓴 글" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2px"
-                android:background="#A7A7A7"
-                android:layout_marginBottom="20dp"/>
-
-            <TextView
-                android:id="@+id/about_me_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_marginBottom="15dp"
-                android:textSize="18dp"
-                android:text="  ●  자기소개 수정" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2px"
-                android:background="#A7A7A7"
-                android:layout_marginBottom="20dp"/>
-
-            <TextView
-                android:id="@+id/pwd_change_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_marginBottom="15dp"
-                android:textSize="18dp"
-                android:text="  ●  비밀번호 변경" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2px"
-                android:background="#A7A7A7"
-                android:layout_marginBottom="20dp"/>
-        </LinearLayout>
+            android:text="저는 영남대 컴공에 재학중이구여 할 수 있는 언어는 한국어 젤 잘해여ㅋ 이런 저라도 받아주시겠어여? 신청 거절하면 미오미오!"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line" />
     </LinearLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
