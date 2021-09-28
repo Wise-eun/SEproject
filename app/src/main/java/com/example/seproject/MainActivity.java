@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.add(R.id.flFragment, homeFragment.newInstance()).commit();
-
-        Bundle bundle = getIntent().getExtras();
+//안녕
+        Bundle bundle =   getIntent().getExtras();
         String userID = bundle.getString("userID");
         bundle_toFragment.putString("userID", userID);
 
