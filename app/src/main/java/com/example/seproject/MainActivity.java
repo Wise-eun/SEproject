@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager fragmentManager = getSupportFragmentManager();
     Bundle bundle_toFragment = new Bundle();
 
+
     BottomNavigationView bottomNavigationView;
     HomeFragment homeFragment = new HomeFragment();
     WorkFragment workFragment = new WorkFragment();
@@ -30,12 +31,13 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.add(R.id.flFragment, homeFragment.newInstance()).commit();
-//안녕
+
         Bundle bundle =   getIntent().getExtras();
         String userID = bundle.getString("userID");
         bundle_toFragment.putString("userID", userID);
 
-//        transaction.replace(R.id.flFragment, homeFragment).commitAllowingStateLoss();
+        replaceFragment(homeFragment);
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnItemSelectedListener(new ItemSelectedListener());
@@ -56,7 +58,9 @@ public class MainActivity extends AppCompatActivity {
                 transaction.replace(R.id.flFragment, workFragment).commitAllowingStateLoss();
                 return true;
             } else if (id == R.id.menu_profile) {
+                profileFragment.setArguments(bundle_toFragment);
                 transaction.replace(R.id.flFragment, profileFragment).commitAllowingStateLoss();
+
                 return true;
             }
             return false;
@@ -65,11 +69,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void replaceFragment(Fragment fragment)
     {
+
         fragment.setArguments(bundle_toFragment);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.flFragment, fragment).addToBackStack(null).commit();
 //                commitAllowingStateLoss();
-    }}
+    }
+
+
+}
 
 
