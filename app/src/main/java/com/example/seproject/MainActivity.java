@@ -16,6 +16,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
     private FragmentManager fragmentManager = getSupportFragmentManager();
+    Bundle bundle_toFragment = new Bundle();
 
     BottomNavigationView bottomNavigationView;
     HomeFragment homeFragment = new HomeFragment();
@@ -29,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.add(R.id.flFragment, homeFragment.newInstance()).commit();
+
+        Bundle bundle = getIntent().getExtras();
+        String userID = bundle.getString("userID");
+        bundle_toFragment.putString("userID", userID);
 
 //        transaction.replace(R.id.flFragment, homeFragment).commitAllowingStateLoss();
 
@@ -60,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void replaceFragment(Fragment fragment)
     {
-
+        fragment.setArguments(bundle_toFragment);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.flFragment, fragment).addToBackStack(null).commit();

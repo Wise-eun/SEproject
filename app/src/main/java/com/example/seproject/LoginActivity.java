@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity  implements Serializable {
 
                                 Toast.makeText(getApplicationContext(),"로그인에 성공하였습니다.",Toast.LENGTH_SHORT).show(); //팝업창
                                 Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                                intent.putExtra("userId",userID);
+                                intent.putExtra("userID",userID);
                                 intent.putExtra("userPassword",userPassword);
                                 //User user = new User(userID,userPassword);
                                 //intent.putExtra("user",user);

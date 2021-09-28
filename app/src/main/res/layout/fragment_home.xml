@@ -193,7 +193,6 @@
         app:srcCompat="@drawable/round_btn" />
 
     <TextView
-        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="기획/아이디어"
@@ -203,7 +202,6 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_category1" />
 
     <TextView
-        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="광고/마케팅"
@@ -213,46 +211,64 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_category2" />
 
     <TextView
-        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="영상/사진"
+        android:text="영상/UCC/사진"
         app:layout_constraintBottom_toTopOf="@+id/btn_category6"
         app:layout_constraintEnd_toEndOf="@+id/btn_category3"
         app:layout_constraintStart_toStartOf="@+id/btn_category3"
         app:layout_constraintTop_toBottomOf="@+id/btn_category3" />
 
     <TextView
-        android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="글/문학"
+        android:text="미술/디자인"
         app:layout_constraintBottom_toTopOf="@+id/btn_category7"
         app:layout_constraintEnd_toEndOf="@+id/btn_category4"
         app:layout_constraintStart_toStartOf="@+id/btn_category4"
         app:layout_constraintTop_toBottomOf="@+id/btn_category4" />
 
     <TextView
-        android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="디자인/미술"
+        android:text="IT/컴퓨터"
         app:layout_constraintBottom_toTopOf="@+id/btn_category8"
         app:layout_constraintEnd_toEndOf="@+id/btn_category5"
         app:layout_constraintStart_toStartOf="@+id/btn_category5"
         app:layout_constraintTop_toBottomOf="@+id/btn_category5" />
 
     <TextView
-        android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="IT/컴퓨터"
+        android:text="과학/공학"
         app:layout_constraintBottom_toTopOf="@+id/btn_category9"
         app:layout_constraintEnd_toEndOf="@+id/btn_category6"
         app:layout_constraintStart_toStartOf="@+id/btn_category6"
         app:layout_constraintTop_toBottomOf="@+id/btn_category6" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="문학/글"
+        app:layout_constraintEnd_toEndOf="@+id/btn_category7"
+        app:layout_constraintStart_toStartOf="@+id/btn_category7"
+        tools:layout_editor_absoluteY="537dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="서포터즈/봉사활동"
+        app:layout_constraintEnd_toEndOf="@+id/btn_category8"
+        app:layout_constraintStart_toStartOf="@+id/btn_category8"
+        tools:layout_editor_absoluteY="539dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="기타"
+        app:layout_constraintEnd_toEndOf="@+id/btn_category9"
+        app:layout_constraintStart_toStartOf="@+id/btn_category9"
+        tools:layout_editor_absoluteY="537dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -33,8 +33,5 @@ public class WorkFragment extends Fragment {
 
         listView.setAdapter(adapter);
         return view;
-
-
-//        return inflater.inflate(R.layout.fragment_work, container, false);
     }
 }
