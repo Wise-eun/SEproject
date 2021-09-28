@@ -249,26 +249,31 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="172dp"
         android:text="문학/글"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/btn_category7"
-        app:layout_constraintStart_toStartOf="@+id/btn_category7"
-        tools:layout_editor_absoluteY="537dp" />
+        app:layout_constraintHorizontal_bias="0.436"
+        app:layout_constraintStart_toStartOf="@+id/btn_category7" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="172dp"
         android:text="서포터즈/봉사활동"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/btn_category8"
-        app:layout_constraintStart_toStartOf="@+id/btn_category8"
-        tools:layout_editor_absoluteY="539dp" />
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="@+id/btn_category8" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="172dp"
         android:text="기타"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/btn_category9"
-        app:layout_constraintStart_toStartOf="@+id/btn_category9"
-        tools:layout_editor_absoluteY="537dp" />
+        app:layout_constraintStart_toStartOf="@+id/btn_category9" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
