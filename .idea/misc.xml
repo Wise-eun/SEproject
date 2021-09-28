@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/layout/category6.xml" value="0.264" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/layout/join.xml" value="0.176" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/layout/listview_item.xml" value="0.13385416666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/layout/login.xml" value="0.136" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/layout/profile_edit.xml" value="0.176" />
         <entry key="..\:/Users/dodms/AndroidStudioProjects/SEproject/app/src/main/res/drawable/bell.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/dodms/AndroidStudioProjects/SEproject/app/src/main/res/drawable/round_btn.xml" value="0.3359375" />
         <entry key="..\:/Users/dodms/AndroidStudioProjects/SEproject/app/src/main/res/layout/activity_main.xml" value="0.25" />

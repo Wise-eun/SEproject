@@ -20,7 +20,13 @@ public class HomeFragment extends Fragment {
         if (bundle != null){
             TextView homeFragment_tv = (TextView) v.findViewById(R.id.homeFragment);
             homeFragment_tv.setText(bundle.getString("userID"));
-            System.out.println(bundle.getString("userID"));
+
+       }
+        else{
+            TextView homeFragment_tv = (TextView) v.findViewById(R.id.homeFragment);
+            homeFragment_tv.setText("null받음");
+
+
         }
 
         return v;
