@@ -11,11 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
             android:text="내 프로필"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -26,14 +27,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
+
         <TextView
             android:layout_width="400dp"
             android:layout_height="2dp"
-            android:layout_margin="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/dark_gray"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintStart_toStartOf="parent" />
+
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="360dp"
@@ -64,6 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="User_name"
+                    android:textColor="#000000"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     tools:layout_editor_absoluteX="157dp"
@@ -76,16 +80,20 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:text="직업/학교/지역"
+                    android:textColor="#000000"
                     tools:layout_editor_absoluteX="157dp"
                     tools:layout_editor_absoluteY="57dp" />
 
                 <Button
-                    android:background="@drawable/round_btn"
                     android:id="@+id/profile_edit_btn"
                     android:layout_width="130dp"
-                    android:layout_height="38dp"
+                    android:layout_height="32dp"
+                    android:layout_marginTop="7px"
+                    android:background="@drawable/round_btn"
+                    android:backgroundTint="#FF7C01"
                     android:text="profile_edit"
                     android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
                     tools:layout_editor_absoluteX="157dp"
                     tools:layout_editor_absoluteY="78dp" />
             </LinearLayout>
@@ -110,65 +118,68 @@
                 tools:layout_editor_absoluteY="32dp" />
 
         </LinearLayout>
+
         <TextView
-            android:layout_width="400dp"
+            android:layout_width="410dp"
             android:layout_height="2dp"
-            android:layout_margin="10dp"
+            android:layout_marginTop="10dp"
             android:background="@color/dark_gray"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintStart_toStartOf="parent" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
             android:orientation="vertical"
             android:padding="40dp"
-            >
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
             <TextView
                 android:id="@+id/writing_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:layout_marginBottom="15dp"
-                android:textSize="18dp"
-                android:text="  ●  내가 쓴 글" />
+                android:text="  ●  내가 쓴 글"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2px"
-                android:background="#A7A7A7"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="20dp"
+                android:background="#A7A7A7" />
 
             <TextView
                 android:id="@+id/about_me_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:layout_marginBottom="15dp"
-                android:textSize="18dp"
-                android:text="  ●  자기소개 수정" />
+                android:text="  ●  자기소개 수정"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2px"
-                android:background="#A7A7A7"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="20dp"
+                android:background="#A7A7A7" />
 
             <TextView
                 android:id="@+id/pwd_change_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:layout_marginBottom="15dp"
-                android:textSize="18dp"
-                android:text="  ●  비밀번호 변경" />
+                android:text="  ●  비밀번호 변경"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2px"
-                android:background="#A7A7A7"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="20dp"
+                android:background="#A7A7A7" />
         </LinearLayout>
     </LinearLayout>
 
