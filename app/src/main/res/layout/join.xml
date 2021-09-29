@@ -7,7 +7,6 @@
 
 
     <TextView
-        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -24,7 +23,7 @@
         app:layout_constraintVertical_bias="0.008" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/write_personnel_tv"
         android:layout_width="400dp"
         android:layout_height="2dp"
         android:layout_marginTop="56dp"
@@ -35,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/pwd_insert_join"
+        android:id="@+id/pwd_insert_join_et"
         android:layout_width="206dp"
         android:layout_height="42dp"
         android:layout_marginStart="149dp"
@@ -74,7 +73,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/pwd_check_insert_join"
+        android:id="@+id/pwd_check_insert_et"
         android:layout_width="206dp"
         android:layout_height="42dp"
         android:layout_marginStart="140dp"
@@ -88,7 +87,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/name_insert"
+        android:id="@+id/name_insert_et"
         android:layout_width="159dp"
         android:layout_height="41dp"
         android:layout_marginBottom="284dp"
@@ -124,7 +123,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.101"
-        app:layout_constraintStart_toEndOf="@+id/name_insert" />
+        app:layout_constraintStart_toEndOf="@+id/name_insert_et" />
 
     <Button
         android:id="@+id/id_overlap_btn"
@@ -136,7 +135,7 @@
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.081"
-        app:layout_constraintStart_toEndOf="@+id/id_insert_join"
+        app:layout_constraintStart_toEndOf="@+id/id_insert_join_et"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -147,13 +146,13 @@
         android:text="아이디"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/id_insert_join"
+        app:layout_constraintEnd_toStartOf="@+id/id_insert_join_et"
         app:layout_constraintHorizontal_bias="0.769"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/id_insert_join"
+        android:id="@+id/id_insert_join_et"
         android:layout_width="159dp"
         android:layout_height="41dp"
         android:layout_marginTop="176dp"

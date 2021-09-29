@@ -39,20 +39,24 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
+            android:id="@+id/write_msg_insert_et"
             android:layout_width="350dp"
             android:layout_height="500dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/roundline_gray"
             android:hint="내용을 입력해주세요"
             android:inputType="textPersonName"></EditText>
     </LinearLayout>
 
     <Button
+        android:id="@+id/send_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="전송"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"></Button>
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"></Button>
 
 
 

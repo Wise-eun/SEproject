@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -66,6 +67,12 @@ public class ProfileEditFragment extends Fragment {
             }
         });
 
+        Button edit_btn = (Button) view.findViewById(R.id.edit_btn);
+        edit_btn.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                ((MainActivity)getActivity()).replaceFragment(ProfileFragment.newInstance());
+            }
+        });
 
         return view;
     }

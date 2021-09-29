@@ -1,24 +1,16 @@
 package com.example.seproject;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
-
-import androidx.fragment.app.FragmentManager;
 
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,7 +21,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
 
 public class ProfileFragment extends Fragment {
     public ProfileFragment(){}
@@ -107,7 +98,7 @@ public TextView user_name_tv,user_info_tv,rating_tv;
         about_me_tv.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                ((MainActivity)getActivity()).replaceFragment(SelfIntroductionEditFragment.newInstance());
+                ((MainActivity)getActivity()).replaceFragment(SelfIntroEditFragment.newInstance());
             }
         });
 

@@ -111,7 +111,7 @@
                 android:id="@+id/rating_tv"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:text="3.9"
+                android:text="3"
                 android:textSize="26sp"
                 android:textStyle="bold"
                 tools:layout_editor_absoluteX="312dp"
@@ -180,8 +180,11 @@
                 android:layout_height="2px"
                 android:layout_marginBottom="20dp"
                 android:background="#A7A7A7" />
+
+
         </LinearLayout>
     </LinearLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

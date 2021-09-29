@@ -45,7 +45,7 @@
                 android:text="현재 비밀번호"/>
 
             <EditText
-                android:id="@+id/currentPwd_insert_tv"
+                android:id="@+id/currentPwd_insert_et"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -63,7 +63,7 @@
                 android:text="새 비밀번호"/>
 
             <EditText
-                android:id="@+id/newPwd_insert_tv"
+                android:id="@+id/newPwd_insert_et"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -82,7 +82,7 @@
                 android:text="새 비밀번호 확인"/>
 
             <EditText
-                android:id="@+id/newPwd_check_insert_tv"
+                android:id="@+id/newPwd_check_insert_et"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -95,7 +95,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/pwd_edit_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="수정"
