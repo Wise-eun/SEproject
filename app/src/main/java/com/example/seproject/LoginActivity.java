@@ -29,8 +29,8 @@ public class LoginActivity extends AppCompatActivity  implements Serializable {
         setContentView(R.layout.login);
 
 
-        id_insert = findViewById(R.id.id_insert);
-        pwd_insert = findViewById(R.id.pwd_insert);
+        id_insert = findViewById(R.id.id_insert_et);
+        pwd_insert = findViewById(R.id.pwd_insert_et);
         login_btn = findViewById(R.id.login_btn);
         join_btn = (TextView) findViewById(R.id.join_btn);
 

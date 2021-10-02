@@ -1,16 +1,13 @@
 package com.example.seproject;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.RequestQueue;
@@ -20,22 +17,22 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class SelfIntroductionEditFragment extends Fragment {
-    public SelfIntroductionEditFragment(){}
+public class SelfIntroEditFragment extends Fragment {
+    public SelfIntroEditFragment(){}
 
     Button btn_self;
     EditText et_self;
     String new_intro;
 
-    public static SelfIntroductionEditFragment newInstance(){
-        return new SelfIntroductionEditFragment();
+    public static SelfIntroEditFragment newInstance(){
+        return new SelfIntroEditFragment();
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v= inflater.inflate(R.layout.selfintroduction_edit, container, false);
+        View v= inflater.inflate(R.layout.selfintro_edit, container, false);
 
         btn_self = (Button) v.findViewById(R.id.btn_self);
-        et_self = (EditText) v.findViewById(R.id.et_self);
+        et_self = (EditText) v.findViewById(R.id.self_intro_insert_et);
 
         et_self.setText(ProfileFragment.selfIntro);
 
@@ -77,7 +74,7 @@ public class SelfIntroductionEditFragment extends Fragment {
                 };
 
                 UpdateSelfintroRequest updateSelfintroRequestRequest = new UpdateSelfintroRequest(ProfileFragment.userID, new_intro, responseListener);
-                RequestQueue queue = Volley.newRequestQueue(SelfIntroductionEditFragment.this.getActivity());
+                RequestQueue queue = Volley.newRequestQueue(SelfIntroEditFragment.this.getActivity());
                 queue.add(updateSelfintroRequestRequest);
 
 //다 수정되면 프로필화면으로 이동

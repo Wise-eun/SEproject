@@ -63,7 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2">
 
         <EditText
-            android:id="@+id/et_id"
+            android:id="@+id/search_et"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_gravity="center_vertical"
@@ -76,7 +76,7 @@
 
 
         <ImageButton
-            android:id="@+id/btn_search"
+            android:id="@+id/search_btn"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@color/gray"
@@ -87,7 +87,7 @@
     </LinearLayout>
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/alarm_btn"
         android:layout_width="50dp"
         android:layout_height="44dp"
         android:layout_marginStart="16dp"
@@ -97,7 +97,7 @@
         app:srcCompat="@drawable/bell" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/message_btn"
         android:layout_width="42dp"
         android:layout_height="37dp"
         android:layout_marginEnd="12dp"
@@ -109,7 +109,7 @@
         app:srcCompat="@drawable/message" />
 
     <ImageButton
-        android:id="@+id/btn_category1"
+        android:id="@+id/idea_category"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="30dp"
@@ -118,79 +118,79 @@
         app:srcCompat="@drawable/round_btn" />
 
     <ImageButton
-        android:id="@+id/btn_category4"
+        android:id="@+id/design_category"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="30dp"
-        app:layout_constraintStart_toStartOf="@+id/btn_category1"
-        app:layout_constraintTop_toBottomOf="@+id/btn_category1"
+        app:layout_constraintStart_toStartOf="@+id/idea_category"
+        app:layout_constraintTop_toBottomOf="@+id/idea_category"
         app:srcCompat="@drawable/round_btn" />
 
     <ImageButton
-        android:id="@+id/btn_category7"
+        android:id="@+id/literature_category"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="30dp"
-        app:layout_constraintStart_toStartOf="@+id/btn_category1"
-        app:layout_constraintTop_toBottomOf="@+id/btn_category4"
+        app:layout_constraintStart_toStartOf="@+id/idea_category"
+        app:layout_constraintTop_toBottomOf="@+id/design_category"
         app:srcCompat="@drawable/round_btn" />
 
     <ImageButton
-        android:id="@+id/btn_category5"
+        android:id="@+id/computer_category"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_category6"
-        app:layout_constraintStart_toEndOf="@+id/btn_category4"
-        app:layout_constraintTop_toTopOf="@+id/btn_category4"
+        app:layout_constraintEnd_toStartOf="@+id/science_category"
+        app:layout_constraintStart_toEndOf="@+id/design_category"
+        app:layout_constraintTop_toTopOf="@+id/design_category"
         app:srcCompat="@drawable/round_btn" />
 
     <ImageButton
-        android:id="@+id/btn_category8"
+        android:id="@+id/supporters_category"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_category9"
-        app:layout_constraintStart_toEndOf="@+id/btn_category7"
-        app:layout_constraintTop_toTopOf="@+id/btn_category7"
+        app:layout_constraintEnd_toStartOf="@+id/etc_category"
+        app:layout_constraintStart_toEndOf="@+id/literature_category"
+        app:layout_constraintTop_toTopOf="@+id/literature_category"
         app:srcCompat="@drawable/round_btn" />
 
     <ImageButton
-        android:id="@+id/btn_category2"
+        android:id="@+id/advertise_category"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_category3"
-        app:layout_constraintStart_toEndOf="@+id/btn_category1"
-        app:layout_constraintTop_toTopOf="@+id/btn_category1"
+        app:layout_constraintEnd_toStartOf="@+id/ucc_category"
+        app:layout_constraintStart_toEndOf="@+id/idea_category"
+        app:layout_constraintTop_toTopOf="@+id/idea_category"
         app:srcCompat="@drawable/round_btn" />
 
     <ImageButton
-        android:id="@+id/btn_category3"
+        android:id="@+id/ucc_category"
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="@+id/btn_category2"
+        app:layout_constraintTop_toTopOf="@+id/advertise_category"
         app:srcCompat="@drawable/round_btn" />
 
     <ImageButton
-        android:id="@+id/btn_category6"
+        android:id="@+id/science_category"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        app:layout_constraintEnd_toEndOf="@+id/btn_category3"
-        app:layout_constraintTop_toTopOf="@+id/btn_category5"
+        app:layout_constraintEnd_toEndOf="@+id/ucc_category"
+        app:layout_constraintTop_toTopOf="@+id/computer_category"
         app:srcCompat="@drawable/round_btn" />
 
     <ImageButton
-        android:id="@+id/btn_category9"
+        android:id="@+id/etc_category"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/btn_category3"
-        app:layout_constraintTop_toTopOf="@+id/btn_category8"
+        app:layout_constraintEnd_toEndOf="@+id/ucc_category"
+        app:layout_constraintTop_toTopOf="@+id/supporters_category"
         app:srcCompat="@drawable/round_btn" />
 
     <TextView
@@ -198,92 +198,92 @@
         android:layout_height="wrap_content"
         android:text="기획/아이디어"
         android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/btn_category4"
-        app:layout_constraintEnd_toEndOf="@+id/btn_category1"
-        app:layout_constraintStart_toStartOf="@+id/btn_category1"
-        app:layout_constraintTop_toBottomOf="@+id/btn_category1" />
+        app:layout_constraintBottom_toTopOf="@+id/design_category"
+        app:layout_constraintEnd_toEndOf="@+id/idea_category"
+        app:layout_constraintStart_toStartOf="@+id/idea_category"
+        app:layout_constraintTop_toBottomOf="@+id/idea_category" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="광고/마케팅"
         android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/btn_category5"
-        app:layout_constraintEnd_toEndOf="@+id/btn_category2"
-        app:layout_constraintStart_toStartOf="@+id/btn_category2"
-        app:layout_constraintTop_toBottomOf="@+id/btn_category2" />
+        app:layout_constraintBottom_toTopOf="@+id/computer_category"
+        app:layout_constraintEnd_toEndOf="@+id/advertise_category"
+        app:layout_constraintStart_toStartOf="@+id/advertise_category"
+        app:layout_constraintTop_toBottomOf="@+id/advertise_category" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="영상/UCC/사진"
         android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/btn_category6"
-        app:layout_constraintEnd_toEndOf="@+id/btn_category3"
-        app:layout_constraintStart_toStartOf="@+id/btn_category3"
-        app:layout_constraintTop_toBottomOf="@+id/btn_category3" />
+        app:layout_constraintBottom_toTopOf="@+id/science_category"
+        app:layout_constraintEnd_toEndOf="@+id/ucc_category"
+        app:layout_constraintStart_toStartOf="@+id/ucc_category"
+        app:layout_constraintTop_toBottomOf="@+id/ucc_category" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="미술/디자인"
         android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/btn_category7"
-        app:layout_constraintEnd_toEndOf="@+id/btn_category4"
-        app:layout_constraintStart_toStartOf="@+id/btn_category4"
-        app:layout_constraintTop_toBottomOf="@+id/btn_category4" />
+        app:layout_constraintBottom_toTopOf="@+id/literature_category"
+        app:layout_constraintEnd_toEndOf="@+id/design_category"
+        app:layout_constraintStart_toStartOf="@+id/design_category"
+        app:layout_constraintTop_toBottomOf="@+id/design_category" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="IT/컴퓨터"
         android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/btn_category8"
-        app:layout_constraintEnd_toEndOf="@+id/btn_category5"
-        app:layout_constraintStart_toStartOf="@+id/btn_category5"
-        app:layout_constraintTop_toBottomOf="@+id/btn_category5" />
+        app:layout_constraintBottom_toTopOf="@+id/supporters_category"
+        app:layout_constraintEnd_toEndOf="@+id/computer_category"
+        app:layout_constraintStart_toStartOf="@+id/computer_category"
+        app:layout_constraintTop_toBottomOf="@+id/computer_category" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="과학/공학"
         android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/btn_category9"
-        app:layout_constraintEnd_toEndOf="@+id/btn_category6"
-        app:layout_constraintStart_toStartOf="@+id/btn_category6"
-        app:layout_constraintTop_toBottomOf="@+id/btn_category6" />
+        app:layout_constraintBottom_toTopOf="@+id/etc_category"
+        app:layout_constraintEnd_toEndOf="@+id/science_category"
+        app:layout_constraintStart_toStartOf="@+id/science_category"
+        app:layout_constraintTop_toBottomOf="@+id/science_category" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="172dp"
+        android:layout_marginTop="2dp"
         android:text="문학/글"
         android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/btn_category7"
+        app:layout_constraintEnd_toEndOf="@+id/literature_category"
         app:layout_constraintHorizontal_bias="0.436"
-        app:layout_constraintStart_toStartOf="@+id/btn_category7" />
+        app:layout_constraintStart_toStartOf="@+id/literature_category"
+        app:layout_constraintTop_toBottomOf="@+id/literature_category" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="172dp"
+        android:layout_marginTop="2dp"
         android:text="서포터즈/봉사활동"
         android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/btn_category8"
+        app:layout_constraintEnd_toEndOf="@+id/supporters_category"
         app:layout_constraintHorizontal_bias="0.666"
-        app:layout_constraintStart_toStartOf="@+id/btn_category8" />
+        app:layout_constraintStart_toStartOf="@+id/supporters_category"
+        app:layout_constraintTop_toBottomOf="@+id/supporters_category" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="172dp"
+        android:layout_marginTop="2dp"
         android:text="기타"
         android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/btn_category9"
-        app:layout_constraintStart_toStartOf="@+id/btn_category9" />
+        app:layout_constraintEnd_toEndOf="@+id/etc_category"
+        app:layout_constraintStart_toStartOf="@+id/etc_category"
+        app:layout_constraintTop_toBottomOf="@+id/etc_category" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

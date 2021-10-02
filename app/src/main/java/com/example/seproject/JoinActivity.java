@@ -2,8 +2,6 @@ package com.example.seproject;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,10 +31,10 @@ public class JoinActivity  extends AppCompatActivity implements Serializable {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.join);
 
-        id_insert_join = findViewById(R.id.id_insert_join);
-        pwd_insert_join = findViewById(R.id.pwd_insert_join);
-        pwd_check_insert_join = findViewById(R.id.pwd_check_insert_join);
-        name_insert = findViewById(R.id.name_insert);
+        id_insert_join = findViewById(R.id.id_insert_join_et);
+        pwd_insert_join = findViewById(R.id.pwd_insert_join_et);
+        pwd_check_insert_join = findViewById(R.id.pwd_check_insert_et);
+        name_insert = findViewById(R.id.name_insert_et);
         join_btn_join = findViewById(R.id.join_btn_join);
 
         id_overlap_btn = findViewById(R.id.id_overlap_btn);

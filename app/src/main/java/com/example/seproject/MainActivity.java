@@ -69,12 +69,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void replaceFragment(Fragment fragment)
     {
-
         fragment.setArguments(bundle_toFragment);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.flFragment, fragment).addToBackStack(null).commit();
 //                commitAllowingStateLoss();
+    }
+
+    public void bundlePutString(String key, String val){
+        bundle_toFragment.putString(key, val);
     }
 
 
