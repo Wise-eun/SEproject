@@ -29,6 +29,7 @@ public TextView user_name_tv,user_info_tv,rating_tv;
     private static String TAG = "phptest_LoadActivity";
     private static final String TAG_JSON = "webnautes";
     private static final String TAG_ID = "userID";
+    private static final String TAG_Password = "userPassword";
     private static final String TAG_NAME = "userName";
     private static final String TAG_rating = "rating";
     private static final String TAG_ratingPeople = "ratingPeople";
@@ -39,7 +40,11 @@ public TextView user_name_tv,user_info_tv,rating_tv;
     public static String selfIntro;
     private String mJsonString;
     public static String userID;
-
+    public static String userPW;
+    public static String userName;
+    public static String userJob;
+    public static String userSchool;
+    public static String userCountry;
 
     public static ProfileFragment newInstance(){
         return new ProfileFragment();
@@ -233,6 +238,7 @@ public TextView user_name_tv,user_info_tv,rating_tv;
                 JSONObject item = jsonArray.getJSONObject(i);
 
                 String id = item.getString(TAG_ID);
+                String pw = item.getString(TAG_Password);
                 String name = item.getString(TAG_NAME);
                 String rating = item.getString(TAG_rating);
                 String ratingPeople = item.getString(TAG_ratingPeople);
@@ -256,7 +262,14 @@ public TextView user_name_tv,user_info_tv,rating_tv;
                     int ratingPeople_num = Integer.parseInt(ratingPeople);
                     int rating_res = rating_num/ratingPeople_num;
                     rating_tv.setText(Integer.toString(rating_res));
+
+
                     selfIntro = String.copyValueOf(selfintro.toCharArray()); //자기소개 복사.
+                    userName = String.copyValueOf(name.toCharArray());//사용자 닉네임 복사
+                    userJob = String.copyValueOf(job.toCharArray());//사용자 직업 복사
+                    userSchool = String.copyValueOf(school.toCharArray());//사용자 학교 복사
+                    userCountry = String.copyValueOf(country.toCharArray());//사용자 지역 복사
+                    userPW = String.copyValueOf(pw.toCharArray());//사용자 비번 복사
 
                 }
                 /*
