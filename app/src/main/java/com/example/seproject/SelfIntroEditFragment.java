@@ -45,7 +45,6 @@ public class SelfIntroEditFragment extends Fragment {
 
 
                 //새로운 자기소개로 업데이트 해줘야함..
-                //고치고 나서 db에는 바껴있는데 다시 접속하면 안 바껴있음 ㅠㅠ
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
 
                     @Override
@@ -74,11 +73,11 @@ public class SelfIntroEditFragment extends Fragment {
                     }
                 };
 
-                UpdateSelfintroRequest updateSelfIntroRequestRequest = new UpdateSelfintroRequest(ProfileFragment.userID, new_intro, responseListener);
+                UpdateSelfintroRequest updateSelfintroRequestRequest = new UpdateSelfintroRequest(ProfileFragment.userID, new_intro, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(SelfIntroEditFragment.this.getActivity());
-                queue.add(updateSelfIntroRequestRequest);
+                queue.add(updateSelfintroRequestRequest);
 
-                ((MainActivity)getActivity()).replaceFragment(ProfileFragment.newInstance());
+
 
             }
         });
