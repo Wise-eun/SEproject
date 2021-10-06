@@ -54,7 +54,17 @@ public class SelfIntroEditFragment extends Fragment {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             boolean success = jsonObject.getBoolean("success");
+                            if (success) { // 성공한 경우
 
+                                Toast.makeText(getActivity(),"성공적으로 자기소개가 수정되었습니다.",Toast.LENGTH_SHORT).show();
+
+
+
+
+                            } else {// 실패한 경우
+                                Toast.makeText(getActivity(), "수정이 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -63,12 +73,12 @@ public class SelfIntroEditFragment extends Fragment {
                     }
                 };
 
-                UpdateSelfintroRequest updateSelfintroRequest = new UpdateSelfintroRequest(ProfileFragment.userID, new_intro, responseListener);
+                UpdateSelfintroRequest updateSelfintroRequestRequest = new UpdateSelfintroRequest(ProfileFragment.userID, new_intro, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(SelfIntroEditFragment.this.getActivity());
-                queue.add(updateSelfintroRequest);
+                queue.add(updateSelfintroRequestRequest);
 
-//다 수정되면 프로필화면으로 이동
-                ((MainActivity)getActivity()).replaceFragment(ProfileFragment.newInstance());
+
+
             }
         });
 

@@ -41,6 +41,6 @@
             app:layout_constraintStart_toStartOf="parent"
             />
 
-<!--        팀원 리스트 뷰 추가 필요-->
+        <!--        팀원 리스트 뷰 추가 필요-->
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
