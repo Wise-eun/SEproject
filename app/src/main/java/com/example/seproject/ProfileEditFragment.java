@@ -8,7 +8,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -124,7 +123,7 @@ user_country = user_country + " " + local_insert_et.getText().toString();
                     user_job = "";
                 if(user_country.equals("-")|| user_country.equals("기타") )
                     user_country = "";
-                UpdateProfileRequest updateProfileRequest = new UpdateProfileRequest(ProfileFragment.userID, user_job,user_school,user_country, responseListener);
+                ProfileUpdateRequest updateProfileRequest = new ProfileUpdateRequest(ProfileFragment.userID, user_job,user_school,user_country, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(ProfileEditFragment.this.getActivity());
                 queue.add(updateProfileRequest);
 

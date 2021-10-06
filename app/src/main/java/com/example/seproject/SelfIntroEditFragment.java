@@ -73,7 +73,7 @@ public class SelfIntroEditFragment extends Fragment {
                     }
                 };
 
-                UpdateSelfintroRequest updateSelfintroRequestRequest = new UpdateSelfintroRequest(ProfileFragment.userID, new_intro, responseListener);
+                SelfintroUpdateRequest updateSelfintroRequestRequest = new SelfintroUpdateRequest(ProfileFragment.userID, new_intro, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(SelfIntroEditFragment.this.getActivity());
                 queue.add(updateSelfintroRequestRequest);
 

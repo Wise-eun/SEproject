@@ -1,4 +1,4 @@
 package com.example.seproject;
 
-public class MyPostRequest {
+public class PostModifyRequest {
 }
