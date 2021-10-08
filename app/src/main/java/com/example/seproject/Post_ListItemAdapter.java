@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ListItemAdapter extends BaseAdapter {
-    ArrayList<ListItem> items = new ArrayList<ListItem>();
+public class Post_ListItemAdapter extends BaseAdapter {
+    ArrayList<Post_ListItem> items = new ArrayList<Post_ListItem>();
     Context context;
 
     @Override
@@ -31,11 +31,11 @@ public class ListItemAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         context = parent.getContext();
-        ListItem listItem = items.get(position);
+        Post_ListItem listItem = items.get(position);
 
         if(convertView == null){
             LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.listview_item, parent, false);
+            convertView = inflater.inflate(R.layout.post_listview_item, parent, false);
         }
 
         TextView writer_tv = convertView.findViewById(R.id.writer_tv);
@@ -51,7 +51,7 @@ public class ListItemAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public void addItem(ListItem item){
+    public void addItem(Post_ListItem item){
         items.add(item);
     }
 }

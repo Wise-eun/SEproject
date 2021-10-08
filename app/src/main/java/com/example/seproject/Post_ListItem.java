@@ -1,6 +1,6 @@
 package com.example.seproject;
 
-public class ListItem {
+public class Post_ListItem {
     private String writer;
     private String title;
     private String personnel;
@@ -35,7 +35,7 @@ public class ListItem {
         this.writer = writer;
     }
 
-    ListItem(String writer, String title, String personnel, String day){
+    Post_ListItem(String writer, String title, String personnel, String day){
         this.writer = writer;
         this.title = title;
         this.personnel = personnel;

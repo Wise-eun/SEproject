@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment;
 
 public class WorkFragment extends Fragment {
     ListView listView;
-    ListItemAdapter adapter;
+    Post_ListItemAdapter adapter;
 
     public WorkFragment() {}
 
@@ -24,12 +24,12 @@ public class WorkFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_work, container, false);
         ListView listView = (ListView) view.findViewById(R.id.listView);
-        adapter = new ListItemAdapter();
-        adapter.addItem(new ListItem("writer", "[ㅇㅇ공모전] 같이 하실 분", "(1/4)", "D-16"));
-        adapter.addItem(new ListItem("writer", "[ㄴㄴ공모전] 같이 하실 분", "(2/4)", "D-16"));
-        adapter.addItem(new ListItem("writer", "[ㅁㅁ공모전] 같이 하실 분", "(3/4)", "D-16"));
-        adapter.addItem(new ListItem("writer", "[ㅅㅅ공모전] 같이 하실 분", "(4/4)", "D-16"));
-        adapter.addItem(new ListItem("writer", "[ㄹㄹ공모전] 같이 하실 분", "(1/5)", "D-16"));
+        adapter = new Post_ListItemAdapter();
+        adapter.addItem(new Post_ListItem("writer", "[ㅇㅇ공모전] 같이 하실 분", "(1/4)", "D-16"));
+        adapter.addItem(new Post_ListItem("writer", "[ㄴㄴ공모전] 같이 하실 분", "(2/4)", "D-16"));
+        adapter.addItem(new Post_ListItem("writer", "[ㅁㅁ공모전] 같이 하실 분", "(3/4)", "D-16"));
+        adapter.addItem(new Post_ListItem("writer", "[ㅅㅅ공모전] 같이 하실 분", "(4/4)", "D-16"));
+        adapter.addItem(new Post_ListItem("writer", "[ㄹㄹ공모전] 같이 하실 분", "(1/5)", "D-16"));
 
         listView.setAdapter(adapter);
         return view;
