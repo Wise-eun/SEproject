@@ -39,9 +39,10 @@
         <EditText
             android:id="@+id/self_intro_insert_et"
             android:layout_width="fill_parent"
-            android:layout_height="600dp"
+            android:layout_height="500dp"
+
             android:layout_margin="20dp"
-            android:background="@null"
+            android:background="@drawable/roundline_gray"
             android:gravity="top|start" />
     </LinearLayout>
 

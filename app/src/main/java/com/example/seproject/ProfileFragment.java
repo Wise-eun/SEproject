@@ -53,7 +53,7 @@ public TextView user_name_tv,user_info_tv,rating_tv;
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
     }
-
+//
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment

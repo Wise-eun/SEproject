@@ -17,7 +17,7 @@ import com.google.android.material.navigation.NavigationBarView;
 public class MainActivity extends AppCompatActivity {
     private FragmentManager fragmentManager = getSupportFragmentManager();
     Bundle bundle_toFragment = new Bundle();
-
+    public static String userID;
 
     BottomNavigationView bottomNavigationView;
     HomeFragment homeFragment = new HomeFragment();
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         transaction.add(R.id.flFragment, homeFragment.newInstance()).commit();
 
         Bundle bundle =   getIntent().getExtras();
-        String userID = bundle.getString("userID");
+       userID = bundle.getString("userID");
         bundle_toFragment.putString("userID", userID);
 
         replaceFragment(homeFragment);
