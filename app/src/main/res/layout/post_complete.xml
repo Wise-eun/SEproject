@@ -99,10 +99,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="모집인원"></TextView>
+                android:text="현재인원"></TextView>
             <!--            리스트뷰랑 생성 필요-->
         </LinearLayout>
         <TextView

@@ -34,6 +34,7 @@ public class MyPostFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 final Post_ListItem item = (Post_ListItem) post_adapter.getItem(position);
                 Toast.makeText(getActivity(), item.getTitle(), Toast.LENGTH_SHORT).show();
+                ((MainActivity)getActivity()).replaceFragment(PostDetailFragment.newInstance());
             }
         });
 
