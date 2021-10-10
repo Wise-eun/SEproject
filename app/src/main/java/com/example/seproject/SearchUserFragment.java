@@ -58,11 +58,14 @@ public class SearchUserFragment extends Fragment {
         public void onClick(View v) {
             // TODO Auto-generated method stub
 //메세지 전송으로 화면이동
+            //MsgDetailFragment.msg_you_name = null; //다른경로로 write할 경우를 사전 차단.
+
             ((MainActivity)getActivity()).replaceFragment(SendMsgFragment.newInstance()); //화면전환
+            SendMsgFragment.where_in = 2;
         } });
 
 
-
+//
 
 
         search_btn.setOnClickListener(new View.OnClickListener(){
@@ -181,15 +184,7 @@ public class SearchUserFragment extends Fragment {
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
 
             for (int i = 0; i < jsonArray.length(); i++) {
-/*
-*     private static final String TAG_ID = "userID";
-    private static final String TAG_NAME = "userName";
-    private static final String TAG_rating = "rating";
-    private static final String TAG_ratingPeople = "ratingPeople";
-    private static final String TAG_job = "job";
-    private static final String  TAG_school= "school";
-    private static final String TAG_country = "country";
-* */
+
                 JSONObject item = jsonArray.getJSONObject(i);
 
                 String id = item.getString(TAG_ID);

@@ -26,9 +26,10 @@ public class SendMsgFragment extends Fragment {
 
     EditText write_msg_insert_et;
     Button send_btn;
-String content;
-String sender;
-String receiver;
+ String content;
+ public static int where_in=0;
+public static  String sender;
+ public static String receiver;
 
     public static SendMsgFragment newInstance() {
         return new SendMsgFragment();
@@ -43,10 +44,15 @@ String receiver;
 
         write_msg_insert_et = (EditText) v.findViewById(R.id.write_msg_insert_et);
         send_btn = (Button) v.findViewById(R.id.send_btn);
-        if(SearchUserFragment.search_id != null) //만약 search해서 들어올경우
-        receiver = SearchUserFragment.search_id;
+
+        if(where_in==1) // 만약 detail에서 들어올경우
+            receiver = MsgDetailFragment.msg_you_name;
+        else if(where_in==2) //만약 search해서 들어올경우
+        receiver = SearchUserFragment.search_name;
+
+
 //프로필보기에서 메세지보내기를 눌렀을때 들어올 변수도 검증해줘야겠지..
-        sender = MainActivity.userID;
+        sender = MainActivity.userName;
 
 
 
@@ -64,7 +70,8 @@ String receiver;
                            if (success) {
 
                                Toast.makeText(getActivity(),"메세지 전송에 성공하였습니다.",Toast.LENGTH_SHORT).show();
-                               // ((MainActivity)getActivity()).replaceFragment(SearchUserFragment.newInstance()); //화면전환
+                                ((MainActivity)getActivity()).replaceFragment(MsgDetailFragment.newInstance()); //화면전환
+                               MsgDetailFragment.where_in = 2;
                             }
 
                             else {

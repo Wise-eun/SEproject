@@ -52,7 +52,7 @@ public class Msg_ListItemAdapter extends BaseAdapter {
 
 
         if(listItem.getType().equals("보낸 메시지")){
-            msg_type_tv.setTextColor(Color.RED);
+            msg_type_tv.setTextColor(Color.rgb(255,127,0));
         }
 
 
