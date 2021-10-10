@@ -23,7 +23,7 @@
         app:layout_constraintVertical_bias="0.008" />
 
     <TextView
-        android:id="@+id/write_personnel_tv"
+        android:id="@+id/write_personnel_tv2"
         android:layout_width="400dp"
         android:layout_height="2dp"
         android:layout_marginTop="56dp"

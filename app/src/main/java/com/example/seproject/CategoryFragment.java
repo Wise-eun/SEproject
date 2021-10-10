@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -60,7 +59,7 @@ public class CategoryFragment extends Fragment {
             }
         });
 
-        ImageButton write_btn = (ImageButton) v.findViewById(R.id.write_btn);
+        ImageButton write_btn = (ImageButton) v.findViewById(R.id.trash_btn);
         write_btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 ((MainActivity)getActivity()).replaceFragment(PostWriteFragment.newInstance());

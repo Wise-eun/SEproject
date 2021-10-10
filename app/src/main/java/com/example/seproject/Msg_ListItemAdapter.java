@@ -17,9 +17,6 @@ public class Msg_ListItemAdapter extends BaseAdapter {
     Context context;
 
 
-
-
-
     @Override
     public int getCount() {
         return items.size();

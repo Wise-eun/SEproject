@@ -1,6 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/category_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="IT/컴퓨터"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="400dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/dark_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/category_name" />
+
+
+    <TextView
+        android:id="@+id/mypost_title_tv"
+        android:layout_width="315dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="36dp"
+        android:layout_weight="1"
+        android:text="제목"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:paddingLeft="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+
+    <EditText
+        android:id="@+id/content_et"
+        android:layout_width="315dp"
+        android:layout_height="280dp"
+        android:layout_gravity="center_vertical"
+
+        android:layout_marginTop="32dp"
+        android:layout_weight="1"
+        android:background="@drawable/roundline_gray"
+        android:ems="10"
+        android:hint="내용을 입력해주세요"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/write_personnel_tv2" />
+
+    <TextView
+        android:id="@+id/write_day_tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="마감일"
+        android:textSize="18dp"
+
+        app:layout_constraintStart_toStartOf="@+id/mypost_title_tv"
+        app:layout_constraintTop_toBottomOf="@+id/mypost_title_tv" />
+
+    <TextView
+        android:id="@+id/write_local_tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="20dp"
+
+        android:text="모집지역"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/write_day_tv2" />
+
+    <TextView
+        android:id="@+id/write_personnel_tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="68dp"
+
+        android:text="모집인원"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/write_day_tv2" />
+
+
+    <TextView
+        android:id="@+id/write_day_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="2000년 10월 6일"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.182"
+        app:layout_constraintStart_toEndOf="@+id/write_day_tv2"
+        app:layout_constraintTop_toBottomOf="@+id/mypost_title_tv" />
+
+    <!--    <LinearLayout-->
+    <!--        android:id="@+id/linearLayout2"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:orientation="vertical"-->
+    <!--        android:layout_marginTop="40dp">-->
+
+    <!--        <TextView-->
+    <!--            android:layout_width="400dp"-->
+    <!--            android:layout_height="2dp"-->
+    <!--            android:layout_margin="10dp"-->
+    <!--            android:background="@color/dark_gray"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            />-->
+    <!--        <EditText-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:hint="제목을 입력해주세요">-->
+    <!--        </EditText>-->
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:orientation="horizontal">-->
+    <!--            <TextView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:text="마감일"></TextView>-->
+    <!--            <TextView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:text="2021.10.03"-->
+    <!--                android:layout_marginLeft="10dp"></TextView>-->
+    <!--        </LinearLayout>-->
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:orientation="horizontal">-->
+    <!--            <TextView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:text="모집지역"></TextView>-->
+    <!--            <TextView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:text="대구광역시"-->
+    <!--                android:layout_marginLeft="10dp"></TextView>-->
+    <!--        </LinearLayout>-->
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:orientation="horizontal">-->
+    <!--            <TextView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:text="모집인원"></TextView>-->
+    <!--            &lt;!&ndash;            리스트뷰랑 생성 필요&ndash;&gt;-->
+    <!--        </LinearLayout>-->
+
+    <!--        <EditText-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:hint="내용을 입력해주세요">-->
+    <!--        </EditText>-->
+    <!--    </LinearLayout>-->
+
+    <TextView
+        android:id="@+id/write_local_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:text="대구 북구"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.182"
+        app:layout_constraintStart_toEndOf="@+id/write_day_tv2"
+        app:layout_constraintTop_toBottomOf="@+id/mypost_title_tv" />
+
+    <TextView
+        android:id="@+id/write_personnel_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:text="5명"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.184"
+        app:layout_constraintStart_toEndOf="@+id/write_day_tv2"
+        app:layout_constraintTop_toBottomOf="@+id/mypost_title_tv" />
+
+    <Button
+        android:id="@+id/post_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="등록"
+        app:layout_constraintBottom_toBottomOf="parent"></Button>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
