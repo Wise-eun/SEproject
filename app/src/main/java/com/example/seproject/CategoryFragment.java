@@ -4,10 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -49,6 +51,14 @@ public class CategoryFragment extends Fragment {
 
         listView.setAdapter(adapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                final Post_ListItem item = (Post_ListItem) adapter.getItem(position);
+                Toast.makeText(getActivity(), item.getTitle(), Toast.LENGTH_SHORT).show();
+                ((MainActivity)getActivity()).replaceFragment(PostDetailFragment.newInstance());
+            }
+        });
 
         ImageButton write_btn = (ImageButton) v.findViewById(R.id.write_btn);
         write_btn.setOnClickListener(new View.OnClickListener(){

@@ -9,14 +9,14 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-public class MemberListFragment extends Fragment {
+public class MemberRatingFragment extends Fragment {
     ListView listView;
     Member_ListItemAdapter adapter;
 
-    public MemberListFragment() {}
+    public MemberRatingFragment() {}
 
-    public static MemberListFragment newInstance(){
-        return new MemberListFragment();
+    public static MemberRatingFragment newInstance(){
+        return new MemberRatingFragment();
     }
 
     @Override
@@ -34,7 +34,7 @@ public class MemberListFragment extends Fragment {
                 }
                 else{
                     //평가 버튼 눌렀을 때 발생시킬 이벤트
-//                    Toast.makeText(getActivity(), pos + "번 째 평가 클릭", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), pos + "번 째 평가 클릭", Toast.LENGTH_SHORT).show();
                 }
 
             }

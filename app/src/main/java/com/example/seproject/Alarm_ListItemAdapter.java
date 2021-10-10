@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -14,6 +15,16 @@ public class Alarm_ListItemAdapter extends BaseAdapter {
 
     ArrayList<Alarm_ListItem> items = new ArrayList<Alarm_ListItem>();
     Context context;
+    OnDeleteClickListener listener;
+
+    public interface OnDeleteClickListener{
+        void onDelete(View v, int pos, String type);
+    }
+
+    public Alarm_ListItemAdapter(OnDeleteClickListener listener){
+        super();
+        this.listener = listener;
+    }
 
     @Override
     public int getCount() {
@@ -41,8 +52,23 @@ public class Alarm_ListItemAdapter extends BaseAdapter {
         }
 
         TextView content_tv = convertView.findViewById(R.id.content_tv);
+        Button accept_btn = convertView.findViewById(R.id.accept_btn);
+        Button refuse_btn = convertView.findViewById(R.id.refuse_btn);
 
         content_tv.setText(listItem.getContent());
+
+        accept_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onDelete(view, position, "accept");
+            }
+        });
+
+        refuse_btn.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+                listener.onDelete(view, position, "refuse");
+            }
+        });
 
         return convertView;
     }

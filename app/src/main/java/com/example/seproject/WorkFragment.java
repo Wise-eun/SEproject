@@ -3,7 +3,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -30,6 +32,16 @@ public class WorkFragment extends Fragment {
         adapter.addItem(new Post_ListItem("writer", "[ㅁㅁ공모전] 같이 하실 분", "(3/4)", "D-16"));
         adapter.addItem(new Post_ListItem("writer", "[ㅅㅅ공모전] 같이 하실 분", "(4/4)", "D-16"));
         adapter.addItem(new Post_ListItem("writer", "[ㄹㄹ공모전] 같이 하실 분", "(1/5)", "D-16"));
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {
+                final Post_ListItem item = (Post_ListItem) adapter.getItem(a_position);
+                Toast.makeText(getActivity(), item.getTitle(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(),"메세지 전송에 성공하였습니다.",Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
         listView.setAdapter(adapter);
         return view;
