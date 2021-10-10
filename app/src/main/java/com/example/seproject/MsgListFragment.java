@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
@@ -13,7 +14,7 @@ public class MsgListFragment extends Fragment {
     }
 
     Msg_ListItemAdapter adapter;
-
+ImageButton write_msg_btn;
 
     public static MsgListFragment newInstance() {
         return new MsgListFragment();
@@ -29,6 +30,17 @@ public class MsgListFragment extends Fragment {
         adapter.addItem(new Msg_ListItem("User_non", "저 메시지 답장 좀 부탁드려요...", "2021-09-21 17:30"));
         adapter.addItem(new Msg_ListItem("User_many", "아 그거 말씀인데요 저는 그렇게 생각한 적이...", "2021-09-21 17:30"));
 
+
+        write_msg_btn = (ImageButton)v.findViewById(R.id.write_msg_btn);
+
+
+
+        write_msg_btn.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                ((MainActivity)getActivity()).replaceFragment(SearchUserFragment.newInstance());
+
+            }
+        });
 
 
         listView.setAdapter(adapter);
