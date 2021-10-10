@@ -28,16 +28,16 @@ public class MyPostDetailFragment extends Fragment {
 
         Button post_complete_btn = view.findViewById(R.id.post_complete_btn);
         Button post_delete_btn = view.findViewById(R.id.post_delete_btn);
-        Button post_complete_btn = view.findViewById(R.id.post_complete_btn);
+        Button post_edit_btn = view.findViewById(R.id.post_edit_btn);
 
 
         post_complete_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String titleMsg = " 이 게시물에 참여 신청을 하시겠습니까? ";
-                if(participate){
-                    titleMsg = " 이 게시물의 참여 신청을 취소하기겠습니까?";
-                }
+//                if(participate){
+//                    titleMsg = " 이 게시물의 참여 신청을 취소하기겠습니까?";
+//                }
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle(titleMsg);
@@ -71,9 +71,9 @@ public class MyPostDetailFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String titleMsg = " 이 게시물에 참여 신청을 하시겠습니까? ";
-                if(participate){
-                    titleMsg = " 이 게시물의 참여 신청을 취소하기겠습니까?";
-                }
+//                if(participate){
+//                    titleMsg = " 이 게시물의 참여 신청을 취소하기겠습니까?";
+//                }
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle(titleMsg);

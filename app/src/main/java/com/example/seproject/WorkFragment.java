@@ -35,11 +35,10 @@ public class WorkFragment extends Fragment {
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> a_parent, View a_view, int a_position, long a_id) {
-                final Post_ListItem item = (Post_ListItem) adapter.getItem(a_position);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                final Post_ListItem item = (Post_ListItem) adapter.getItem(position);
                 Toast.makeText(getActivity(), item.getTitle(), Toast.LENGTH_SHORT).show();
-//                Toast.makeText(getActivity(),"메세지 전송에 성공하였습니다.",Toast.LENGTH_SHORT).show();
-
+                ((MainActivity)getActivity()).replaceFragment(PostDetailFragment.newInstance());
             }
         });
 
