@@ -76,7 +76,6 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/radio_group"
 
-            android:layout_marginTop="55dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="10dp" />

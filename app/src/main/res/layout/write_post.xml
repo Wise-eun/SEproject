@@ -34,6 +34,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/category_name" />
 
+
     <EditText
         android:id="@+id/title_et"
         android:layout_width="315dp"
@@ -58,19 +59,22 @@
         android:layout_width="100dp"
         android:layout_height="25dp"
         android:layout_gravity="center_vertical"
-        android:layout_weight="1"
+        android:layout_marginTop="19dp"
 
+        android:layout_weight="1"
         android:background="@drawable/roundline_gray"
         android:ems="10"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
-        tools:layout_editor_absoluteX="218dp"
-        tools:layout_editor_absoluteY="200dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toEndOf="@+id/post_local_spinner"
+        app:layout_constraintTop_toBottomOf="@+id/month_spinner" />
 
     <EditText
         android:id="@+id/content_et"
         android:layout_width="315dp"
-        android:layout_height="350dp"
+        android:layout_height="280dp"
         android:layout_gravity="center_vertical"
         android:layout_marginTop="20dp"
 
@@ -192,35 +196,14 @@
         android:id="@+id/minus_btn"
         android:layout_width="40dp"
         android:layout_height="0dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="@color/gray"
         android:text="-"
         android:textColor="@color/black"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="141dp"
-        tools:layout_editor_absoluteY="241dp" />
-
-    <TextView
-        android:id="@+id/peopleNum_tv"
-        android:layout_width="40dp"
-        android:layout_height="35dp"
-        android:background="@drawable/roundline_gray"
-        android:gravity="center"
-        android:text="2"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="193dp"
-        tools:layout_editor_absoluteY="245dp" />
-
-    <Button
-        android:id="@+id/plus_btn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:backgroundTint="@color/gray"
-        android:text="+"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="245dp"
-        tools:layout_editor_absoluteY="241dp" />
+        app:layout_constraintStart_toEndOf="@+id/write_personnel_tv"
+        app:layout_constraintTop_toBottomOf="@+id/post_local_spinner" />
 
     <!--    <LinearLayout-->
 <!--        android:id="@+id/linearLayout2"-->
@@ -287,6 +270,33 @@
 <!--            android:hint="내용을 입력해주세요">-->
 <!--        </EditText>-->
 <!--    </LinearLayout>-->
+
+    <TextView
+        android:id="@+id/peopleNum_tv"
+        android:layout_width="40dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="21dp"
+        android:background="@drawable/roundline_gray"
+        android:gravity="center"
+        android:text="2"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/plus_btn"
+        app:layout_constraintStart_toEndOf="@+id/minus_btn"
+        app:layout_constraintTop_toBottomOf="@+id/post_local_spinner" />
+
+    <Button
+        android:id="@+id/plus_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="112dp"
+        android:backgroundTint="@color/gray"
+        android:text="+"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/post_local_et" />
 
     <Button
         android:id="@+id/post_btn"

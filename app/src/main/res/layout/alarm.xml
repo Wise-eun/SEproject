@@ -48,7 +48,15 @@
             app:layout_constraintStart_toStartOf="parent"
             />
 
-<!--       리스트 뷰 생성필요-->
+        <ListView
+            android:id="@+id/alarm_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="10dp" />
+
     </LinearLayout>
 
 
