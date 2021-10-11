@@ -1,5 +1,6 @@
 package com.example.seproject;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,6 +13,8 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,13 +30,14 @@ import java.util.ArrayList;
 public class MsgListFragment extends Fragment {
     public MsgListFragment() {
     }
+
     ListView listView;
     View v;
     String userID,userName;
     public static String targetID, targetName;
-    Msg_ListItemAdapter adapter;
-ImageButton write_msg_btn;
-ArrayList<String> msg_users = new ArrayList<String>();
+    public static Msg_ListItemAdapter adapter;
+    ImageButton write_msg_btn;
+    ArrayList<String> msg_users = new ArrayList<String>();
     private static String TAG = "phptest_LoadActivity";
     private static final String TAG_JSON = "webnautes";
     private static final String TAG_SENDER = "sender";
@@ -42,23 +46,20 @@ ArrayList<String> msg_users = new ArrayList<String>();
     private static final String TAG_DATE = "date";
     private String mJsonString;
 
+
+
+
     public static MsgListFragment newInstance() {
         return new MsgListFragment();
     }
-//
+    //
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.message_list, container, false);
-         listView = (ListView) v.findViewById(R.id.msg_list_listview);
+        listView = (ListView) v.findViewById(R.id.msg_list_listview);
         adapter = new Msg_ListItemAdapter();
         userID = MainActivity.userID;
         userName = MainActivity.userName;
-        /*
-        adapter.addItem(new Msg_ListItem("User_name", "아 넵! 010-0000-0000입니다!", "2021-09-23 18:31"));
-        adapter.addItem(new Msg_ListItem("User_2", "인원이 다 차서..! 전화번호 알려주세요ㅎㅎ", "2021-09-23 18:25"));
-        adapter.addItem(new Msg_ListItem("User_non", "저 메시지 답장 좀 부탁드려요...", "2021-09-21 17:30"));
-        adapter.addItem(new Msg_ListItem("User_many", "아 그거 말씀인데요 저는 그렇게 생각한 적이...", "2021-09-21 17:30"));
-*/
 
         write_msg_btn = (ImageButton)v.findViewById(R.id.write_msg_btn);
 
@@ -73,11 +74,12 @@ ArrayList<String> msg_users = new ArrayList<String>();
 
 
 
-        MsgListFragment.GetData task = new MsgListFragment.GetData();
-        task.execute("http://steak2121.ivyro.net/loadMessage.php");
+            MsgListFragment.GetData task = new MsgListFragment.GetData();
+            task.execute("http://steak2121.ivyro.net/loadMessage.php");
 
+        listView.setAdapter(adapter);
         //listView.setAdapter(adapter);
-        return v;
+       return v;
     }
 
 
@@ -197,52 +199,58 @@ ArrayList<String> msg_users = new ArrayList<String>();
                 if (userName.equals(sender) || userName.equals(receiver)) // 보낸사람 또는 받는사람이 사용자일 경우
                 {
 
-if(userName.equals(receiver))// 받는사람이 사용자 일 경우
-{
-    String you = sender;
-    if(msg_users.contains(you))//전에 check한 상대방일 경우
-    {}
-    else { //check하지않은 상대방일 경우 추가
-        msg_users.add(sender);
-        adapter.addItem(new Msg_ListItem(sender, content, date));
-    }
-}
-    else if(userName.equals(sender)) //보낸사람이 사용자일경우
-{
-    String you = receiver;
-    if(msg_users.contains(you))//전에 check한 상대방일 경우
-    {}
-    else { //check하지않은 상대방일 경우 추가
-        msg_users.add(receiver);
-        adapter.addItem(new Msg_ListItem(receiver, content, date));
-    }
-}
+                    if(userName.equals(receiver))// 받는사람이 사용자 일 경우
+                    {
+                        String you = sender;
+                        if(msg_users.contains(you))//전에 check한 상대방일 경우
+                        {}
+                        else { //check하지않은 상대방일 경우 추가
+                            msg_users.add(sender);
+                            adapter.addItem(new Msg_ListItem(sender, content, date));
+                        }
+                    }
+                    else if(userName.equals(sender)) //보낸사람이 사용자일경우
+                    {
+                        String you = receiver;
+                        if(msg_users.contains(you))//전에 check한 상대방일 경우
+                        {}
+                        else { //check하지않은 상대방일 경우 추가
+                            msg_users.add(receiver);
+                            adapter.addItem(new Msg_ListItem(receiver, content, date));
+                        }
+                    }
 
                 }
 
 
             }
-
-
-
+            msg_users = new ArrayList<String>();
             listView.setAdapter(adapter);
+
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @SuppressLint("ResourceType")
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     final Msg_ListItem item = (Msg_ListItem) adapter.getItem(position);
-                   // Toast.makeText(getActivity(), item.getContent(), Toast.LENGTH_SHORT).show();
 
+
+
+                    //((MainActivity)getActivity()).getSupportFragmentManager().beginTransaction().replace(R.layout.message_list,   new MsgDetailFragment()).addToBackStack(null).commit();
                     ((MainActivity)getActivity()).replaceFragment(MsgDetailFragment.newInstance()); //화면전환
                     MsgDetailFragment.where_in = 1;
                     targetName = item.getType();
                 }
             });
+
+
+
+
         } catch (JSONException e) {
 
             Log.d(TAG, "showResult : ", e);
         }
+        return null;
 
-        return v;
 
     }
 
