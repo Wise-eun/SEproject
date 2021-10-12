@@ -73,9 +73,10 @@ public class MsgListFragment extends Fragment {
 
 
 
-        MsgListFragment.GetData task = new MsgListFragment.GetData();
-        task.execute("http://steak2121.ivyro.net/loadMessage.php");
+            MsgListFragment.GetData task = new MsgListFragment.GetData();
+            task.execute("http://steak2121.ivyro.net/loadMessage.php");
 
+        listView.setAdapter(adapter);
         //listView.setAdapter(adapter);
         return view;
     }
@@ -198,35 +199,42 @@ public class MsgListFragment extends Fragment {
                 {
 
                     if(userName.equals(receiver))// 받는사람이 사용자 일 경우
-                        {
-                            String you = sender;
-                            if(msg_users.contains(you))//전에 check한 상대방일 경우
-                                {}
-                            else { //check하지않은 상대방일 경우 추가
-                                    msg_users.add(sender);
-                                    adapter.addItem(new Msg_ListItem(sender, content, date));
-                            }
+                    {
+                        String you = sender;
+                        if(msg_users.contains(you))//전에 check한 상대방일 경우
+                        {}
+                        else { //check하지않은 상대방일 경우 추가
+                            msg_users.add(sender);
+                            adapter.addItem(new Msg_ListItem(sender, content, date));
                         }
+                    }
                     else if(userName.equals(sender)) //보낸사람이 사용자일경우
                     {
                         String you = receiver;
                         if(msg_users.contains(you))//전에 check한 상대방일 경우
-                            {}
+                        {}
                         else { //check하지않은 상대방일 경우 추가
                             msg_users.add(receiver);
                             adapter.addItem(new Msg_ListItem(receiver, content, date));
                         }
                     }
-                }
-            }
 
+                }
+
+
+            }
+            msg_users = new ArrayList<String>();
             listView.setAdapter(adapter);
+
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @SuppressLint("ResourceType")
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     final Msg_ListItem item = (Msg_ListItem) adapter.getItem(position);
                    // Toast.makeText(getActivity(), item.getContent(), Toast.LENGTH_SHORT).show();
 
+
+                    //((MainActivity)getActivity()).getSupportFragmentManager().beginTransaction().replace(R.layout.message_list,   new MsgDetailFragment()).addToBackStack(null).commit();
                     ((MainActivity)getActivity()).replaceFragment(MsgDetailFragment.newInstance()); //화면전환
                     MsgDetailFragment.where_in = 1;
                     targetName = item.getType();
@@ -236,9 +244,10 @@ public class MsgListFragment extends Fragment {
 
             Log.d(TAG, "showResult : ", e);
         }
-
-        return view;
+        return null;
 
     }
+
+
 
 }
