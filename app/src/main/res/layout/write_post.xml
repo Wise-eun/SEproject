@@ -139,7 +139,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="2021년 10월 11일"
+        android:text="2021/10/11"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="@+id/mypost_title_tv"
         app:layout_constraintHorizontal_bias="0.343"

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 
 public class Member_ListItemAdapter extends BaseAdapter {
-    ArrayList<Member_ListItem> items = new ArrayList<Member_ListItem>();
+    private ArrayList<Member_ListItem> items = new ArrayList<Member_ListItem>();
     Context context;
     OnClickListener listener;
 

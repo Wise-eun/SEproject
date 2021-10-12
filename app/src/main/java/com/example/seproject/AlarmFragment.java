@@ -14,7 +14,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 public class AlarmFragment extends Fragment {
-    Alarm_ListItemAdapter adapter;
+    private Alarm_ListItemAdapter adapter;
 
     public static AlarmFragment newInstance() {
         return new AlarmFragment();

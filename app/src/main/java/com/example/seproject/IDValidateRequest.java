@@ -13,7 +13,7 @@ import java.util.Map;
 public class IDValidateRequest  extends StringRequest {
 
     //서버 url 설정(php파일 연동)
-    final static  private String URL="http://steak2121.ivyro.net/userIDValidate.php";
+    final static private String URL="http://steak2121.ivyro.net/userIDValidate.php";
     private Map<String, String> map;
 
     public IDValidateRequest(String userID, Response.Listener<String> listener){

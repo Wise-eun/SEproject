@@ -13,9 +13,11 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 public class CategoryFragment extends Fragment {
-    ListView listView;
-    Post_ListItemAdapter adapter;
+    private ListView listView;
+    private Post_ListItemAdapter adapter;
     public static String category_str = "";
+
+
 
     public static CategoryFragment newInstance(){
         return new CategoryFragment();

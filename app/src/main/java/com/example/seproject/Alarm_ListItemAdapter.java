@@ -13,9 +13,9 @@ import java.util.ArrayList;
 
 public class Alarm_ListItemAdapter extends BaseAdapter {
 
-    ArrayList<Alarm_ListItem> items = new ArrayList<Alarm_ListItem>();
-    Context context;
-    OnDeleteClickListener listener;
+    private ArrayList<Alarm_ListItem> items = new ArrayList<Alarm_ListItem>();
+    private Context context;
+    private OnDeleteClickListener listener;
 
     public interface OnDeleteClickListener{
         void onDelete(View v, int pos, String type);
