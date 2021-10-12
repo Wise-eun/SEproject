@@ -14,14 +14,14 @@ public class ProfileUpdateRequest extends StringRequest {
     final static private  String URL = "http://steak2121.ivyro.net/profileUpdate.php";
     private Map<String,String> map;
 
-    public ProfileUpdateRequest(String userID, String job, String school, String country, Response.Listener<String> listener){
+    public ProfileUpdateRequest(String userID, String job, String school, String local, Response.Listener<String> listener){
         super(Request.Method.POST,URL,listener, null);
 
         map = new HashMap<>();
         map.put("userID",userID);
         map.put("job",job);
         map.put("school",school);
-        map.put("country",country);
+        map.put("local",local);
 
     }
     @Override
