@@ -18,10 +18,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class SelfIntroEditFragment extends Fragment {
-    public SelfIntroEditFragment(){}
 
-    Button btn_self;
-    EditText et_self;
+    Button modify_btn;
+    EditText self_intro_insert_et;
     String new_intro;
 
     public static SelfIntroEditFragment newInstance(){
@@ -29,19 +28,19 @@ public class SelfIntroEditFragment extends Fragment {
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v= inflater.inflate(R.layout.selfintro_edit, container, false);
+        View view= inflater.inflate(R.layout.selfintro_edit, container, false);
 
-        btn_self = (Button) v.findViewById(R.id.btn_self);
-        et_self = (EditText) v.findViewById(R.id.self_intro_insert_et);
+        modify_btn = (Button) view.findViewById(R.id.modify_btn);
+        self_intro_insert_et = (EditText) view.findViewById(R.id.self_intro_insert_et);
 
-        et_self.setText(ProfileFragment.selfIntro);
+        self_intro_insert_et.setText(ProfileFragment.selfIntro);
 
 
-        btn_self.setOnClickListener(new View.OnClickListener(){
+        modify_btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                // ((MainActivity)getActivity()).replaceFragment(ProfileEditFragment.newInstance());
 
-                new_intro = et_self.getText().toString();
+                new_intro = self_intro_insert_et.getText().toString();
 
 
                 //새로운 자기소개로 업데이트 해줘야함..
@@ -73,7 +72,7 @@ public class SelfIntroEditFragment extends Fragment {
                     }
                 };
 
-                SelfintroUpdateRequest updateSelfintroRequestRequest = new SelfintroUpdateRequest(ProfileFragment.userID, new_intro, responseListener);
+                SelfIntroUpdateRequest updateSelfintroRequestRequest = new SelfIntroUpdateRequest(ProfileFragment.userID, new_intro, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(SelfIntroEditFragment.this.getActivity());
                 queue.add(updateSelfintroRequestRequest);
 
@@ -83,6 +82,6 @@ public class SelfIntroEditFragment extends Fragment {
         });
 
 
-        return v;
+        return view;
     }
 }

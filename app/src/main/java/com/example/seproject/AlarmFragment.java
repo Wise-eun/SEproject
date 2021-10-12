@@ -16,8 +16,6 @@ import androidx.fragment.app.Fragment;
 public class AlarmFragment extends Fragment {
     Alarm_ListItemAdapter adapter;
 
-    public AlarmFragment() {}
-
     public static AlarmFragment newInstance() {
         return new AlarmFragment();
     }

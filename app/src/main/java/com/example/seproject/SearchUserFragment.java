@@ -26,9 +26,6 @@ import java.net.URL;
 
 public class SearchUserFragment extends Fragment {
 
-    public static SearchUserFragment newInstance() {
-        return new SearchUserFragment();
-    }
     private static String TAG = "phptest_LoadActivity";
     private static final String TAG_JSON = "webnautes";
     private static final String TAG_ID = "userID";
@@ -40,6 +37,11 @@ public class SearchUserFragment extends Fragment {
     public static String search_id;
     TextView user_name_tv,no_user_tv;
     ViewGroup layout;
+
+    public static SearchUserFragment newInstance() {
+        return new SearchUserFragment();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.search_user, container, false);
@@ -84,7 +86,6 @@ public class SearchUserFragment extends Fragment {
     }
 
     ////data Load
-
 
     private class GetData extends AsyncTask<String, Void, String> {
         ProgressDialog progressDialog;
@@ -175,8 +176,6 @@ public class SearchUserFragment extends Fragment {
         }
 
     }
-
-
 
     private void showResult() {
         try {

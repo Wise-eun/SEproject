@@ -10,8 +10,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class Post_ListItemAdapter extends BaseAdapter {
-    ArrayList<Post_ListItem> items = new ArrayList<Post_ListItem>();
-    Context context;
+    private ArrayList<Post_ListItem> items = new ArrayList<Post_ListItem>();
+    private Context context;
 
     @Override
     public int getCount() {

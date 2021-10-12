@@ -10,14 +10,11 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 public class WorkFragment extends Fragment {
-    ListView listView;
-    Post_ListItemAdapter adapter;
-
-    public WorkFragment() {}
+    private ListView listView;
+    private Post_ListItemAdapter adapter;
 
     public static WorkFragment newInstance(){
         return new WorkFragment();
-
     }
 
     @Override
@@ -25,7 +22,7 @@ public class WorkFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_work, container, false);
-        ListView listView = (ListView) view.findViewById(R.id.listView);
+        listView = (ListView) view.findViewById(R.id.listView);
         adapter = new Post_ListItemAdapter();
         adapter.addItem(new Post_ListItem("writer", "[ㅇㅇ공모전] 같이 하실 분", "(1/4)", "D-16"));
         adapter.addItem(new Post_ListItem("writer", "[ㄴㄴ공모전] 같이 하실 분", "(2/4)", "D-16"));

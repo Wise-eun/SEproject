@@ -25,15 +25,15 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class MsgListFragment extends Fragment {
-    public MsgListFragment() {
-    }
+
     ListView listView;
-    View v;
+    Msg_ListItemAdapter adapter;
+
+    View view;
     String userID,userName;
     public static String targetID, targetName;
-    Msg_ListItemAdapter adapter;
-ImageButton write_msg_btn;
-ArrayList<String> msg_users = new ArrayList<String>();
+    ImageButton write_msg_btn;
+    ArrayList<String> msg_users = new ArrayList<String>();
     private static String TAG = "phptest_LoadActivity";
     private static final String TAG_JSON = "webnautes";
     private static final String TAG_SENDER = "sender";
@@ -48,8 +48,8 @@ ArrayList<String> msg_users = new ArrayList<String>();
 //
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.message_list, container, false);
-         listView = (ListView) v.findViewById(R.id.msg_list_listview);
+        view = inflater.inflate(R.layout.message_list, container, false);
+         listView = (ListView) view.findViewById(R.id.msg_list_listview);
         adapter = new Msg_ListItemAdapter();
         userID = MainActivity.userID;
         userName = MainActivity.userName;
@@ -60,7 +60,7 @@ ArrayList<String> msg_users = new ArrayList<String>();
         adapter.addItem(new Msg_ListItem("User_many", "아 그거 말씀인데요 저는 그렇게 생각한 적이...", "2021-09-21 17:30"));
 */
 
-        write_msg_btn = (ImageButton)v.findViewById(R.id.write_msg_btn);
+        write_msg_btn = (ImageButton) view.findViewById(R.id.write_msg_btn);
 
 
 
@@ -77,7 +77,7 @@ ArrayList<String> msg_users = new ArrayList<String>();
         task.execute("http://steak2121.ivyro.net/loadMessage.php");
 
         //listView.setAdapter(adapter);
-        return v;
+        return view;
     }
 
 
@@ -197,33 +197,28 @@ ArrayList<String> msg_users = new ArrayList<String>();
                 if (userName.equals(sender) || userName.equals(receiver)) // 보낸사람 또는 받는사람이 사용자일 경우
                 {
 
-if(userName.equals(receiver))// 받는사람이 사용자 일 경우
-{
-    String you = sender;
-    if(msg_users.contains(you))//전에 check한 상대방일 경우
-    {}
-    else { //check하지않은 상대방일 경우 추가
-        msg_users.add(sender);
-        adapter.addItem(new Msg_ListItem(sender, content, date));
-    }
-}
-    else if(userName.equals(sender)) //보낸사람이 사용자일경우
-{
-    String you = receiver;
-    if(msg_users.contains(you))//전에 check한 상대방일 경우
-    {}
-    else { //check하지않은 상대방일 경우 추가
-        msg_users.add(receiver);
-        adapter.addItem(new Msg_ListItem(receiver, content, date));
-    }
-}
-
+                    if(userName.equals(receiver))// 받는사람이 사용자 일 경우
+                        {
+                            String you = sender;
+                            if(msg_users.contains(you))//전에 check한 상대방일 경우
+                                {}
+                            else { //check하지않은 상대방일 경우 추가
+                                    msg_users.add(sender);
+                                    adapter.addItem(new Msg_ListItem(sender, content, date));
+                            }
+                        }
+                    else if(userName.equals(sender)) //보낸사람이 사용자일경우
+                    {
+                        String you = receiver;
+                        if(msg_users.contains(you))//전에 check한 상대방일 경우
+                            {}
+                        else { //check하지않은 상대방일 경우 추가
+                            msg_users.add(receiver);
+                            adapter.addItem(new Msg_ListItem(receiver, content, date));
+                        }
+                    }
                 }
-
-
             }
-
-
 
             listView.setAdapter(adapter);
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -242,10 +237,8 @@ if(userName.equals(receiver))// 받는사람이 사용자 일 경우
             Log.d(TAG, "showResult : ", e);
         }
 
-        return v;
+        return view;
 
     }
-
-
 
 }

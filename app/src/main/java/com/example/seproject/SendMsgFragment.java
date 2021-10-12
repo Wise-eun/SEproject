@@ -21,15 +21,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class SendMsgFragment extends Fragment {
-    public SendMsgFragment() {
-    }
+
 
     EditText write_msg_insert_et;
     Button send_btn;
- String content;
- public static int where_in=0;
-public static  String sender;
- public static String receiver;
+    String content;
+    public static int where_in=0;
+    public static  String sender;
+    public static String receiver;
 
     public static SendMsgFragment newInstance() {
         return new SendMsgFragment();

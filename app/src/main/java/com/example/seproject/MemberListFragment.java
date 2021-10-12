@@ -13,8 +13,6 @@ public class MemberListFragment extends Fragment {
     ListView listView;
     Member_ListItemAdapter adapter;
 
-    public MemberListFragment() {}
-
     public static MemberListFragment newInstance(){
         return new MemberListFragment();
     }

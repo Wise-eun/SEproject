@@ -24,7 +24,6 @@ public class PwdChangeFragment extends Fragment {
     EditText currentPwd_insert_et,newPwd_insert_et,newPwd_check_insert_et;
     Button pwd_edit_btn;
 
-    public PwdChangeFragment(){};
     public static PwdChangeFragment newInstance(){
         return new PwdChangeFragment();
     }

@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 
 public class MyPostModifyFragment extends Fragment {
 
-    public MyPostModifyFragment() {}
 
     public static MyPostModifyFragment newInstance(){
         return new MyPostModifyFragment();

@@ -25,17 +25,14 @@ import java.net.URL;
 
 public class MsgDetailFragment extends Fragment {
 
-    public static MsgDetailFragment newInstance() {
-        return new MsgDetailFragment();
-    }
-TextView msg_user_name_tv;
     public static String msg_you_name;
 
     Msg_ListItemAdapter adapter;
     String userName;
     ListView listView;
+    TextView msg_user_name_tv;
     ImageButton write_msg_btn;
-public static int where_in =0;
+    public static int where_in =0;
     private static String TAG = "phptest_LoadActivity";
     private static final String TAG_JSON = "webnautes";
     private static final String TAG_SENDER = "sender";
@@ -43,18 +40,20 @@ public static int where_in =0;
     private static final String TAG_CONTENT = "content";
     private static final String TAG_DATE = "date";
     private String mJsonString;
-View v;
+    View view;
+    public static MsgDetailFragment newInstance() {
+        return new MsgDetailFragment();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.message_detail, container, false);
+        view = inflater.inflate(R.layout.message_detail, container, false);
 
+        userName = MainActivity.userName;
 
-
-userName = MainActivity.userName;
-
-        msg_user_name_tv = (TextView)v.findViewById(R.id.msg_user_name_tv);
-        write_msg_btn = (ImageButton) v.findViewById(R.id.write_msg_btn);
-        listView = (ListView) v.findViewById(R.id.msg_detail_listview);
+        msg_user_name_tv = (TextView) view.findViewById(R.id.msg_user_name_tv);
+        write_msg_btn = (ImageButton) view.findViewById(R.id.write_msg_btn);
+        listView = (ListView) view.findViewById(R.id.msg_detail_listview);
         adapter = new Msg_ListItemAdapter();
 
         write_msg_btn.setOnClickListener(new View.OnClickListener() //
@@ -82,7 +81,7 @@ userName = MainActivity.userName;
         task.execute("http://steak2121.ivyro.net/loadMessage.php");
 
 
-        return v;
+        return view;
     }
 
 
@@ -221,7 +220,7 @@ userName = MainActivity.userName;
             Log.d(TAG, "showResult : ", e);
         }
 
-        return v;
+        return view;
     }
 
 

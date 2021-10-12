@@ -21,10 +21,6 @@ public class SearchFragment extends Fragment {
     private static final String TAG_JSON = "webnautes";
     private static final String TAG_ID = "userID";
 
-
-    public SearchFragment() {
-    }
-
     public static SearchFragment newInstance() {
         return new SearchFragment();
     }
@@ -41,7 +37,7 @@ public class SearchFragment extends Fragment {
             search_et.setText("메롱메롱");
         }
 
-        ListView listView = (ListView) v.findViewById(R.id.search_listview);
+        listView = (ListView) v.findViewById(R.id.search_listview);
         adapter = new Post_ListItemAdapter();
         adapter.addItem(new Post_ListItem("writer", "[ㅇㅇ공모전] 같이 하실 분", "(1/4)", "D-16"));
         adapter.addItem(new Post_ListItem("writer", "[ㄴㄴ공모전] 같이 하실 분", "(2/4)", "D-16"));

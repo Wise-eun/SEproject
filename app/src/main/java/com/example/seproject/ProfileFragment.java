@@ -23,9 +23,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class ProfileFragment extends Fragment {
-    public ProfileFragment(){}
+
     private Button profile_edit_btn;
-public TextView user_name_tv,user_info_tv,rating_tv;
+    public TextView user_name_tv,user_info_tv,rating_tv;
     private static String TAG = "phptest_LoadActivity";
     private static final String TAG_JSON = "webnautes";
     private static final String TAG_ID = "userID";
@@ -57,12 +57,12 @@ public TextView user_name_tv,user_info_tv,rating_tv;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_profile, container, false);
-        Button profile_edit_btn = (Button) v.findViewById(R.id.profile_edit_btn);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        profile_edit_btn = (Button) view.findViewById(R.id.profile_edit_btn);
 
-        user_name_tv = (TextView) v.findViewById(R.id.user_name_tv);
-        user_info_tv = (TextView) v.findViewById(R.id.user_info_tv);
-        rating_tv = (TextView) v.findViewById(R.id.rating_tv);
+        user_name_tv = (TextView) view.findViewById(R.id.user_name_tv);
+        user_info_tv = (TextView) view.findViewById(R.id.user_info_tv);
+        rating_tv = (TextView) view.findViewById(R.id.rating_tv);
 
         //번들로 받아온거 저장~!
         Bundle bundle = getArguments();
@@ -70,26 +70,17 @@ public TextView user_name_tv,user_info_tv,rating_tv;
 
         //로그인 이후에 제대로 아이디값 받아오는지 확인하는 용도
         if (bundle != null){
-
             user_name_tv.setText(userID);
-
         }
         else{
 
             user_name_tv.setText("null받음");
-
-
         }
-
-
 
 
         GetData task = new GetData();
 
         task.execute("http://steak2121.ivyro.net/loadUser.php");
-
-
-
 
 
         profile_edit_btn.setOnClickListener(new View.OnClickListener(){
@@ -99,7 +90,7 @@ public TextView user_name_tv,user_info_tv,rating_tv;
             }
         });
 
-        TextView about_me_tv = (TextView)v.findViewById(R.id.about_me_tv);
+        TextView about_me_tv = (TextView)view.findViewById(R.id.about_me_tv);
         about_me_tv.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -107,7 +98,7 @@ public TextView user_name_tv,user_info_tv,rating_tv;
             }
         });
 
-        TextView pwd_change_tv = (TextView)v.findViewById(R.id.pwd_change_tv);
+        TextView pwd_change_tv = (TextView)view.findViewById(R.id.pwd_change_tv);
         pwd_change_tv.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -115,7 +106,7 @@ public TextView user_name_tv,user_info_tv,rating_tv;
             }
         });
 
-        TextView writing_tv = (TextView)v.findViewById(R.id.writing_tv);
+        TextView writing_tv = (TextView)view.findViewById(R.id.writing_tv);
         writing_tv.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -123,7 +114,7 @@ public TextView user_name_tv,user_info_tv,rating_tv;
             }
         });
 
-        return v;
+        return view;
     }
 
 

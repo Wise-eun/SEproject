@@ -7,17 +7,17 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SelfintroUpdateRequest extends StringRequest {
+public class SelfIntroUpdateRequest extends StringRequest {
     // 서버 URL설정 (PHP 파일 연동)
     final static private  String URL = "http://steak2121.ivyro.net/selfintroUpdate.php";
     private Map<String,String> map;
 
-    public SelfintroUpdateRequest(String userID, String selfintro, Response.Listener<String> listener){
+    public SelfIntroUpdateRequest(String userID, String selfIntro, Response.Listener<String> listener){
         super(Method.POST,URL,listener, null);
 
         map = new HashMap<>();
         map.put("userID",userID);
-        map.put("selfintro",selfintro);
+        map.put("selfintro",selfIntro);
 
     }
     @Override

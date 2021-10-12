@@ -15,7 +15,6 @@ import androidx.fragment.app.Fragment;
 public class PostDetailFragment extends Fragment {
 
     boolean participate = false; //해당 계정이 이 게시물에 참여 중이면 true, 참여중이 아니면 false(기본값)
-    public PostDetailFragment() {}
 
     public static PostDetailFragment newInstance(){
         return new PostDetailFragment();

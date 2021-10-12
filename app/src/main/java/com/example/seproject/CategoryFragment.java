@@ -17,7 +17,6 @@ public class CategoryFragment extends Fragment {
     Post_ListItemAdapter adapter;
     public static String category_str = "";
 
-    public CategoryFragment(){}
     public static CategoryFragment newInstance(){
         return new CategoryFragment();
     }
@@ -40,7 +39,7 @@ public class CategoryFragment extends Fragment {
             category_name.setText("null받음");
         }
 
-        ListView listView = (ListView) v.findViewById(R.id.listView);
+        listView = (ListView) v.findViewById(R.id.listView);
         adapter = new Post_ListItemAdapter();
         adapter.addItem(new Post_ListItem("writer", "[ㅇㅇ공모전] 같이 하실 분", "(1/4)", "D-16"));
         adapter.addItem(new Post_ListItem("writer", "[ㄴㄴ공모전] 같이 하실 분", "(2/4)", "D-16"));

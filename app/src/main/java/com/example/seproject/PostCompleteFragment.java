@@ -9,8 +9,6 @@ import androidx.fragment.app.Fragment;
 
 public class PostCompleteFragment extends Fragment {
 
-    public PostCompleteFragment() {}
-
     public static PostCompleteFragment newInstance(){
         return new PostCompleteFragment();
 

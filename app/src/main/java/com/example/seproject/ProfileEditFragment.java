@@ -32,10 +32,8 @@ public class ProfileEditFragment extends Fragment {
     String user_country;
 
     TextView user_name_tv;
-    EditText shcool_insert_et, local_insert_et;
+    EditText schcool_insert_et, local_insert_et;
 
-
-    public ProfileEditFragment(){}
 
     public static ProfileEditFragment newInstance(){
         return new ProfileEditFragment();
@@ -46,7 +44,7 @@ public class ProfileEditFragment extends Fragment {
         View view = inflater.inflate(R.layout.profile_edit, container, false);
 
         user_name_tv = (TextView) view.findViewById(R.id.user_name_tv);
-        shcool_insert_et =(EditText) view.findViewById(R.id.shcool_insert_et);
+        schcool_insert_et =(EditText) view.findViewById(R.id.shcool_insert_et);
         local_insert_et =(EditText) view.findViewById(R.id.local_insert_et);
 
 
@@ -95,7 +93,7 @@ public class ProfileEditFragment extends Fragment {
         edit_btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
 
-user_school = shcool_insert_et.getText().toString();
+user_school = schcool_insert_et.getText().toString();
 user_country = user_country + " " + local_insert_et.getText().toString();
 //user_country.concat(local_insert_et.getText().toString());
 

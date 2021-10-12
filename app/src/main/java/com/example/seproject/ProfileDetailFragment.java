@@ -9,8 +9,6 @@ import androidx.fragment.app.Fragment;
 
 public class ProfileDetailFragment extends Fragment {
 
-    public ProfileDetailFragment() {}
-
     public static ProfileDetailFragment newInstance(){
         return new ProfileDetailFragment();
 

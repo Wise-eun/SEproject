@@ -28,7 +28,7 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
     private FragmentManager fragmentManager = getSupportFragmentManager();
-    Bundle bundle_toFragment = new Bundle();
+    private Bundle bundle_toFragment = new Bundle();
     public static String userID;
     public static String userName;
     private static String TAG = "phptest_LoadActivity";
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         replaceFragment(homeFragment);
 
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnItemSelectedListener(new ItemSelectedListener());
 
 

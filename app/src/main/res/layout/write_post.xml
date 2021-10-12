@@ -59,17 +59,17 @@
         android:layout_width="100dp"
         android:layout_height="25dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="19dp"
 
+        android:layout_marginTop="16dp"
         android:layout_weight="1"
         android:background="@drawable/roundline_gray"
         android:ems="10"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintHorizontal_bias="0.236"
         app:layout_constraintStart_toEndOf="@+id/post_local_spinner"
-        app:layout_constraintTop_toBottomOf="@+id/month_spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/date_tv" />
 
     <EditText
         android:id="@+id/content_et"
@@ -86,7 +86,7 @@
         android:paddingLeft="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/peopleNum_tv" />
+        app:layout_constraintTop_toBottomOf="@+id/write_personnel_tv" />
 
     <TextView
         android:id="@+id/write_day_tv2"
@@ -123,74 +123,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/write_day_tv2" />
 
-    <Spinner
-        android:id="@+id/year_spinner"
-        android:layout_width="60dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="24dp"
-        android:background="@drawable/roundline_gray"
-        app:layout_constraintStart_toEndOf="@+id/write_day_tv2"
-        app:layout_constraintTop_toTopOf="@+id/write_day_tv2" />
 
     <Spinner
         android:id="@+id/post_local_spinner"
-        android:layout_width="60dp"
+        android:layout_width="80dp"
         android:layout_height="25dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="19dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/roundline_gray"
         app:layout_constraintStart_toEndOf="@+id/write_local_tv2"
-        app:layout_constraintTop_toBottomOf="@+id/year_spinner" />
-
-    <Spinner
-        android:id="@+id/month_spinner"
-        android:layout_width="40dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="15dp"
-        android:background="@drawable/roundline_gray"
-        app:layout_constraintStart_toEndOf="@+id/write_day_tv"
-        app:layout_constraintTop_toTopOf="@+id/write_day_tv2" />
-
-    <Spinner
-        android:id="@+id/day_spinner"
-        android:layout_width="40dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="15dp"
-        android:background="@drawable/roundline_gray"
-        app:layout_constraintStart_toEndOf="@+id/textView13"
-        app:layout_constraintTop_toTopOf="@+id/write_day_tv2" />
+        app:layout_constraintTop_toBottomOf="@+id/date_tv" />
 
     <TextView
-        android:id="@+id/write_day_tv"
+        android:id="@+id/date_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:text="년"
-        android:textSize="18dp"
-        app:layout_constraintStart_toEndOf="@+id/year_spinner"
-        app:layout_constraintTop_toTopOf="@+id/year_spinner" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:text="월"
-        android:textSize="18dp"
-        app:layout_constraintStart_toEndOf="@+id/month_spinner"
-        app:layout_constraintTop_toTopOf="@+id/month_spinner" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:text="일"
+        android:layout_marginTop="28dp"
+        android:text="2021년 10월 11일"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="@+id/mypost_title_tv"
-        app:layout_constraintStart_toEndOf="@+id/day_spinner"
-        app:layout_constraintTop_toTopOf="@+id/month_spinner" />
-
+        app:layout_constraintHorizontal_bias="0.343"
+        app:layout_constraintStart_toEndOf="@+id/write_day_tv2"
+        app:layout_constraintTop_toBottomOf="@+id/mypost_title_tv" />
 
     <Button
         android:id="@+id/minus_btn"
@@ -272,7 +226,7 @@
 <!--    </LinearLayout>-->
 
     <TextView
-        android:id="@+id/peopleNum_tv"
+        android:id="@+id/write_personnel_tv"
         android:layout_width="40dp"
         android:layout_height="35dp"
         android:layout_marginTop="21dp"
