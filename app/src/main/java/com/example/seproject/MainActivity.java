@@ -27,6 +27,10 @@ import java.net.URL;
 
 
 public class MainActivity extends AppCompatActivity {
+
+
+
+
     private FragmentManager fragmentManager = getSupportFragmentManager();
     Bundle bundle_toFragment = new Bundle();
     public static String userID;
@@ -201,15 +205,7 @@ public class MainActivity extends AppCompatActivity {
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
 
             for (int i = 0; i < jsonArray.length(); i++) {
-/*
-*     private static final String TAG_ID = "userID";
-    private static final String TAG_NAME = "userName";
-    private static final String TAG_rating = "rating";
-    private static final String TAG_ratingPeople = "ratingPeople";
-    private static final String TAG_job = "job";
-    private static final String  TAG_school= "school";
-    private static final String TAG_country = "country";
-* */
+
                 JSONObject item = jsonArray.getJSONObject(i);
 
                 String id = item.getString(TAG_ID);
@@ -243,6 +239,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
+
+
 }
+
+
+
+
 
 

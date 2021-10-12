@@ -35,7 +35,7 @@ public TextView user_name_tv,user_info_tv,rating_tv;
     private static final String TAG_ratingPeople = "ratingPeople";
     private static final String TAG_job = "job";
     private static final String  TAG_school= "school";
-    private static final String TAG_country = "country";
+    private static final String TAG_local = "local";
     private static final String TAG_selfintro = "selfintro";
     public static String selfIntro;
     private String mJsonString;
@@ -44,7 +44,7 @@ public TextView user_name_tv,user_info_tv,rating_tv;
     public static String userName;
     public static String userJob;
     public static String userSchool;
-    public static String userCountry;
+    public static String userLocal;
 
     public static ProfileFragment newInstance(){
         return new ProfileFragment();
@@ -235,7 +235,7 @@ public TextView user_name_tv,user_info_tv,rating_tv;
                 String ratingPeople = item.getString(TAG_ratingPeople);
                 String job = item.getString(TAG_job);
                 String school = item.getString(TAG_school);
-                String country = item.getString(TAG_country);
+                String local = item.getString(TAG_local);
                 String selfintro = item.getString(TAG_selfintro);
 
                 if (id.equals(userID)) // 현재 사용자 ID와 서버에있는 정보중 ID가 같은것들의 정보만 가져옴
@@ -246,9 +246,9 @@ public TextView user_name_tv,user_info_tv,rating_tv;
                         job = "없음";
                     if(school.equals(""))
                         school = "없음";
-                    if(country.equals(""))
-                        country = "없음";
-                    user_info_tv.setText(job+"/"+school+"/"+country);
+                    if(local.equals(""))
+                        local = "없음";
+                    user_info_tv.setText(job+"/"+school+"/"+local);
                     int rating_num = Integer.parseInt(rating);
                     int ratingPeople_num = Integer.parseInt(ratingPeople);
                     int rating_res = rating_num/ratingPeople_num;
@@ -259,7 +259,7 @@ public TextView user_name_tv,user_info_tv,rating_tv;
                     userName = String.copyValueOf(name.toCharArray());//사용자 닉네임 복사
                     userJob = String.copyValueOf(job.toCharArray());//사용자 직업 복사
                     userSchool = String.copyValueOf(school.toCharArray());//사용자 학교 복사
-                    userCountry = String.copyValueOf(country.toCharArray());//사용자 지역 복사
+                    userLocal = String.copyValueOf(local.toCharArray());//사용자 지역 복사
                     userPW = String.copyValueOf(pw.toCharArray());//사용자 비번 복사
 
                 }

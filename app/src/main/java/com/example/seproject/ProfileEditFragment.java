@@ -29,7 +29,7 @@ public class ProfileEditFragment extends Fragment {
 
     String user_job;
     String user_school;
-    String user_country;
+    String user_local;
 
     TextView user_name_tv;
     EditText shcool_insert_et, local_insert_et;
@@ -80,7 +80,7 @@ public class ProfileEditFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 Toast.makeText(getActivity(),Integer.toString(position),Toast.LENGTH_SHORT); //본인이 원하는 작업.
-                user_country = local_adapter.getItem(position);
+                user_local = local_adapter.getItem(position);
             }
 
             @Override
@@ -96,8 +96,8 @@ public class ProfileEditFragment extends Fragment {
             public void onClick(View v){
 
 user_school = shcool_insert_et.getText().toString();
-user_country = user_country + " " + local_insert_et.getText().toString();
-//user_country.concat(local_insert_et.getText().toString());
+                user_local = user_local + " " + local_insert_et.getText().toString();
+
 
                 //새로운 자기소개로 업데이트 해줘야함..
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -121,9 +121,9 @@ user_country = user_country + " " + local_insert_et.getText().toString();
                 };
                 if(user_job.equals("-") || user_job.equals("기타") )
                     user_job = "";
-                if(user_country.equals("-")|| user_country.equals("기타") )
-                    user_country = "";
-                ProfileUpdateRequest updateProfileRequest = new ProfileUpdateRequest(ProfileFragment.userID, user_job,user_school,user_country, responseListener);
+                if(user_local.equals("-")|| user_local.equals("기타") )
+                    user_local = "";
+                ProfileUpdateRequest updateProfileRequest = new ProfileUpdateRequest(ProfileFragment.userID, user_job,user_school,user_local, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(ProfileEditFragment.this.getActivity());
                 queue.add(updateProfileRequest);
 
