@@ -14,7 +14,6 @@ import java.util.ArrayList;
 public class Alarm_ListItemAdapter extends BaseAdapter {
 
     private ArrayList<Alarm_ListItem> items = new ArrayList<Alarm_ListItem>();
-    private Context context;
     private OnDeleteClickListener listener;
 
     public interface OnDeleteClickListener{
@@ -43,7 +42,7 @@ public class Alarm_ListItemAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        context = parent.getContext();
+        Context context = parent.getContext();
         Alarm_ListItem listItem = items.get(position);
 
         if(convertView == null){

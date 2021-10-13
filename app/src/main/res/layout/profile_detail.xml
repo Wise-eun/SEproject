@@ -82,7 +82,7 @@
                     tools:layout_editor_absoluteY="57dp" />
 
                 <Button
-                    android:id="@+id/profile_edit_btn"
+                    android:id="@+id/send_msg_btn"
                     android:layout_width="130dp"
                     android:layout_height="38dp"
                     android:background="@drawable/round_btn"

@@ -101,7 +101,7 @@ public class PostWriteFragment extends Fragment {
                 datePickerDialog.show();
             }
         });
-
+//
 
         return view;
     }
