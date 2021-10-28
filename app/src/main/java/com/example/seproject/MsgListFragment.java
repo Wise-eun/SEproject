@@ -179,7 +179,7 @@ public class MsgListFragment extends Fragment {
 
 
 
-    private View showResult() {
+    private void showResult() {
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
@@ -245,7 +245,7 @@ public class MsgListFragment extends Fragment {
 
             Log.d(TAG, "showResult : ", e);
         }
-        return null;
+
 
     }
 

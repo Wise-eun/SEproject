@@ -27,7 +27,7 @@ public class HomeFragment extends Fragment {
     private ImageButton etc_category;
 
 
-    public HomeFragment(){}
+
     public static HomeFragment newInstance(){
         return new HomeFragment();
     }
