@@ -47,8 +47,9 @@ public class SendMsgFragment extends Fragment {
         if(where_in==1) // 만약 detail에서 들어올경우
             receiver = MsgDetailFragment.msg_you_name;
         else if(where_in==2) //만약 search해서 들어올경우
-        receiver = SearchUserFragment.search_name;
-
+            receiver = SearchUserFragment.search_name;
+        else if(where_in==3) //profile detail에서 들어올 경우
+            receiver = ProfileDetailActivity.userName;
 
 //프로필보기에서 메세지보내기를 눌렀을때 들어올 변수도 검증해줘야겠지..
         sender = MainActivity.userName;

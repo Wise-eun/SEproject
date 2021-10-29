@@ -11,7 +11,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 public class MyPostFragment extends Fragment {
-    ListView post_listView;
+    ListView listView;
     Post_ListItemAdapter post_adapter;
 
     public MyPostFragment(){}
@@ -22,7 +22,7 @@ public class MyPostFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.mypost, container, false);
-        ListView listView = (ListView) view.findViewById(R.id.post_listview);
+        listView = (ListView) view.findViewById(R.id.post_listview);
         post_adapter = new Post_ListItemAdapter();
         post_adapter.addItem(new Post_ListItem("writer", "[ㅇㅇ공모전] 같이 하실 분", "(1/4)", "D-16"));
         post_adapter.addItem(new Post_ListItem("writer", "[ㄴㄴ공모전] 같이 하실 분", "(2/4)", "D-16"));

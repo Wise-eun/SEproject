@@ -50,6 +50,7 @@ public class JoinActivity  extends AppCompatActivity implements Serializable {
                 String userID = id_insert_join.getText().toString();
                 String userPassword = pwd_insert_join.getText().toString();
                 String userName = name_insert.getText().toString();
+                String userPasswordCheck = pwd_check_insert_join.getText().toString();
 
 
 
@@ -59,14 +60,11 @@ public class JoinActivity  extends AppCompatActivity implements Serializable {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             boolean success = jsonObject.getBoolean("success");
-                            if(!(pwd_insert_join.getText().toString().equals(pwd_check_insert_join.getText().toString()))){
+                            if(!(userPassword.equals(userPasswordCheck))){
                                 Toast.makeText(getApplicationContext(), "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
 
                             }
-                            else if (userID.equals("") || userPassword.equals("")) {
-                                Toast.makeText(getApplicationContext(), "모두 기입하였는지 한번 더 확인해주세요.", Toast.LENGTH_SHORT).show();
-                            }
-                            else if(userID.equals("") || userPassword.equals("") || pwd_check_insert_join.getText().toString().equals("")) {
+                            else if(userID.equals("") || userPassword.equals("") || userPasswordCheck.equals("")) {
                                 Toast.makeText(getApplicationContext(), "모두 기입하였는지 한번 더 확인해주세요.", Toast.LENGTH_SHORT).show();
                             }
                             else if(validate == false){

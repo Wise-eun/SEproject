@@ -1,5 +1,6 @@
 package com.example.seproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +30,11 @@ public class MemberListFragment extends Fragment {
                 if(type.equals("name")) {
                     //이름 눌렀을 때 발생시킬 이벤트
                     Toast.makeText(getActivity(), pos + "번 째 이름 클릭", Toast.LENGTH_SHORT).show();
+                    ProfileDetailActivity.userName = adapter.getItem(pos).getClass().getName();
+                    Intent intent = new Intent(getContext(),ProfileDetailActivity.class);
+                    startActivity(intent);
+
+
                 }
                 else{
                     //평가 버튼 눌렀을 때 발생시킬 이벤트

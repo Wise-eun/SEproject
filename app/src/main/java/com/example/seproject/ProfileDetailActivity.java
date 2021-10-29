@@ -1,19 +1,19 @@
 package com.example.seproject;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,104 +22,59 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+public class ProfileDetailActivity extends AppCompatActivity implements Serializable {
+    private Button send_msg_btn;
+    private TextView user_name_tv, user_info_tv, rating_tv, self_intro_tv;
 
-public class MainActivity extends AppCompatActivity {
 
-
-
-
-    private FragmentManager fragmentManager = getSupportFragmentManager();
-    private Bundle bundle_toFragment = new Bundle();
-    public static String userID;
-    public static String userName;
     private static String TAG = "phptest_LoadActivity";
     private static final String TAG_JSON = "webnautes";
-    private static final String TAG_NAME = "userName";
     private static final String TAG_ID = "userID";
+    private static final String TAG_Password = "userPassword";
+    private static final String TAG_NAME = "userName";
+    private static final String TAG_rating = "rating";
+    private static final String TAG_ratingPeople = "ratingPeople";
+    private static final String TAG_job = "job";
+    private static final String  TAG_school= "school";
+    private static final String TAG_local = "local";
+    private static final String TAG_selfintro = "selfintro";
+    public static String selfIntro;
     private String mJsonString;
-    BottomNavigationView bottomNavigationView;
-    HomeFragment homeFragment = new HomeFragment();
-    WorkFragment workFragment = new WorkFragment();
-    ProfileFragment profileFragment = new ProfileFragment();
-
-    SendMsgFragment sendMsgFragment = new SendMsgFragment();
+    public static String userID;
+    public static String userPW;
+    public static String userJob;
+    public static String userSchool;
+    public static String userLocal;
+    public static String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.profile_detail);
 
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.flFragment, homeFragment.newInstance()).commit();
+        send_msg_btn = findViewById(R.id.send_msg_btn);
+        send_msg_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SendMsgFragment.where_in = 3;
+                Intent intent = new Intent(ProfileDetailActivity.this,MainActivity.class);
+                intent.putExtra("from", "profile");
+                startActivity(intent);
 
-        Bundle bundle =   getIntent().getExtras();
-        userID = bundle.getString("userID");
-        bundle_toFragment.putString("userID", userID);
 
-        String from = getIntent().getStringExtra("from");
+                ProfileDetailActivity.GetData task = new ProfileDetailActivity.GetData();
 
-        if(from != null){
-            if(from.equals("profile")){
-                replaceFragment(sendMsgFragment);
+                task.execute("http://steak2121.ivyro.net/loadUser.php");
+
 
             }
-        }
-        else{
-            replaceFragment(homeFragment);
-        }
-
-
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setOnItemSelectedListener(new ItemSelectedListener());
-
-
-        MainActivity.GetData task = new MainActivity.GetData();
-
-        task.execute("http://steak2121.ivyro.net/loadUser.php");
-
+        });
     }
-
-
-    class ItemSelectedListener implements NavigationBarView.OnItemSelectedListener {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
-            int id = item.getItemId();
-
-            if (id == R.id.menu_home) {
-                transaction.replace(R.id.flFragment, homeFragment).commitAllowingStateLoss();
-                return true;
-            } else if (id == R.id.menu_work) {
-                transaction.replace(R.id.flFragment, workFragment).commitAllowingStateLoss();
-                return true;
-            } else if (id == R.id.menu_profile) {
-                profileFragment.setArguments(bundle_toFragment);
-                transaction.replace(R.id.flFragment, profileFragment).commitAllowingStateLoss();
-
-                return true;
-            }
-            return false;
-        }
-    }
-
-    public void replaceFragment(Fragment fragment)
-    {
-        fragment.setArguments(bundle_toFragment);
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.flFragment, fragment).addToBackStack(null).commit();
-//                commitAllowingStateLoss();
-    }
-
-    public void bundlePutString(String key, String val){
-        bundle_toFragment.putString(key, val);
-    }
-    ////data Load
-
-
     private class GetData extends AsyncTask<String, Void, String> {
         ProgressDialog progressDialog;
         String errorString = null;
@@ -210,27 +165,47 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     private void showResult() {
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
 
             for (int i = 0; i < jsonArray.length(); i++) {
-
                 JSONObject item = jsonArray.getJSONObject(i);
 
                 String id = item.getString(TAG_ID);
-
+                String pw = item.getString(TAG_Password);
                 String name = item.getString(TAG_NAME);
+                String rating = item.getString(TAG_rating);
+                String ratingPeople = item.getString(TAG_ratingPeople);
+                String job = item.getString(TAG_job);
+                String school = item.getString(TAG_school);
+                String local = item.getString(TAG_local);
+                String selfintro = item.getString(TAG_selfintro);
 
-
-                if (id.equals(userID)) // 현재 사용자 ID와 서버에있는 정보중 ID가 같은것들의 정보만 가져옴
+                if (name.equals(userName)) // 현재 사용자 ID와 서버에있는 정보중 ID가 같은것들의 정보만 가져옴
                 {
+                    // user_name_tv,user_info_tv,rating_tv
+                    user_name_tv.setText(name);
+                    if(job.equals(""))
+                        job = "없음";
+                    if(school.equals(""))
+                        school = "없음";
+                    if(local.equals(""))
+                        local = "없음";
+                    user_info_tv.setText(job+"/"+school+"/"+local);
+                    int rating_num = Integer.parseInt(rating);
+                    int ratingPeople_num = Integer.parseInt(ratingPeople);
+                    int rating_res = rating_num/ratingPeople_num;
+                    rating_tv.setText(Integer.toString(rating_res));
 
 
+                    selfIntro = String.copyValueOf(selfintro.toCharArray()); //자기소개 복사.
                     userName = String.copyValueOf(name.toCharArray());//사용자 닉네임 복사
-
+                    userJob = String.copyValueOf(job.toCharArray());//사용자 직업 복사
+                    userSchool = String.copyValueOf(school.toCharArray());//사용자 학교 복사
+                    userLocal = String.copyValueOf(local.toCharArray());//사용자 지역 복사
+                    userPW = String.copyValueOf(pw.toCharArray());//사용자 비번 복사
 
                 }
                 /*
@@ -251,14 +226,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
-
-
 }
-
-
-
-
-
-

@@ -73,7 +73,6 @@ public class ProfileFragment extends Fragment {
             user_name_tv.setText(userID);
         }
         else{
-
             user_name_tv.setText("null받음");
         }
 
