@@ -127,6 +127,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="저는 영남대 컴공에 재학중이구여 할 수 있는 언어는 한국어 젤 잘해여ㅋ 이런 저라도 받아주시겠어여? 신청 거절하면 미오미오!"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/line" />
     </LinearLayout>

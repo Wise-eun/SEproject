@@ -1,12 +1,16 @@
 package com.example.seproject;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -27,18 +31,41 @@ public class MemberListFragment extends Fragment {
         adapter = new Member_ListItemAdapter(new Member_ListItemAdapter.OnClickListener() {
             @Override
             public void onClick(View v, int pos, String type) {
+                Member_ListItem member = (Member_ListItem) adapter.getItem(pos);
                 if(type.equals("name")) {
                     //이름 눌렀을 때 발생시킬 이벤트
-                    Toast.makeText(getActivity(), pos + "번 째 이름 클릭", Toast.LENGTH_SHORT).show();
-                    ProfileDetailActivity.userName = adapter.getItem(pos).getClass().getName();
-                    Intent intent = new Intent(getContext(),ProfileDetailActivity.class);
+                    ProfileDetailActivity.userName = member.getName();
+
+                    Intent intent = new Intent(getContext(), ProfileDetailActivity.class);
                     startActivity(intent);
-
-
                 }
                 else{
-                    //평가 버튼 눌렀을 때 발생시킬 이벤트
-//                    Toast.makeText(getActivity(), pos + "번 째 평가 클릭", Toast.LENGTH_SHORT).show();
+                    Dialog dialog = new Dialog(getContext());
+                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    dialog.setContentView(R.layout.rating_dialog);
+                    TextView dialog_title = (TextView)dialog.findViewById(R.id.dialog_title);
+                    Button submit_btn = (Button)dialog.findViewById(R.id.submit_btn);
+                    submit_btn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            dialog.cancel();
+
+                        }
+                    });
+
+                    Button cancel_btn = (Button)dialog.findViewById(R.id.cancel_btn);
+                    cancel_btn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            dialog.cancel();
+                        }
+                    });
+
+                    RatingBar dialog_ratingbar = (RatingBar)dialog.findViewById(R.id.dialog_ratingbar);
+                    dialog_title.setText("'" + member.getName() + "'님에게 평점을 남기겠습니까?");
+                    dialog.show();
                 }
 
             }
@@ -49,7 +76,8 @@ public class MemberListFragment extends Fragment {
         adapter.addItem(new Member_ListItem("chuseok"));
         adapter.addItem(new Member_ListItem("elatedae"));
         adapter.addItem(new Member_ListItem("wise_eun"));
-        adapter.addItem(new Member_ListItem("my girlfriend♥"));
+
+
 
 
         listView.setAdapter(adapter);

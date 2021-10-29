@@ -38,7 +38,7 @@ public class PostDetailFragment extends Fragment {
         TextView post_date_tv = (TextView) view.findViewById(R.id.post_date_tv);
         TextView post_local_tv = (TextView) view.findViewById(R.id.post_local_tv);
         TextView post_content_tv = (TextView) view.findViewById(R.id.post_content_tv);
-        RecyclerView post_member_listview = (RecyclerView)view.findViewById(R.id.post_member_listview);
+//        RecyclerView post_member_listview = (RecyclerView)view.findViewById(R.id.post_member_listview);
 
 
         ImageButton member_list_btn = (ImageButton)view.findViewById(R.id.member_list_btn);

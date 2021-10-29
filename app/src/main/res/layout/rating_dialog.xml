@@ -5,20 +5,20 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/dialogTitle"
-        android:layout_width="match_parent"
+        android:id="@+id/dialog_title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginTop="24dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
         android:text="'User_2'에게 별점을 남기겠습니까?"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold" />
 
     <RatingBar
-        android:id="@+id/dialogRb"
+        android:id="@+id/dialog_ratingbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -26,5 +26,31 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:numStars="5" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reviewED"
+        android:layout_gravity="center"
+        android:weightSum="2">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Cancel"
+            android:id="@+id/cancel_btn"
+            android:layout_weight="1"
+            android:layout_alignParentRight="true"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Submit"
+            android:layout_weight="1"
+            android:id="@+id/submit_btn"
+            />
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -1,5 +1,7 @@
 package com.example.seproject;
 
+import static java.security.AccessController.getContext;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -11,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -57,7 +60,17 @@ public class ProfileDetailActivity extends AppCompatActivity implements Serializ
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_detail);
 
+        Toast.makeText(getApplicationContext(), userName, Toast.LENGTH_SHORT).show();
+
+        user_name_tv = (TextView) findViewById(R.id.user_name_tv);
+        user_info_tv = findViewById(R.id.user_info_tv);
+        rating_tv = findViewById(R.id.rating_tv);
+        self_intro_tv = findViewById(R.id.self_intro_tv);
         send_msg_btn = findViewById(R.id.send_msg_btn);
+
+        ProfileDetailActivity.GetData task = new ProfileDetailActivity.GetData();
+        task.execute("http://steak2121.ivyro.net/loadUser.php");
+
         send_msg_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,12 +78,6 @@ public class ProfileDetailActivity extends AppCompatActivity implements Serializ
                 Intent intent = new Intent(ProfileDetailActivity.this,MainActivity.class);
                 intent.putExtra("from", "profile");
                 startActivity(intent);
-
-
-                ProfileDetailActivity.GetData task = new ProfileDetailActivity.GetData();
-
-                task.execute("http://steak2121.ivyro.net/loadUser.php");
-
 
             }
         });
@@ -186,7 +193,7 @@ public class ProfileDetailActivity extends AppCompatActivity implements Serializ
                 if (name.equals(userName)) // 현재 사용자 ID와 서버에있는 정보중 ID가 같은것들의 정보만 가져옴
                 {
                     // user_name_tv,user_info_tv,rating_tv
-                    user_name_tv.setText(name);
+                    user_name_tv.setText(userName);
                     if(job.equals(""))
                         job = "없음";
                     if(school.equals(""))
@@ -198,6 +205,7 @@ public class ProfileDetailActivity extends AppCompatActivity implements Serializ
                     int ratingPeople_num = Integer.parseInt(ratingPeople);
                     int rating_res = rating_num/ratingPeople_num;
                     rating_tv.setText(Integer.toString(rating_res));
+                    self_intro_tv.setText(selfintro);
 
 
                     selfIntro = String.copyValueOf(selfintro.toCharArray()); //자기소개 복사.
@@ -208,6 +216,7 @@ public class ProfileDetailActivity extends AppCompatActivity implements Serializ
                     userPW = String.copyValueOf(pw.toCharArray());//사용자 비번 복사
 
                 }
+
                 /*
                 HashMap<String, String> hashMap = new HashMap<>();
 
@@ -216,7 +225,6 @@ public class ProfileDetailActivity extends AppCompatActivity implements Serializ
 */
 
             }
-
 
 
         } catch (JSONException e) {

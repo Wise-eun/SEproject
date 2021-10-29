@@ -14,6 +14,7 @@ public class Member_ListItemAdapter extends BaseAdapter {
     private ArrayList<Member_ListItem> items = new ArrayList<Member_ListItem>();
     Context context;
     OnClickListener listener;
+    public static boolean isRating = true;
 
 
     public interface OnClickListener{
@@ -60,11 +61,20 @@ public class Member_ListItemAdapter extends BaseAdapter {
             }
         });
 
+        if(isRating){
+            //평가 가능한 상태
+            rating_btn.setVisibility(View.VISIBLE);
+        }
+        else{
+            rating_btn.setVisibility(View.INVISIBLE);
+        }
         rating_btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 listener.onClick(view, position, "rating");
             }
         });
+
+
 
         return convertView;
     }
