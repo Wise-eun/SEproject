@@ -202,7 +202,7 @@ public class CategoryFragment extends Fragment {
 
                 JSONObject item = jsonArray.getJSONObject(i);
 
-                String pid = item.getString(TAG_PID);
+                String pid_str = item.getString(TAG_PID);
                 String writer = item.getString(TAG_WRITER);
                 String title = item.getString(TAG_TITLE);
                 String deadline = item.getString(TAG_DEADLINE);
@@ -233,8 +233,8 @@ Ddays_str = Ddays_str.concat( Integer.toString(Ddays));
         CategoryFragment.GetData_team task = new CategoryFragment.GetData_team(pid,writer,title,Ddays_str,recruitment);
         task.execute("http://steak2121.ivyro.net/loadTeam.php");
 */
-
-        adapter.addItem(new Post_ListItem(writer, title, "("+userCount + "/"+recruitment+")", Ddays_str));
+        int pid = Integer.parseInt(pid_str);
+        adapter.addItem(new Post_ListItem(pid,writer, title, "("+userCount + "/"+recruitment+")", Ddays_str));
 
 
 
@@ -248,7 +248,7 @@ Ddays_str = Ddays_str.concat( Integer.toString(Ddays));
 
 }
 
-last_pid = Integer.parseInt(pid); // 마지막 게시물 번호받기
+last_pid = Integer.parseInt(pid_str); // 마지막 게시물 번호받기
                 listView.setAdapter(adapter);
 
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -256,8 +256,9 @@ last_pid = Integer.parseInt(pid); // 마지막 게시물 번호받기
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         final Post_ListItem item = (Post_ListItem) adapter.getItem(position);
-                        Toast.makeText(getActivity(), item.getTitle(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), Integer.toString(item.getPid()), Toast.LENGTH_SHORT).show();
                         ((MainActivity)getActivity()).replaceFragment(PostDetailFragment.newInstance());
+                        PostDetailFragment.pid = item.getPid();
                     }
                 });
             }

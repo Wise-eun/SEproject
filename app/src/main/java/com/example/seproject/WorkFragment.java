@@ -24,12 +24,13 @@ public class WorkFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_work, container, false);
         listView = (ListView) view.findViewById(R.id.listView);
         adapter = new Post_ListItemAdapter();
+        /*
         adapter.addItem(new Post_ListItem("writer", "[ㅇㅇ공모전] 같이 하실 분", "(1/4)", "D-16"));
         adapter.addItem(new Post_ListItem("writer", "[ㄴㄴ공모전] 같이 하실 분", "(2/4)", "D-16"));
         adapter.addItem(new Post_ListItem("writer", "[ㅁㅁ공모전] 같이 하실 분", "(3/4)", "D-16"));
         adapter.addItem(new Post_ListItem("writer", "[ㅅㅅ공모전] 같이 하실 분", "(4/4)", "D-16"));
         adapter.addItem(new Post_ListItem("writer", "[ㄹㄹ공모전] 같이 하실 분", "(1/5)", "D-16"));
-
+*/
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

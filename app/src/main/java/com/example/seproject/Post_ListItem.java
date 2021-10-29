@@ -5,6 +5,7 @@ public class Post_ListItem {
     private String title;
     private String personnel;
     private String day;
+    private int pid;
 
     public String getPersonnel() {
         return personnel;
@@ -27,6 +28,12 @@ public class Post_ListItem {
         this.title = title;
     }
 
+    public int getPid() {
+        return pid;
+    }
+    public void setPid(String title) {
+        this.pid = pid;
+    }
 
     public String getWriter() {
         return writer;
@@ -35,10 +42,11 @@ public class Post_ListItem {
         this.writer = writer;
     }
 
-    Post_ListItem(String writer, String title, String personnel, String day){
+    Post_ListItem( int pid,String writer, String title, String personnel, String day){
         this.writer = writer;
         this.title = title;
         this.personnel = personnel;
         this.day = day;
+        this.pid = pid;
     }
 }

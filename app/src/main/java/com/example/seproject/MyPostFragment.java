@@ -24,11 +24,12 @@ public class MyPostFragment extends Fragment {
         View view = inflater.inflate(R.layout.mypost, container, false);
         listView = (ListView) view.findViewById(R.id.post_listview);
         post_adapter = new Post_ListItemAdapter();
+        /*
         post_adapter.addItem(new Post_ListItem("writer", "[ㅇㅇ공모전] 같이 하실 분", "(1/4)", "D-16"));
         post_adapter.addItem(new Post_ListItem("writer", "[ㄴㄴ공모전] 같이 하실 분", "(2/4)", "D-16"));
         post_adapter.addItem(new Post_ListItem("writer", "[ㅁㅁ공모전] 같이 하실 분", "(3/4)", "D+20"));
         post_adapter.addItem(new Post_ListItem("writer", "[ㅅㅅ공모전] 같이 하실 분", "(4/4)", "완료"));
-
+*/
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
