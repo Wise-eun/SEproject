@@ -26,7 +26,7 @@ public class HomeFragment extends Fragment {
     private ImageButton supporters_category;
     private ImageButton etc_category;
 
-
+    public static EditText search_et;
 
     public static HomeFragment newInstance(){
         return new HomeFragment();
@@ -63,11 +63,11 @@ public class HomeFragment extends Fragment {
         });
 
         search_btn = (ImageButton) v.findViewById(R.id.search_btn);
-        EditText search_et = (EditText) v.findViewById(R.id.search_et);
+       search_et = (EditText) v.findViewById(R.id.search_et);
         search_btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                String search_input = search_et.getText().toString();
-                ((MainActivity)getActivity()).bundlePutString("search", search_input);
+                //String search_input = search_et.getText().toString();
+                //((MainActivity)getActivity()).bundlePutString("search_input","tes" );
                 ((MainActivity)getActivity()).replaceFragment(SearchFragment.newInstance());
                 //다른거랑 똑같이 적었는데 왜 화면이 안바뀔까?
             }

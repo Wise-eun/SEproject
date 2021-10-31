@@ -229,10 +229,7 @@ if(category2.equals(category)){//카테고리 같을 경우
     if(Ddays >=0){ //디데이가 안지났을때 보이도록함
 String Ddays_str = "D-";
 Ddays_str = Ddays_str.concat( Integer.toString(Ddays));
-/*
-        CategoryFragment.GetData_team task = new CategoryFragment.GetData_team(pid,writer,title,Ddays_str,recruitment);
-        task.execute("http://steak2121.ivyro.net/loadTeam.php");
-*/
+
         int pid = Integer.parseInt(pid_str);
         adapter.addItem(new Post_ListItem(pid,writer, title, "("+userCount + "/"+recruitment+")", Ddays_str));
 

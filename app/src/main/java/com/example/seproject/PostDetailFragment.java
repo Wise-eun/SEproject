@@ -21,6 +21,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -43,6 +47,8 @@ public class PostDetailFragment extends Fragment {
     //게시물 getData에 필요한 친구들
     private static String TAG = "phptest_LoadActivity";
     private static final String TAG_JSON = "webnautes";
+    private static final String TAG_JSON2 = "loadTeam";
+    private static final String TAG_JSON3 = "loadRequest";
     private static final String TAG_PID = "pid";
     private static final String TAG_WRITER = "writer";
     private static final String TAG_TITLE = "title";
@@ -61,7 +67,8 @@ public class PostDetailFragment extends Fragment {
     //팀원테이블 getData에 필요한 친구
     private static final String TAG_TEAM = "userName";
 
-
+    String post_writer;
+    int what;
 
     TextView category_name;
     TextView post_name_tv;
@@ -88,7 +95,7 @@ public class PostDetailFragment extends Fragment {
         post_date_tv = (TextView) view.findViewById(R.id.post_date_tv);
         post_local_tv = (TextView) view.findViewById(R.id.post_local_tv);
         post_content_tv = (TextView) view.findViewById(R.id.post_content_tv);
-        post_member_listview = (RecyclerView)view.findViewById(R.id.post_member_listview);
+       // post_member_listview = (RecyclerView)view.findViewById(R.id.post_member_listview);
 
 
         ImageButton member_list_btn = (ImageButton)view.findViewById(R.id.member_list_btn);
@@ -127,16 +134,55 @@ public class PostDetailFragment extends Fragment {
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
+                        //팀원이 취소하기 버튼 누를경우
                         if(participate){ //팀원 table에서 delete , 알림 table insert
+                            what = 0;
+                            participate = false;
+                            //신청하기 버튼 활성화
+                            post_apply_btn.setText("신청하기");
+                        }
+                        //신청자가 취소하기 버튼 누를경우
+                        else if(request){ //요청 table에서 delete, 알람 table에서 delete
+                            what =1;
+                            request = false;
+                            //신청하기 버튼 활성화
+                            post_apply_btn.setText("신청하기");
 
                         }
-                        else if(request){ //요청 table에서 delete
-
+                        //신청하는 경우우
+                        else{ // 요청 table insert, 알림 tble insert
+                            what= 2;
+                            request = true;
+                            //신청하기 버튼 비활성화
+                            post_apply_btn.setText("취소하기");
                         }
-                        else{ // 요청 table insert, 알림 table insert
 
 
-                        }
+
+                        Response.Listener<String> responseListener = new Response.Listener<String>() {
+
+
+
+                            @Override
+                            public void onResponse(String response) {
+
+
+
+
+                            }
+                        };
+
+                        //서버로 Volley를 이용해서 요청
+                        PostSignRequest postSignRequest = new PostSignRequest(what, pid, MainActivity.userName,post_writer,post_name_tv.getText().toString(), responseListener);
+                        RequestQueue queue = Volley.newRequestQueue(PostDetailFragment.this.getActivity());
+                        queue.add(postSignRequest);
+
+
+
+
+
+
+
 
 
                         dialog.cancel();
@@ -158,14 +204,16 @@ public class PostDetailFragment extends Fragment {
 
 
 
-        PostDetailFragment.GetData_post task = new PostDetailFragment.GetData_post();
-        task.execute("http://steak2121.ivyro.net/loadPost.php");
-
         PostDetailFragment.GetData_team task2 = new PostDetailFragment.GetData_team();
         task2.execute("http://steak2121.ivyro.net/loadTeam.php");
 
         PostDetailFragment.GetData_request task3= new PostDetailFragment.GetData_request();
         task3.execute("http://steak2121.ivyro.net/loadRequest.php");
+
+
+        PostDetailFragment.GetData_post task = new PostDetailFragment.GetData_post();
+        task.execute("http://steak2121.ivyro.net/loadPost.php");
+
         return view;
     }
 
@@ -285,7 +333,7 @@ public class PostDetailFragment extends Fragment {
                 if(pid_str.equals(Integer.toString(pid))){//pid 같을 경우
 
 
-
+                    post_writer = writer;
                     category_name.setText(category);
                     post_name_tv .setText(title);
                     post_personnel_tv.setText("("+userCount + "/"+recruitment+")");
@@ -342,7 +390,7 @@ public class PostDetailFragment extends Fragment {
 
             //progressDialog.dismiss();
 
-            Log.d(TAG, "response  - " + result);
+            Log.d(TAG, "response  team- " + result);
 
 
             if (result == null) {
@@ -416,7 +464,7 @@ public class PostDetailFragment extends Fragment {
     private void showResult_team() {
         try {
             JSONObject jsonObject = new JSONObject(mJsonString_team);
-            JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
+            JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON2);
 
             for (int i = 0; i < jsonArray.length(); i++) {
 
@@ -476,7 +524,7 @@ public class PostDetailFragment extends Fragment {
 
             //progressDialog.dismiss();
 
-            Log.d(TAG, "response  - " + result);
+            Log.d(TAG, "response  request- " + result);
 
 
             if (result == null) {
@@ -547,8 +595,8 @@ public class PostDetailFragment extends Fragment {
 
     private void showResult_request() {
         try {
-            JSONObject jsonObject = new JSONObject(mJsonString_team);
-            JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
+            JSONObject jsonObject = new JSONObject(mJsonString_request);
+            JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON3);
 
             for (int i = 0; i < jsonArray.length(); i++) {
 
