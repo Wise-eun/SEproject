@@ -3,7 +3,7 @@ package com.example.seproject;
 public class Alarm_ListItem {
     private String sender;
     private String title;
-    private int type; //type=0 참여신청, type=1 참여신청거절, type=2 참여신청수락, type=3 메신저
+    private int type; //type=0 참여신청, type=1 참여신청거절, type=2 참여신청수락, type=3 메신저, type=4 팀원참여취소
 
     public String getSender() {
         return sender;

@@ -79,7 +79,7 @@ public class AlarmFragment extends Fragment {
         adapter.addItem(new Alarm_ListItem("User_0214","초고수 모집합니다.", 1));
         adapter.addItem(new Alarm_ListItem("User_0214", "ㄴㄴ 공모전", 2));
         adapter.addItem(new Alarm_ListItem("User_0214", "", 3));
-        adapter.addItem(new Alarm_ListItem("User_0214", "개인 프로젝트 해서 포폴 만드...", 0));
+        adapter.addItem(new Alarm_ListItem("User_0214", "개인 프로젝트 해서 포폴 만드...", 4));
 
         ImageButton trash_btn = (ImageButton)view.findViewById(R.id.trash_btn);
         trash_btn.setOnClickListener(new View.OnClickListener(){
