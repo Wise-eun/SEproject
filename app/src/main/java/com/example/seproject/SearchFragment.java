@@ -211,7 +211,7 @@ public class SearchFragment extends Fragment {
                 String category2 = item.getString(TAG_CATEGORY);
                 String userCount = item.getString(TAG_COUNT);
 
-                if(title.contains(search_input)){//제목안에 검색어가 포함이 되는경우
+                if(title.contains(search_input) && !(search_input.equals(""))){//제목안에 검색어가 포함이 되는경우
 
                     Calendar cal = Calendar.getInstance();
                     cal.setTime( new Date(System.currentTimeMillis()));
