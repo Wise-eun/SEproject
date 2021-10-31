@@ -29,21 +29,57 @@ public class AlarmFragment extends Fragment {
         adapter = new Alarm_ListItemAdapter(new Alarm_ListItemAdapter.OnDeleteClickListener() {
             @Override
             public void onDelete(View v, int pos, String type) {
+                Alarm_ListItem alarm = (Alarm_ListItem) adapter.getItem(pos);
+
                 if(type.equals("accept")){
                     //수락 눌렀을 때 발생시킬 이벤트
-                    Toast.makeText(getActivity(), pos + "번 째 수락", Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setTitle(alarm.getSender() + "님의 참여 신청을 수락하시겠습니까? ");
+                    builder.setCancelable(false);
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    builder.show();
                 }
                 else{
                     //거절 눌렀을 때 발생시킬 이벤트
-                    Toast.makeText(getActivity(), pos + "번 째 거절", Toast.LENGTH_SHORT).show();
-                }
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setTitle(alarm.getSender() + "님의 참여 신청을 거절하시겠습니까? ");
+                    builder.setCancelable(false);
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    builder.show();                }
             }
         });
 
-
-        adapter.addItem(new Alarm_ListItem("User_0901님이 [개인 프로젝트 해서 포폴 만드..]글에 참여 신청을 하였습니다."));
-        adapter.addItem(new Alarm_ListItem("User_0214님이 [초고수 모집합니다]글의 참여 신청을 거절하였습니다."));
-        adapter.addItem(new Alarm_ListItem("User_0613님이 [[ㄴㄴ공모전] 같이 할 사람...]글의 참여 신청을 수락하였습니다."));
+        adapter.addItem(new Alarm_ListItem("User_0901", "개인 프로젝트 해서 포폴 만드...", 0));
+        adapter.addItem(new Alarm_ListItem("User_0214","초고수 모집합니다.", 1));
+        adapter.addItem(new Alarm_ListItem("User_0214", "ㄴㄴ 공모전", 2));
+        adapter.addItem(new Alarm_ListItem("User_0214", "", 3));
+        adapter.addItem(new Alarm_ListItem("User_0214", "개인 프로젝트 해서 포폴 만드...", 0));
 
         ImageButton trash_btn = (ImageButton)view.findViewById(R.id.trash_btn);
         trash_btn.setOnClickListener(new View.OnClickListener(){

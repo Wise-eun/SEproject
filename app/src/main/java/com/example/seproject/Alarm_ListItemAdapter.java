@@ -44,6 +44,9 @@ public class Alarm_ListItemAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         Context context = parent.getContext();
         Alarm_ListItem listItem = items.get(position);
+        int type = listItem.getType(); //type=0 참여신청, type=1 참여신청거절, type=2 참여신청수락, type=3 메신저
+        String sender = listItem.getSender();
+        String title = listItem.getTitle();
 
         if(convertView == null){
             LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -54,7 +57,29 @@ public class Alarm_ListItemAdapter extends BaseAdapter {
         Button accept_btn = convertView.findViewById(R.id.accept_btn);
         Button refuse_btn = convertView.findViewById(R.id.refuse_btn);
 
-        content_tv.setText(listItem.getContent());
+        if(type==0){
+            content_tv.setText(sender + "님이 [" + title + "]글에 참여 신청을 하였습니다.");
+        }
+        else if(type==1){
+            content_tv.setText(sender + "님이 [" + title + "]글의 참여 신청을 거절하였습니다.");
+        }
+        else if(type==2){
+            content_tv.setText(sender + "님이 [" + title + "]글에 참여 신청을 수락하였습니다.");
+        }
+        else{
+            content_tv.setText(sender + "님이 메시지를 보냈습니다.");
+        }
+
+        if(type==0){
+            //평가 가능한 상태
+            accept_btn.setVisibility(View.VISIBLE);
+            refuse_btn.setVisibility(View.VISIBLE);
+        }
+        else{
+            accept_btn.setVisibility(View.GONE);
+            refuse_btn.setVisibility(View.GONE);
+        }
+
 
         accept_btn.setOnClickListener(new View.OnClickListener() {
             @Override
