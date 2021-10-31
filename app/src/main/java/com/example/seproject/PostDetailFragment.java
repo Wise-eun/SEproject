@@ -95,22 +95,32 @@ public class PostDetailFragment extends Fragment {
         post_date_tv = (TextView) view.findViewById(R.id.post_date_tv);
         post_local_tv = (TextView) view.findViewById(R.id.post_local_tv);
         post_content_tv = (TextView) view.findViewById(R.id.post_content_tv);
-       // post_member_listview = (RecyclerView)view.findViewById(R.id.post_member_listview);
+        post_member_listview = (RecyclerView)view.findViewById(R.id.post_member_listview);
 
 //        PostMember_ListItemAdapter adapter;
-//
+
 //        ArrayList<PostMember_ListItem> items = new ArrayList<PostMember_ListItem>();
 //        items.add(new PostMember_ListItem("User_1"));
 //        items.add(new PostMember_ListItem("User_2"));
 //        items.add(new PostMember_ListItem("User_3"));
 //        items.add(new PostMember_ListItem("User_4"));
 //        items.add(new PostMember_ListItem("User_5"));
-//
+
 //        adapter = new PostMember_ListItemAdapter(items);
-//
-//
-//        post_member_listview.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-//        post_member_listview.setAdapter(adapter);
+
+        PostMember_ListItemAdapter adapter = new PostMember_ListItemAdapter();
+
+        post_member_listview.setAdapter(adapter);
+        post_member_listview.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+
+        ArrayList<PostMember_ListItem> items = new ArrayList<PostMember_ListItem>();
+        items.add(new PostMember_ListItem("User_1"));
+        items.add(new PostMember_ListItem("User_2"));
+        items.add(new PostMember_ListItem("User_3"));
+        items.add(new PostMember_ListItem("User_4"));
+        items.add(new PostMember_ListItem("User_5"));
+
+        adapter.setPostMemberItems(items);
 
 
         ImageButton member_list_btn = (ImageButton)view.findViewById(R.id.member_list_btn);
