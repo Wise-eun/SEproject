@@ -1,6 +1,6 @@
 package com.example.seproject;
 
-class PostMember_ListItem {
+public class PostMember_ListItem {
 
     private String name;
 

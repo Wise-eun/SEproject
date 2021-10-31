@@ -97,6 +97,21 @@ public class PostDetailFragment extends Fragment {
         post_content_tv = (TextView) view.findViewById(R.id.post_content_tv);
        // post_member_listview = (RecyclerView)view.findViewById(R.id.post_member_listview);
 
+//        PostMember_ListItemAdapter adapter;
+//
+//        ArrayList<PostMember_ListItem> items = new ArrayList<PostMember_ListItem>();
+//        items.add(new PostMember_ListItem("User_1"));
+//        items.add(new PostMember_ListItem("User_2"));
+//        items.add(new PostMember_ListItem("User_3"));
+//        items.add(new PostMember_ListItem("User_4"));
+//        items.add(new PostMember_ListItem("User_5"));
+//
+//        adapter = new PostMember_ListItemAdapter(items);
+//
+//
+//        post_member_listview.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+//        post_member_listview.setAdapter(adapter);
+
 
         ImageButton member_list_btn = (ImageButton)view.findViewById(R.id.member_list_btn);
         member_list_btn.setOnClickListener(new View.OnClickListener(){
@@ -204,14 +219,14 @@ public class PostDetailFragment extends Fragment {
 
 
 
-        PostDetailFragment.GetData_team task2 = new PostDetailFragment.GetData_team();
+        GetData_team task2 = new GetData_team();
         task2.execute("http://steak2121.ivyro.net/loadTeam.php");
 
-        PostDetailFragment.GetData_request task3= new PostDetailFragment.GetData_request();
+        GetData_request task3= new GetData_request();
         task3.execute("http://steak2121.ivyro.net/loadRequest.php");
 
 
-        PostDetailFragment.GetData_post task = new PostDetailFragment.GetData_post();
+        GetData_post task = new GetData_post();
         task.execute("http://steak2121.ivyro.net/loadPost.php");
 
         return view;
