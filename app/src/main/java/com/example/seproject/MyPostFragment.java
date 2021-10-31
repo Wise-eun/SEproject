@@ -205,13 +205,24 @@ public class MyPostFragment extends Fragment {
                         Ddays_str = Ddays_str.concat( Integer.toString(Ddays));
 
                         int pid = Integer.parseInt(pid_str);
-                        post_adapter.addItem(new Post_ListItem(pid,writer, title, "("+userCount + "/"+recruitment+")", Ddays_str));
+                        post_adapter.addItem(new Post_ListItem(pid,writer, title, "("+userCount + "/"+recruitment+")", Ddays_str,deadline));
 
 
 
 
                         Log.d(TAG, "date = "+date+" Today = "+today);
 
+
+                    }
+                    else {
+                        String Ddays_str = "D+";
+                        Ddays_str = Ddays_str.concat(Integer.toString(Math.abs(Ddays)));
+
+                        int pid = Integer.parseInt(pid_str);
+                        post_adapter.addItem(new Post_ListItem(pid, writer, title, "(" + userCount + "/" + recruitment + ")", Ddays_str, deadline));
+
+
+                        Log.d(TAG, "date = " + date + " Today = " + today);
 
                     }
 
@@ -227,9 +238,29 @@ public class MyPostFragment extends Fragment {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         final Post_ListItem item = (Post_ListItem) post_adapter.getItem(position);
-                        Toast.makeText(getActivity(), Integer.toString(item.getPid()), Toast.LENGTH_SHORT).show();
-                        ((MainActivity)getActivity()).replaceFragment(PostDetailFragment.newInstance());
-                        PostDetailFragment.pid = item.getPid();
+
+
+                        try {
+                            Calendar cal = Calendar.getInstance();
+                            cal.setTime(new Date(System.currentTimeMillis()));
+
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                            String today_str = new SimpleDateFormat("yyyy-MM-dd").format(cal.getTime()); // 오늘날짜
+                            Date today = new Date(dateFormat.parse(today_str).getTime()); // 오늘날짜 문자열을 date형식으로 바꿈
+
+                            if(today.after(dateFormat.parse(item.getDeadline())) ){ // deadline이 지난경우
+                                ((MainActivity) getActivity()).replaceFragment(PostCompleteFragment.newInstance());
+                                PostDetailFragment.pid = item.getPid();
+                            }
+                            else{ // 현재 모집중인 상태
+                                ((MainActivity) getActivity()).replaceFragment(PostDetailFragment.newInstance());
+                                PostDetailFragment.pid = item.getPid();
+                            }
+
+
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
             }

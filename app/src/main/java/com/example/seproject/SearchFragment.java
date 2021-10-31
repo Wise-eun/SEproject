@@ -230,7 +230,7 @@ public class SearchFragment extends Fragment {
                         Ddays_str = Ddays_str.concat( Integer.toString(Ddays));
 
                         int pid = Integer.parseInt(pid_str);
-                        adapter.addItem(new Post_ListItem(pid,writer, title, "("+userCount + "/"+recruitment+")", Ddays_str));
+                        adapter.addItem(new Post_ListItem(pid,writer, title, "("+userCount + "/"+recruitment+")", Ddays_str,deadline));
 
 
 

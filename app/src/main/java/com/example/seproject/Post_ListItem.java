@@ -6,7 +6,7 @@ public class Post_ListItem {
     private String personnel;
     private String day;
     private int pid;
-
+private String deadline;
     public String getPersonnel() {
         return personnel;
     }
@@ -42,11 +42,17 @@ public class Post_ListItem {
         this.writer = writer;
     }
 
-    Post_ListItem( int pid,String writer, String title, String personnel, String day){
+    public String getDeadline() {
+        return deadline;
+    }
+
+
+    Post_ListItem( int pid,String writer, String title, String personnel, String day, String deadline){
         this.writer = writer;
         this.title = title;
         this.personnel = personnel;
         this.day = day;
         this.pid = pid;
+        this.deadline= deadline;
     }
 }
