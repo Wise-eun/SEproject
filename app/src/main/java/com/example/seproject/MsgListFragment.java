@@ -74,11 +74,10 @@ public class MsgListFragment extends Fragment {
 
 
 
-            MsgListFragment.GetData task = new MsgListFragment.GetData();
-            task.execute("http://steak2121.ivyro.net/loadMessage.php");
+        MsgListFragment.GetData task = new MsgListFragment.GetData();
+        task.execute("http://steak2121.ivyro.net/loadMessage.php");
 
         listView.setAdapter(adapter);
-        //listView.setAdapter(adapter);
         return view;
     }
 
