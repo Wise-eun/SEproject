@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.seproject.databinding.MypostDetailBinding;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -557,7 +559,7 @@ int type =0;
                             PostDetailFragment.pid = item.getPid();
                         }
                         else{ // 현재 모집중인 상태
-                            ((MainActivity) getActivity()).replaceFragment(PostDetailFragment.newInstance());
+                            ((MainActivity) getActivity()).replaceFragment(MyPostDetailFragment.newInstance());
                             PostDetailFragment.pid = item.getPid();
                         }
 

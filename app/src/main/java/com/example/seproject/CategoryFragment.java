@@ -246,9 +246,6 @@ public class CategoryFragment extends Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     final Post_ListItem item = (Post_ListItem) adapter.getItem(position);
-                    Toast.makeText(getActivity(), Integer.toString(item.getPid()), Toast.LENGTH_SHORT).show();
-
-
 
                     if(item.getWriter().equals(MainActivity.userName))//작성자와 해당사용자가 같을경우
                     {

@@ -253,7 +253,7 @@ public class MyPostFragment extends Fragment {
                                 PostDetailFragment.pid = item.getPid();
                             }
                             else{ // 현재 모집중인 상태
-                                ((MainActivity) getActivity()).replaceFragment(PostDetailFragment.newInstance());
+                                ((MainActivity) getActivity()).replaceFragment(MyPostDetailFragment.newInstance());
                                 PostDetailFragment.pid = item.getPid();
                             }
 
