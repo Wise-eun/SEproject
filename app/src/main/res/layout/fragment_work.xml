@@ -42,7 +42,7 @@
             android:id="@+id/radio_group"
             android:layout_width="wrap_content"
             android:layout_height="32dp"
-            android:layout_marginLeft="190dp"
+            android:layout_gravity="right"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +88,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/radio_group"
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="10dp" />
