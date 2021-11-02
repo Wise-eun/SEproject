@@ -56,7 +56,7 @@ public class MyPostDetailFragment extends Fragment {
     private String mJsonString_request;
     //요청테이블 getData에 필요한 친구
     private static final String TAG_REQUEST = "userName";
-ArrayList<String> request_users;
+ArrayList<String> request_users= new ArrayList<String>();;
     //팀원테이블 getData에 필요한 친구
     private static final String TAG_TEAM = "userName";
 
@@ -123,18 +123,6 @@ ArrayList<String> request_users;
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
 
-                for(int i=0;i<request_users.size();i++) {
-                     Response.Listener<String> responseListener = new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-
-                                    }
-                                    };
-
-                     AlarmRequest alarmRequest = new AlarmRequest(1,pid, request_users.get(i),MainActivity.userName, responseListener);
-                     RequestQueue queue = Volley.newRequestQueue(MyPostDetailFragment.this.getActivity());
-                     queue.add(alarmRequest);
-}
 
                         Response.Listener<String> responseListener = new Response.Listener<String>() {
                             @Override
@@ -146,6 +134,42 @@ ArrayList<String> request_users;
                         MyPostCompleteRequest myPostCompleteRequest = new MyPostCompleteRequest(pid, responseListener);
                         RequestQueue queue = Volley.newRequestQueue(MyPostDetailFragment.this.getActivity());
                         queue.add(myPostCompleteRequest);
+
+
+                for(int i=0;i<request_users.size();i++) {
+                    Log.d(TAG, "===========================================users222   " );
+
+                        Log.d(TAG, "=========users222 :  " + request_users.get(i));
+                     Response.Listener<String> responseListener2 = new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+
+
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+                                boolean success = jsonObject.getBoolean("success");
+                                if (success) {
+
+
+                                }
+                                else{
+                                    Toast.makeText(getActivity(),"게시물 완료 실패.",Toast.LENGTH_SHORT).show();
+                                    return ;
+                                }
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+
+                                    }
+                                    };
+
+                     AlarmRequest alarmRequest = new AlarmRequest(1,pid, request_users.get(i),MainActivity.userName, responseListener2);
+
+                     queue.add(alarmRequest); }
+
+
 
                         ((MainActivity)getActivity()).replaceFragment(PostCompleteFragment.newInstance());
                         PostCompleteFragment.pid = pid;
@@ -622,12 +646,14 @@ ArrayList<String> request_users;
                 if(pid_str.equals(Integer.toString(pid))){//pid 같을 경우
 
                         request_users.add(userName); //요청한 사람들 Name 가져와서 배열에 저장함
+
                 }
 
 
             }
-
-
+            Log.d(TAG, "===========================================users   " );
+            for(int i=0; i<request_users.size();i++)
+                Log.d(TAG, "=========users :  " + request_users.get(i));
         } catch (JSONException  e) {
 
             Log.d(TAG, "showResult : ", e);
