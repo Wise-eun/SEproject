@@ -8,12 +8,13 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/category_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:text="IT/컴퓨터"
-        android:fontFamily="@font/notosanskrregular"
         android:layout_marginBottom="-10dp"
+        android:fontFamily="@font/notosanskrregular"
+        android:text="IT/컴퓨터"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
