@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -68,8 +69,8 @@ ArrayList<String> request_users;
     TextView post_local_tv;
     TextView post_content_tv;
     RecyclerView post_member_listview;
-    Button post_apply_btn;
 
+    String post_writer;
 
 
     public MyPostDetailFragment() {}
@@ -99,24 +100,15 @@ ArrayList<String> request_users;
         Button post_complete_btn = view.findViewById(R.id.post_complete_btn);
         Button post_delete_btn = view.findViewById(R.id.post_delete_btn);
         Button post_edit_btn = view.findViewById(R.id.post_edit_btn);
-        RecyclerView post_member_listview = (RecyclerView)view.findViewById(R.id.post_member_listview);
 
-
-
-
-        PostMember_ListItemAdapter adapter = new PostMember_ListItemAdapter();
-
-        post_member_listview.setAdapter(adapter);
-        post_member_listview.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-
-        ArrayList<PostMember_ListItem> items = new ArrayList<PostMember_ListItem>();
-//        items.add(new PostMember_ListItem("User_1"));
-//        items.add(new PostMember_ListItem("User_2"));
-//        items.add(new PostMember_ListItem("User_3"));
-//        items.add(new PostMember_ListItem("User_4"));
-//        items.add(new PostMember_ListItem("User_5"));
-
-        adapter.setPostMemberItems(items);
+        ImageButton member_list_btn = (ImageButton)view.findViewById(R.id.member_list_btn);
+        member_list_btn.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                ((MainActivity)getActivity()).replaceFragment(MemberListFragment.newInstance());
+                MemberListFragment.pid = pid;
+                MemberListFragment.writer = post_writer;
+            }
+        });
 
         post_complete_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -346,7 +338,7 @@ ArrayList<String> request_users;
 
                 if(pid_str.equals(Integer.toString(pid))){//pid 같을 경우
 
-
+                    post_writer = writer;
                     category_name.setText(category);
                     post_name_tv .setText(title);
                     post_personnel_tv.setText("("+userCount + "/"+recruitment+")");
@@ -477,6 +469,14 @@ ArrayList<String> request_users;
             JSONObject jsonObject = new JSONObject(mJsonString_team);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON2);
 
+            PostMember_ListItemAdapter adapter = new PostMember_ListItemAdapter();
+
+            post_member_listview.setAdapter(adapter);
+            post_member_listview.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+
+            ArrayList<PostMember_ListItem> items = new ArrayList<PostMember_ListItem>();
+
+
             for (int i = 0; i < jsonArray.length(); i++) {
 
                 JSONObject item = jsonArray.getJSONObject(i);
@@ -488,11 +488,18 @@ ArrayList<String> request_users;
 
 //팀원 추가 (닉네임)
                     //post_member_listview.add
-
+                    if(post_writer.equals(userName)){
+                        items.add(new PostMember_ListItem(userName, true));
+                    }
+                    else{
+                        items.add(new PostMember_ListItem(userName, false));
+                    }
                 }
 
 
             }
+
+            adapter.setPostMemberItems(items);
 
 
         } catch (JSONException  e) {
