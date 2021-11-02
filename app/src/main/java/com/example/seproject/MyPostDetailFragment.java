@@ -117,57 +117,38 @@ ArrayList<String> request_users= new ArrayList<String>();;
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle(titleMsg);
-
+                ArrayList<MyPostCompleteRequest> requests  = new ArrayList<MyPostCompleteRequest> ();
+                RequestQueue queue = Volley.newRequestQueue(MyPostDetailFragment.this.getActivity());
                 builder.setCancelable(false);
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
 
 
-                        Response.Listener<String> responseListener = new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-
-                            }
-                        };
-
-                        MyPostCompleteRequest myPostCompleteRequest = new MyPostCompleteRequest(pid, responseListener);
-                        RequestQueue queue = Volley.newRequestQueue(MyPostDetailFragment.this.getActivity());
-                        queue.add(myPostCompleteRequest);
-
-
                 for(int i=0;i<request_users.size();i++) {
-                    Log.d(TAG, "===========================================users222   " );
 
-                        Log.d(TAG, "=========users222 :  " + request_users.get(i));
-                     Response.Listener<String> responseListener2 = new Response.Listener<String>() {
+
+                    Response.Listener<String> responseListener = new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
 
-
-                            try {
-                                JSONObject jsonObject = new JSONObject(response);
-                                boolean success = jsonObject.getBoolean("success");
-                                if (success) {
-
-
-                                }
-                                else{
-                                    Toast.makeText(getActivity(),"게시물 완료 실패.",Toast.LENGTH_SHORT).show();
-                                    return ;
-                                }
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
+                        }
+                    };
+if(i==0) {
+    requests.add(new MyPostCompleteRequest(3, pid, request_users.get(i), MainActivity.userName, responseListener));
 
 
-                                    }
-                                    };
+}
+else{
+    requests.add(new MyPostCompleteRequest(2, pid, request_users.get(i), MainActivity.userName, responseListener));
 
-                     AlarmRequest alarmRequest = new AlarmRequest(1,pid, request_users.get(i),MainActivity.userName, responseListener2);
+}
 
-                     queue.add(alarmRequest); }
+
+
+                }
+                for(int j=0;j<requests.size();j++)
+                        queue.add(requests.get(j));
 
 
 
