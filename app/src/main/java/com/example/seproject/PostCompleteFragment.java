@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class PostCompleteFragment extends Fragment {
-
+    public static int pid; //게시물 ID
     public static PostCompleteFragment newInstance(){
         return new PostCompleteFragment();
 
