@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.seproject.databinding.MypostDetailBinding;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -358,69 +360,67 @@ int type =0;
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
             if(type == 0){ //전체 눌렀을때
-            for (int i = 0; i < jsonArray.length(); i++) {
+                adapter.clearItems();
 
-                JSONObject item = jsonArray.getJSONObject(i);
+                for (int i = 0; i < jsonArray.length(); i++) {
 
-                String pid_str = item.getString(TAG_PID);
-                String writer = item.getString(TAG_WRITER);
-                String title = item.getString(TAG_TITLE);
-                String deadline = item.getString(TAG_DEADLINE);
-                String recruitment = item.getString(TAG_RECRUIT);
-                String area = item.getString(TAG_AREA);
-                String content = item.getString(TAG_CONTENT);
-                String category2 = item.getString(TAG_CATEGORY);
-                String userCount = item.getString(TAG_COUNT);
+                    JSONObject item = jsonArray.getJSONObject(i);
 
-                if (pids.contains(pid_str)) {//내가 해당 게시물 팀에 속해있는 경우
+                    String pid_str = item.getString(TAG_PID);
+                    String writer = item.getString(TAG_WRITER);
+                    String title = item.getString(TAG_TITLE);
+                    String deadline = item.getString(TAG_DEADLINE);
+                    String recruitment = item.getString(TAG_RECRUIT);
+                    String area = item.getString(TAG_AREA);
+                    String content = item.getString(TAG_CONTENT);
+                    String category2 = item.getString(TAG_CATEGORY);
+                    String userCount = item.getString(TAG_COUNT);
 
-                    Calendar cal = Calendar.getInstance();
-                    cal.setTime(new Date(System.currentTimeMillis()));
-                    String today_str = new SimpleDateFormat("yyyy-MM-dd").format(cal.getTime()); // 오늘날짜
+                    if (pids.contains(pid_str)) {//내가 해당 게시물 팀에 속해있는 경우
 
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                        Calendar cal = Calendar.getInstance();
+                        cal.setTime(new Date(System.currentTimeMillis()));
+                        String today_str = new SimpleDateFormat("yyyy-MM-dd").format(cal.getTime()); // 오늘날짜
 
-                    Date date = new Date(dateFormat.parse(deadline).getTime()); //deadline 문자열을 date형식으로 바꿈
-                     today = new Date(dateFormat.parse(today_str).getTime()); // 오늘날짜 문자열을 date형식으로 바꿈
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-                    long calculate = date.getTime() - today.getTime();
-                    int Ddays = (int) (calculate / (24 * 60 * 60 * 1000));
-                    Log.d(TAG, "Ddays = " + Ddays);
-                    if (Ddays >= 0) { //디데이가 안지났을때 보이도록함
-                        String Ddays_str = "D-";
-                        Ddays_str = Ddays_str.concat(Integer.toString(Ddays));
+                        Date date = new Date(dateFormat.parse(deadline).getTime()); //deadline 문자열을 date형식으로 바꿈
+                        today = new Date(dateFormat.parse(today_str).getTime()); // 오늘날짜 문자열을 date형식으로 바꿈
 
-                        int pid = Integer.parseInt(pid_str);
-                        adapter.addItem(new Post_ListItem(pid, writer, title, "(" + userCount + "/" + recruitment + ")", Ddays_str,deadline));
+                        long calculate = date.getTime() - today.getTime();
+                        int Ddays = (int) (calculate / (24 * 60 * 60 * 1000));
+                        Log.d(TAG, "Ddays = " + Ddays);
+                        if (Ddays >= 0) { //디데이가 안지났을때 보이도록함
+                            String Ddays_str = "D-";
+                            Ddays_str = Ddays_str.concat(Integer.toString(Ddays));
+
+                            int pid = Integer.parseInt(pid_str);
+                            adapter.addItem(new Post_ListItem(pid, writer, title, "(" + userCount + "/" + recruitment + ")", Ddays_str,deadline));
 
 
-                        Log.d(TAG, "date = " + date + " Today = " + today);
+                            Log.d(TAG, "date = " + date + " Today = " + today);
 
 
+                        }
+                        else {
+                            String Ddays_str = "D+";
+                            Ddays_str = Ddays_str.concat(Integer.toString(Math.abs(Ddays)));
+
+                            int pid = Integer.parseInt(pid_str);
+                            adapter.addItem(new Post_ListItem(pid, writer, title, "(" + userCount + "/" + recruitment + ")", Ddays_str, deadline));
+
+
+                            Log.d(TAG, "date = " + date + " Today = " + today);
+
+                        }
                     }
-                    else {
-                        String Ddays_str = "D+";
-                        Ddays_str = Ddays_str.concat(Integer.toString(Math.abs(Ddays)));
-
-                        int pid = Integer.parseInt(pid_str);
-                        adapter.addItem(new Post_ListItem(pid, writer, title, "(" + userCount + "/" + recruitment + ")", Ddays_str, deadline));
-
-
-                        Log.d(TAG, "date = " + date + " Today = " + today);
-
-                    }
-
 
                 }
 
-
-
-        }
-
             }
 
-
             else if( type == 1 ){ //진행중 눌렀을때
+                adapter.clearItems();
                 for (int i = 0; i < jsonArray.length(); i++) {
 
                     JSONObject item = jsonArray.getJSONObject(i);
@@ -475,8 +475,7 @@ int type =0;
             }
 
             else if(type == 2){//완료 눌렀을때
-
-
+                adapter.clearItems();
                 for (int i = 0; i < jsonArray.length(); i++) {
 
                     JSONObject item = jsonArray.getJSONObject(i);
@@ -554,11 +553,11 @@ int type =0;
                     try {
                         if(today.after(transFormat.parse(item.getDeadline())) ){ // deadline이 지난경우
                             ((MainActivity) getActivity()).replaceFragment(PostCompleteFragment.newInstance());
-                            PostDetailFragment.pid = item.getPid();
+                            PostCompleteFragment.pid = item.getPid();
                         }
                         else{ // 현재 모집중인 상태
-                            ((MainActivity) getActivity()).replaceFragment(PostDetailFragment.newInstance());
-                            PostDetailFragment.pid = item.getPid();
+                            ((MainActivity) getActivity()).replaceFragment(MyPostDetailFragment.newInstance());
+                            MyPostDetailFragment.pid = item.getPid();
                         }
 
 

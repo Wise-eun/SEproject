@@ -54,4 +54,6 @@ public class Post_ListItemAdapter extends BaseAdapter {
     public void addItem(Post_ListItem item){
         items.add(item);
     }
+
+    public void clearItems() {items.clear();}
 }

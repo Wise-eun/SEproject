@@ -252,7 +252,6 @@ public class SearchFragment extends Fragment {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         final Post_ListItem item = (Post_ListItem) adapter.getItem(position);
-                        Toast.makeText(getActivity(), Integer.toString(item.getPid()), Toast.LENGTH_SHORT).show();
                         ((MainActivity)getActivity()).replaceFragment(PostDetailFragment.newInstance());
                         PostDetailFragment.pid = item.getPid();
                     }

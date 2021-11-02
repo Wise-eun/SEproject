@@ -250,11 +250,11 @@ public class MyPostFragment extends Fragment {
 
                             if(today.after(dateFormat.parse(item.getDeadline())) ){ // deadline이 지난경우
                                 ((MainActivity) getActivity()).replaceFragment(PostCompleteFragment.newInstance());
-                                PostDetailFragment.pid = item.getPid();
+                                PostCompleteFragment.pid = item.getPid();
                             }
                             else{ // 현재 모집중인 상태
-                                ((MainActivity) getActivity()).replaceFragment(PostDetailFragment.newInstance());
-                                PostDetailFragment.pid = item.getPid();
+                                ((MainActivity) getActivity()).replaceFragment(MyPostDetailFragment.newInstance());
+                                MyPostDetailFragment.pid = item.getPid();
                             }
 
 

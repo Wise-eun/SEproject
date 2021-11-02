@@ -1,5 +1,6 @@
 package com.example.seproject;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 public class HomeFragment extends Fragment {
@@ -66,9 +68,18 @@ public class HomeFragment extends Fragment {
        search_et = (EditText) v.findViewById(R.id.search_et);
         search_btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                //String search_input = search_et.getText().toString();
-                //((MainActivity)getActivity()).bundlePutString("search_input","tes" );
-                ((MainActivity)getActivity()).replaceFragment(SearchFragment.newInstance());
+                String search_input = search_et.getText().toString();
+                if (search_input.equals("")){
+                    androidx.appcompat.app.AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    AlertDialog dialog;
+                    dialog = builder.setMessage("검색어를 입력하지 않았습니다.").setNegativeButton("확인", null).create();
+                    dialog.show();
+                }
+                else{
+
+                    ((MainActivity)getActivity()).replaceFragment(SearchFragment.newInstance());
+
+                }
                 //다른거랑 똑같이 적었는데 왜 화면이 안바뀔까?
             }
         });

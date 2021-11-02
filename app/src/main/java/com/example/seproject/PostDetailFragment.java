@@ -97,25 +97,15 @@ public class PostDetailFragment extends Fragment {
         post_content_tv = (TextView) view.findViewById(R.id.post_content_tv);
         post_member_listview = (RecyclerView)view.findViewById(R.id.post_member_listview);
 
-        PostMember_ListItemAdapter adapter = new PostMember_ListItemAdapter();
 
-        post_member_listview.setAdapter(adapter);
-        post_member_listview.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-
-        ArrayList<PostMember_ListItem> items = new ArrayList<PostMember_ListItem>();
-        items.add(new PostMember_ListItem("User_1"));
-        items.add(new PostMember_ListItem("User_2"));
-        items.add(new PostMember_ListItem("User_3"));
-        items.add(new PostMember_ListItem("User_4"));
-        items.add(new PostMember_ListItem("User_5"));
-
-        adapter.setPostMemberItems(items);
 
 
         ImageButton member_list_btn = (ImageButton)view.findViewById(R.id.member_list_btn);
         member_list_btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 ((MainActivity)getActivity()).replaceFragment(MemberListFragment.newInstance());
+                MemberListFragment.pid = pid;
+                MemberListFragment.writer = post_writer;
             }
         });
 
@@ -175,13 +165,8 @@ public class PostDetailFragment extends Fragment {
 
                         Response.Listener<String> responseListener = new Response.Listener<String>() {
 
-
-
                             @Override
                             public void onResponse(String response) {
-
-
-
 
                             }
                         };
@@ -190,14 +175,6 @@ public class PostDetailFragment extends Fragment {
                         PostSignRequest postSignRequest = new PostSignRequest(what, pid, MainActivity.userName,post_writer,post_name_tv.getText().toString(), responseListener);
                         RequestQueue queue = Volley.newRequestQueue(PostDetailFragment.this.getActivity());
                         queue.add(postSignRequest);
-
-
-
-
-
-
-
-
 
                         dialog.cancel();
                     }
@@ -216,7 +193,8 @@ public class PostDetailFragment extends Fragment {
 
         category_name.setText(CategoryFragment.category_str);
 
-
+        GetData_post task = new GetData_post();
+        task.execute("http://steak2121.ivyro.net/loadPost.php");
 
         GetData_team task2 = new GetData_team();
         task2.execute("http://steak2121.ivyro.net/loadTeam.php");
@@ -225,8 +203,7 @@ public class PostDetailFragment extends Fragment {
         task3.execute("http://steak2121.ivyro.net/loadRequest.php");
 
 
-        GetData_post task = new GetData_post();
-        task.execute("http://steak2121.ivyro.net/loadPost.php");
+
 
         return view;
     }
@@ -356,13 +333,7 @@ public class PostDetailFragment extends Fragment {
                     post_content_tv.setText(content);
                     //  post_member_listview = (RecyclerView)view.findViewById(R.id.post_member_listview);
 
-
-
-
-
-
-
-
+                    break;
 
 
                 }
@@ -480,6 +451,15 @@ public class PostDetailFragment extends Fragment {
             JSONObject jsonObject = new JSONObject(mJsonString_team);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON2);
 
+            PostMember_ListItemAdapter adapter = new PostMember_ListItemAdapter();
+
+            post_member_listview.setAdapter(adapter);
+            post_member_listview.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+
+            ArrayList<PostMember_ListItem> items = new ArrayList<PostMember_ListItem>();
+
+
+
             for (int i = 0; i < jsonArray.length(); i++) {
 
                 JSONObject item = jsonArray.getJSONObject(i);
@@ -490,6 +470,15 @@ public class PostDetailFragment extends Fragment {
                 if(pid_str.equals(Integer.toString(pid))){//pid 같을 경우
 
 //팀원 추가 (닉네임)
+//                    items.add(new PostMember_ListItem(userName, false));
+
+//                    Log.d("TAG", post_writer);
+                    if(post_writer.equals(userName)){
+                        items.add(new PostMember_ListItem(userName, true));
+                    }
+                    else{
+                        items.add(new PostMember_ListItem(userName, false));
+                    }
                     //post_member_listview.add
 
                     if(userName.equals(MainActivity.userName))//팀원 이름이랑 내 이름이랑 같을때
@@ -499,9 +488,10 @@ public class PostDetailFragment extends Fragment {
                         post_apply_btn.setText("취소하기");
                     }
                 }
-
-
             }
+
+            adapter.setPostMemberItems(items);
+
 
 
         } catch (JSONException  e) {

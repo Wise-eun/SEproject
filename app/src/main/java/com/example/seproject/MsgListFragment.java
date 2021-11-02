@@ -232,7 +232,7 @@ public class MsgListFragment extends Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     final Msg_ListItem item = (Msg_ListItem) adapter.getItem(position);
-                   // Toast.makeText(getActivity(), item.getContent(), Toast.LENGTH_SHORT).show();
+
 
 
                     //((MainActivity)getActivity()).getSupportFragmentManager().beginTransaction().replace(R.layout.message_list,   new MsgDetailFragment()).addToBackStack(null).commit();

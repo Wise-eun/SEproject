@@ -36,7 +36,7 @@
 
 
     <TextView
-        android:id="@+id/mypost_title_et"
+        android:id="@+id/mypost_title_tv"
         android:layout_width="315dp"
         android:layout_height="48dp"
         android:layout_gravity="center_vertical"
@@ -77,8 +77,8 @@
         android:text="마감일"
         android:textSize="18dp"
 
-        app:layout_constraintStart_toStartOf="@+id/mypost_title_et"
-        app:layout_constraintTop_toBottomOf="@+id/mypost_title_et" />
+        app:layout_constraintStart_toStartOf="@+id/mypost_title_tv"
+        app:layout_constraintTop_toBottomOf="@+id/mypost_title_tv" />
 
     <TextView
         android:id="@+id/write_local_tv2"
@@ -115,7 +115,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.182"
         app:layout_constraintStart_toEndOf="@+id/write_day_tv2"
-        app:layout_constraintTop_toBottomOf="@+id/mypost_title_et" />
+        app:layout_constraintTop_toBottomOf="@+id/mypost_title_tv" />
 
     <!--    <LinearLayout-->
     <!--        android:id="@+id/linearLayout2"-->
@@ -193,10 +193,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.182"
         app:layout_constraintStart_toEndOf="@+id/write_day_tv2"
-        app:layout_constraintTop_toBottomOf="@+id/mypost_title_et" />
+        app:layout_constraintTop_toBottomOf="@+id/mypost_title_tv" />
 
     <TextView
-        android:id="@+id/modifty_personnel_tv"
+        android:id="@+id/modify_personnel_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
@@ -205,13 +205,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.184"
         app:layout_constraintStart_toEndOf="@+id/write_day_tv2"
-        app:layout_constraintTop_toBottomOf="@+id/mypost_title_et" />
+        app:layout_constraintTop_toBottomOf="@+id/mypost_title_tv" />
 
     <Button
-        android:id="@+id/post_btn"
+        android:id="@+id/modify_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="등록"
+        android:text="수정"
         app:layout_constraintBottom_toBottomOf="parent"></Button>
 
 

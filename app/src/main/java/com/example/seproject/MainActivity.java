@@ -111,14 +111,11 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.flFragment, fragment).addToBackStack(null).commit();
-//                commitAllowingStateLoss();
     }
 
     public void bundlePutString(String key, String val){
         bundle_toFragment.putString(key, val);
     }
-    ////data Load
-
 
     private class GetData extends AsyncTask<String, Void, String> {
         ProgressDialog progressDialog;

@@ -12,13 +12,16 @@ public class SendMsgRequest extends StringRequest {
     final static private  String URL = "http://steak2121.ivyro.net/msgSend.php";
     private Map<String,String> map;
 
-    public SendMsgRequest(String sender, String receiver,String content, Response.Listener<String> listener){
+    public SendMsgRequest(String sender, String receiver,String content, int pid, int type, Response.Listener<String> listener){
         super(Method.POST,URL,listener, null);
 
         map = new HashMap<>();
         map.put("sender",sender);
         map.put("receiver",receiver);
         map.put("content",content);
+        map.put("pid", pid+"");
+        map.put("type", type+"");
+
     }
     @Override
     protected Map<String, String> getParams() throws AuthFailureError {

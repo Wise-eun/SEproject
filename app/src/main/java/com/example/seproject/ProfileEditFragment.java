@@ -60,7 +60,6 @@ public class ProfileEditFragment extends Fragment {
 
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-                Toast.makeText(getActivity(),Integer.toString(position),Toast.LENGTH_SHORT); //본인이 원하는 작업.
                 user_job = job_adapter.getItem(position);
             }
 
@@ -79,7 +78,6 @@ public class ProfileEditFragment extends Fragment {
 
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-                Toast.makeText(getActivity(),Integer.toString(position),Toast.LENGTH_SHORT); //본인이 원하는 작업.
                 user_local = local_adapter.getItem(position);
             }
 

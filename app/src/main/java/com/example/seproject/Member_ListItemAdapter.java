@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
 
@@ -52,6 +53,7 @@ public class Member_ListItemAdapter extends BaseAdapter {
 
         TextView name_tv = convertView.findViewById(R.id.name_tv);
         Button rating_btn = convertView.findViewById(R.id.rating_btn);
+        ImageView team_leader_img = convertView.findViewById(R.id.team_leader_img);
 
         name_tv.setText(listItem.getName());
 
@@ -68,6 +70,14 @@ public class Member_ListItemAdapter extends BaseAdapter {
         else{
             rating_btn.setVisibility(View.INVISIBLE);
         }
+
+        if(listItem.getIsLeader()){
+            team_leader_img.setVisibility(View.VISIBLE);
+        }
+        else{
+            team_leader_img.setVisibility(View.INVISIBLE);
+        }
+
         rating_btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 listener.onClick(view, position, "rating");

@@ -2,6 +2,7 @@ package com.example.seproject;
 
 public class Member_ListItem {
     private String name;
+    private boolean isLeader;
 
     public String getName() {
         return name;
@@ -10,7 +11,11 @@ public class Member_ListItem {
         this.name = name;
     }
 
-    Member_ListItem(String name){
+    public boolean getIsLeader() {return isLeader;}
+    public void setLeader(boolean isLeader) {this.isLeader = isLeader;}
+
+    Member_ListItem(String name, boolean isLeader){
         this.name = name;
+        this.isLeader = isLeader;
     }
 }

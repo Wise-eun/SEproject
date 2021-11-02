@@ -88,7 +88,7 @@ public class SendMsgFragment extends Fragment {
                 };
 
                 //서버로 Volley를 이용해서 요청
-                SendMsgRequest sendMsgRequest = new SendMsgRequest(sender, receiver, content, responseListener);
+                SendMsgRequest sendMsgRequest = new SendMsgRequest(sender, receiver, content, -1, 3, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(SendMsgFragment.this.getActivity());
                 queue.add(sendMsgRequest);
 

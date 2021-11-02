@@ -53,14 +53,13 @@ public class ProfileDetailActivity extends AppCompatActivity implements Serializ
     public static String userSchool;
     public static String userLocal;
     public static String userName;
+    public static String rating;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_detail);
-
-        Toast.makeText(getApplicationContext(), userName, Toast.LENGTH_SHORT).show();
 
         user_name_tv = (TextView) findViewById(R.id.user_name_tv);
         user_info_tv = findViewById(R.id.user_info_tv);
@@ -119,7 +118,6 @@ public class ProfileDetailActivity extends AppCompatActivity implements Serializ
         protected String doInBackground(String... params) {
 
             String serverURL = "http://steak2121.ivyro.net/loadUser.php";
-
 
             try {
 
@@ -201,10 +199,10 @@ public class ProfileDetailActivity extends AppCompatActivity implements Serializ
                     if(local.equals(""))
                         local = "없음";
                     user_info_tv.setText(job+"/"+school+"/"+local);
-                    int rating_num = Integer.parseInt(rating);
+                    float rating_num = Float.parseFloat(rating);
                     int ratingPeople_num = Integer.parseInt(ratingPeople);
-                    int rating_res = rating_num/ratingPeople_num;
-                    rating_tv.setText(Integer.toString(rating_res));
+                    float rating_res = rating_num/ratingPeople_num;
+                    rating_tv.setText(Float.toString(rating_res));
                     self_intro_tv.setText(selfintro);
 
 
