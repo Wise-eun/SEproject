@@ -239,10 +239,11 @@ public class ProfileFragment extends Fragment {
                     if(local.equals(""))
                         local = "없음";
                     user_info_tv.setText(job+"/"+school+"/"+local);
-                    int rating_num = Integer.parseInt(rating);
+                    float rating_num = Float.parseFloat(rating);
                     int ratingPeople_num = Integer.parseInt(ratingPeople);
-                    int rating_res = rating_num/ratingPeople_num;
-                    rating_tv.setText(Integer.toString(rating_res));
+                    float rating_res = rating_num/ratingPeople_num;
+                    rating_tv.setText(Float.toString(rating_res));
+
 
 
                     selfIntro = String.copyValueOf(selfintro.toCharArray()); //자기소개 복사.

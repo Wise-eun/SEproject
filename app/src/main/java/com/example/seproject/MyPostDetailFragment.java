@@ -41,11 +41,11 @@ public class MyPostDetailFragment extends Fragment {
         post_member_listview.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
 
         ArrayList<PostMember_ListItem> items = new ArrayList<PostMember_ListItem>();
-        items.add(new PostMember_ListItem("User_1"));
-        items.add(new PostMember_ListItem("User_2"));
-        items.add(new PostMember_ListItem("User_3"));
-        items.add(new PostMember_ListItem("User_4"));
-        items.add(new PostMember_ListItem("User_5"));
+//        items.add(new PostMember_ListItem("User_1"));
+//        items.add(new PostMember_ListItem("User_2"));
+//        items.add(new PostMember_ListItem("User_3"));
+//        items.add(new PostMember_ListItem("User_4"));
+//        items.add(new PostMember_ListItem("User_5"));
 
         adapter.setPostMemberItems(items);
 

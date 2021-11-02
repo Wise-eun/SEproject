@@ -7,6 +7,7 @@ public class Msg_ListItem {
     private String content;
     private String date;
 
+
     public String getType() {return type;}
     public void setType(String type) {this.type = type;}
 

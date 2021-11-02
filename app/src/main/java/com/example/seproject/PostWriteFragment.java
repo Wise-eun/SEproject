@@ -37,10 +37,10 @@ public class PostWriteFragment extends Fragment {
     TextView category_name, date_tv, write_personnel_tv,mypost_title_tv;
     Button minus_btn, plus_btn,post_btn;
     EditText content_et;
-public static int pid;
+    public static int pid;
     public static String post_local;
     DatePickerDialog datePickerDialog;
-String title;
+    String title;
     String writer;
     String deadline;
     int recruitment;
@@ -56,8 +56,6 @@ String title;
         View view = inflater.inflate(R.layout.write_post, container, false);
 
         pid = CategoryFragment.last_pid; // 마지막 pid를 가져옴
-
-
 
         category_name = (TextView)view.findViewById(R.id.category_name);
         post_local_spinner = (Spinner) view.findViewById(R.id.post_local_spinner);
@@ -124,7 +122,6 @@ String title;
         });
         post_btn.setOnClickListener(new View.OnClickListener() { //작성버튼을 눌렀을 경우
 
-
             @Override
             public void onClick(View v) {
                 pid = CategoryFragment.last_pid+1;
@@ -159,7 +156,7 @@ String title;
                             }
                             else{
                                 Toast.makeText(getActivity(),"게시물 작성 실패.",Toast.LENGTH_SHORT).show();
-return ;
+                                return ;
                             }
 
                         } catch (JSONException e) {

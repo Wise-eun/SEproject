@@ -26,6 +26,12 @@ public class PostMember_ListItemAdapter extends RecyclerView.Adapter<PostMember_
         }
         void onBind(PostMember_ListItem item){
             user_name_tv.setText(item.getName());
+            if(item.getIsLeader()){
+                leader_img.setVisibility(View.VISIBLE);
+            }
+            else{
+                leader_img.setVisibility(View.INVISIBLE);
+            }
         }
     }
 
