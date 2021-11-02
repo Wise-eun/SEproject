@@ -212,65 +212,49 @@ public class CategoryFragment extends Fragment {
                 String category2 = item.getString(TAG_CATEGORY);
                 String userCount = item.getString(TAG_COUNT);
 
-if(category2.equals(category)){//카테고리 같을 경우
+            if(category2.equals(category)){//카테고리 같을 경우
 
-    Calendar cal = Calendar.getInstance();
-    cal.setTime( new Date(System.currentTimeMillis()));
-    String today_str = new SimpleDateFormat("yyyy-MM-dd").format( cal.getTime()); // 오늘날짜
+                Calendar cal = Calendar.getInstance();
+                cal.setTime( new Date(System.currentTimeMillis()));
+                String today_str = new SimpleDateFormat("yyyy-MM-dd").format( cal.getTime()); // 오늘날짜
 
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-    Date date = new Date(dateFormat.parse(deadline).getTime()); //deadline 문자열을 date형식으로 바꿈
-    Date today = new Date(dateFormat.parse(today_str).getTime()); // 오늘날짜 문자열을 date형식으로 바꿈
+                Date date = new Date(dateFormat.parse(deadline).getTime()); //deadline 문자열을 date형식으로 바꿈
+                Date today = new Date(dateFormat.parse(today_str).getTime()); // 오늘날짜 문자열을 date형식으로 바꿈
     
-    long calculate = date.getTime() - today.getTime();
-    int Ddays = (int) (calculate / ( 24*60*60*1000));
-    Log.d(TAG, "Ddays = "+Ddays);
-    if(Ddays >=0){ //디데이가 안지났을때 보이도록함
-String Ddays_str = "D-";
-Ddays_str = Ddays_str.concat( Integer.toString(Ddays));
+                long calculate = date.getTime() - today.getTime();
+                int Ddays = (int) (calculate / ( 24*60*60*1000));
+                Log.d(TAG, "Ddays = "+Ddays);
+                if(Ddays >=0){ //디데이가 안지났을때 보이도록함
+                    String Ddays_str = "D-";
+                    Ddays_str = Ddays_str.concat( Integer.toString(Ddays));
 
-        int pid = Integer.parseInt(pid_str);
-        adapter.addItem(new Post_ListItem(pid,writer, title, "("+userCount + "/"+recruitment+")", Ddays_str,deadline));
+                    int pid = Integer.parseInt(pid_str);
+                    adapter.addItem(new Post_ListItem(pid,writer, title, "("+userCount + "/"+recruitment+")", Ddays_str,deadline));
 
-
-
-
-        Log.d(TAG, "date = "+date+" Today = "+today);
-
-        
-    }
-
-
-
-}
-
-last_pid = Integer.parseInt(pid_str); // 마지막 게시물 번호받기
-                listView.setAdapter(adapter);
-
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @SuppressLint("ResourceType")
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        final Post_ListItem item = (Post_ListItem) adapter.getItem(position);
-                        Toast.makeText(getActivity(), Integer.toString(item.getPid()), Toast.LENGTH_SHORT).show();
-                        ((MainActivity)getActivity()).replaceFragment(PostDetailFragment.newInstance());
-                        PostDetailFragment.pid = item.getPid();
-                    }
-                });
+                    Log.d(TAG, "date = "+date+" Today = "+today);
+                 }
             }
 
+            last_pid = Integer.parseInt(pid_str); // 마지막 게시물 번호받기
+            listView.setAdapter(adapter);
 
-        } catch (JSONException | ParseException e) {
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @SuppressLint("ResourceType")
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    final Post_ListItem item = (Post_ListItem) adapter.getItem(position);
+                    Toast.makeText(getActivity(), Integer.toString(item.getPid()), Toast.LENGTH_SHORT).show();
+                    ((MainActivity)getActivity()).replaceFragment(PostDetailFragment.newInstance());
+                    PostDetailFragment.pid = item.getPid();
+                }
+            });
+            }
 
+        }
+        catch (JSONException | ParseException e) {
             Log.d(TAG, "showResult : ", e);
         }
-
-
     }
-
-
-
-
-
 }

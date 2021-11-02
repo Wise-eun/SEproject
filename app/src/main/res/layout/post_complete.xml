@@ -73,7 +73,7 @@
                 android:text="마감일"></TextView>
 
             <TextView
-                android:id="@+id/post_day_tv"
+                android:id="@+id/post_date_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -89,7 +89,7 @@
                 android:text="모집지역"></TextView>
 
             <TextView
-                android:id="@+id/local"
+                android:id="@+id/post_local_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -99,11 +99,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="현재인원"></TextView>
+
+            <!--            <androidx.recyclerview.widget.RecyclerView-->
+            <!--                android:id="@+id/post_member_listview"-->
+            <!--                android:layout_width="200dp"-->
+            <!--                android:layout_height="100dp" />-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/post_member_listview"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                />
+
+            <ImageButton
+                android:id="@+id/member_list_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_outline_more_horiz_24" />
+
             <!--            리스트뷰랑 생성 필요-->
         </LinearLayout>
         <TextView
@@ -119,6 +139,10 @@
             android:id="@+id/post_content_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="방황하였으며 공지는 무엇을 위하여 천하를 철환하였는가? 밥을 위하여서 그리하였는가? 아니다 그들은 커다란 이상 곧 만천하의 대중을 품에 안고 그들에게 밝은 길을 ㅊ자아 주며 그들을 행복스럽고 평화스러운 곳으로"></TextView>
+            android:text="방황하였으며 공지는 무엇을 위하여 천하를 철환하였는가? 밥을 위하여서 그리하였는가? 아니다 그들은 커다란 이상 곧 만천하의 대중을 품에 안고 그들에게 밝은 길을 ㅊ자아 주며 그들을 행복스럽고 평화스러운 곳으로"
+            android:textSize="20sp"></TextView>
     </LinearLayout>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

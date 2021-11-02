@@ -10,6 +10,10 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 public class MyPostDetailFragment extends Fragment {
 
@@ -29,22 +33,29 @@ public class MyPostDetailFragment extends Fragment {
         Button post_complete_btn = view.findViewById(R.id.post_complete_btn);
         Button post_delete_btn = view.findViewById(R.id.post_delete_btn);
         Button post_edit_btn = view.findViewById(R.id.post_edit_btn);
+        RecyclerView post_member_listview = (RecyclerView)view.findViewById(R.id.post_member_listview);
 
+        PostMember_ListItemAdapter adapter = new PostMember_ListItemAdapter();
+
+        post_member_listview.setAdapter(adapter);
+        post_member_listview.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+
+        ArrayList<PostMember_ListItem> items = new ArrayList<PostMember_ListItem>();
+        items.add(new PostMember_ListItem("User_1"));
+        items.add(new PostMember_ListItem("User_2"));
+        items.add(new PostMember_ListItem("User_3"));
+        items.add(new PostMember_ListItem("User_4"));
+        items.add(new PostMember_ListItem("User_5"));
+
+        adapter.setPostMemberItems(items);
 
         post_complete_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String titleMsg = " 이 게시물에 참여 신청을 하시겠습니까? ";
-//                if(participate){
-//                    titleMsg = " 이 게시물의 참여 신청을 취소하기겠습니까?";
-//                }
+                String titleMsg = " 이 게시물을 완료하시겠습니까? ";
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle(titleMsg);
-
-//                builder.setView(R.drawable.thank_you);
-
-//                builder.setMessage(" ( 참여 신청들은 모두 거절됩니다. ) ");
 
                 builder.setCancelable(false);
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -70,17 +81,10 @@ public class MyPostDetailFragment extends Fragment {
         post_delete_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String titleMsg = " 이 게시물에 참여 신청을 하시겠습니까? ";
-//                if(participate){
-//                    titleMsg = " 이 게시물의 참여 신청을 취소하기겠습니까?";
-//                }
+                String titleMsg = " 이 게시물을 삭제하시겠습니까? ";
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle(titleMsg);
-
-//                builder.setView(R.drawable.thank_you);
-
-//                builder.setMessage(" ( 참여 신청들은 모두 거절됩니다. ) ");
 
                 builder.setCancelable(false);
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -103,7 +107,7 @@ public class MyPostDetailFragment extends Fragment {
 
         post_edit_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                ((MainActivity)getActivity()).replaceFragment(MyPostModifyFragment.newInstance());
             }
         });
 
