@@ -36,6 +36,7 @@ public class CategoryFragment extends Fragment {
     private Post_ListItemAdapter adapter;
     public static String category_str = "";
 
+
     private static String TAG = "phptest_LoadActivity";
     private static final String TAG_JSON = "webnautes";
     private static final String TAG_PID = "pid";
@@ -246,9 +247,19 @@ public class CategoryFragment extends Fragment {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     final Post_ListItem item = (Post_ListItem) adapter.getItem(position);
                     Toast.makeText(getActivity(), Integer.toString(item.getPid()), Toast.LENGTH_SHORT).show();
-                    ((MainActivity)getActivity()).replaceFragment(PostDetailFragment.newInstance());
-                    PostDetailFragment.pid = item.getPid();
-                }
+
+
+
+                    if(item.getWriter().equals(MainActivity.userName))//작성자와 해당사용자가 같을경우
+                    {
+                        ((MainActivity) getActivity()).replaceFragment(MyPostDetailFragment.newInstance());
+                        MyPostDetailFragment.pid = item.getPid();
+                    }
+                    else {
+                        ((MainActivity) getActivity()).replaceFragment(PostDetailFragment.newInstance());
+                        PostDetailFragment.pid = item.getPid();
+                    }
+                    }
             });
             }
 
