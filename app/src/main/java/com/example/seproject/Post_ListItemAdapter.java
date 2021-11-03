@@ -1,6 +1,7 @@
 package com.example.seproject;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,14 @@ public class Post_ListItemAdapter extends BaseAdapter {
         title_tv.setText(listItem.getTitle());
         personnel_tv.setText(listItem.getPersonnel());
         day_tv.setText(listItem.getDay());
+
+        if(listItem.getDay().equals("완료") || listItem.getDay().contains("D+")){
+            day_tv.setBackgroundColor(Color.WHITE);
+            day_tv.setTextColor(Color.parseColor("#FF9800"));
+        }
+        else{
+
+        }
 
         return convertView;
     }

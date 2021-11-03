@@ -15,7 +15,7 @@ public class Member_ListItemAdapter extends BaseAdapter {
     private ArrayList<Member_ListItem> items = new ArrayList<Member_ListItem>();
     Context context;
     OnClickListener listener;
-    public static boolean isRating = true;
+    public static boolean isRating = false;
 
 
     public interface OnClickListener{
@@ -63,12 +63,12 @@ public class Member_ListItemAdapter extends BaseAdapter {
             }
         });
 
-        if(isRating){
-            //평가 가능한 상태
-            rating_btn.setVisibility(View.VISIBLE);
+        if(!isRating || MainActivity.userName.equals(listItem.getName())){
+            //평가 불가능한 상태 혹은 자기 자신일 경우
+            rating_btn.setVisibility(View.INVISIBLE);
         }
         else{
-            rating_btn.setVisibility(View.INVISIBLE);
+            rating_btn.setVisibility(View.VISIBLE);
         }
 
         if(listItem.getIsLeader()){

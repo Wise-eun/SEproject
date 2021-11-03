@@ -207,14 +207,11 @@ public class MyPostFragment extends Fragment {
                         int pid = Integer.parseInt(pid_str);
                         post_adapter.addItem(new Post_ListItem(pid,writer, title, "("+userCount + "/"+recruitment+")", Ddays_str,deadline));
 
-
-
-
                         Log.d(TAG, "date = "+date+" Today = "+today);
 
 
                     }
-                    else {
+                    else if(Math.abs(Ddays) < 60){
                         String Ddays_str = "D+";
                         Ddays_str = Ddays_str.concat(Integer.toString(Math.abs(Ddays)));
 
@@ -223,6 +220,13 @@ public class MyPostFragment extends Fragment {
 
 
                         Log.d(TAG, "date = " + date + " Today = " + today);
+
+                    }
+                    else{
+                        String Ddays_str = "완료";
+
+                        int pid = Integer.parseInt(pid_str);
+                        post_adapter.addItem(new Post_ListItem(pid, writer, title, "(" + userCount + "/" + recruitment + ")", Ddays_str, deadline));
 
                     }
 

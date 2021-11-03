@@ -32,7 +32,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class PostCompleteFragment extends Fragment {
     public static int pid; //게시물 ID
@@ -247,6 +251,23 @@ public class PostCompleteFragment extends Fragment {
                     post_local_tv.setText(area);
                     post_content_tv.setText(content);
 
+                    Calendar cal = Calendar.getInstance();
+                    cal.setTime(new Date(System.currentTimeMillis()));
+
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    String today_str = new SimpleDateFormat("yyyy-MM-dd").format(cal.getTime()); // 오늘날짜
+                    Date today = new Date(dateFormat.parse(today_str).getTime()); // 오늘날짜 문자열을 date형식으로 바꿈
+                    Date date = new Date(dateFormat.parse(deadline).getTime()); //deadline 문자열을 date형식으로 바꿈
+
+                    long calculate = date.getTime() - today.getTime();
+                    int Ddays = (int) (calculate / (24 * 60 * 60 * 1000));
+
+                    if(Math.abs(Ddays) >= 60){
+                        Member_ListItemAdapter.isRating = true;
+                    }
+                    else{
+                        Member_ListItemAdapter.isRating = false;
+                    }
 
                     break;
                 }
@@ -255,7 +276,7 @@ public class PostCompleteFragment extends Fragment {
             }
 
 
-        } catch (JSONException e) {
+        } catch (JSONException | ParseException e) {
 
             Log.d(TAG, "showResult : ", e);
         }

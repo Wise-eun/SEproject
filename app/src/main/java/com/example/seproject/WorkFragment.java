@@ -402,7 +402,7 @@ int type =0;
 
 
                         }
-                        else {
+                        else if(Math.abs(Ddays) < 60){
                             String Ddays_str = "D+";
                             Ddays_str = Ddays_str.concat(Integer.toString(Math.abs(Ddays)));
 
@@ -411,6 +411,13 @@ int type =0;
 
 
                             Log.d(TAG, "date = " + date + " Today = " + today);
+
+                        }
+                        else{
+                            String Ddays_str = "완료";
+
+                            int pid = Integer.parseInt(pid_str);
+                            adapter.addItem(new Post_ListItem(pid, writer, title, "(" + userCount + "/" + recruitment + ")", Ddays_str, deadline));
 
                         }
                     }
@@ -519,7 +526,7 @@ int type =0;
 
 
                         }
-                        else {
+                        else if(Math.abs(Ddays) < 60){
                             String Ddays_str = "D+";
                             Ddays_str = Ddays_str.concat(Integer.toString(Math.abs(Ddays)));
 
@@ -528,6 +535,13 @@ int type =0;
 
 
                             Log.d(TAG, "date = " + date + " Today = " + today);
+
+                        }
+                        else{
+                            String Ddays_str = "완료";
+
+                            int pid = Integer.parseInt(pid_str);
+                            adapter.addItem(new Post_ListItem(pid, writer, title, "(" + userCount + "/" + recruitment + ")", Ddays_str, deadline));
 
                         }
 
@@ -551,7 +565,7 @@ int type =0;
 
 
                     try {
-                        if(today.after(transFormat.parse(item.getDeadline())) ){ // deadline이 지난경우
+                        if(today.after(transFormat.parse(item.getDeadline())) ) { // deadline이 지난경우
                             ((MainActivity) getActivity()).replaceFragment(PostCompleteFragment.newInstance());
                             PostCompleteFragment.pid = item.getPid();
                         }

@@ -106,6 +106,7 @@ public class PostDetailFragment extends Fragment {
                 ((MainActivity)getActivity()).replaceFragment(MemberListFragment.newInstance());
                 MemberListFragment.pid = pid;
                 MemberListFragment.writer = post_writer;
+                Member_ListItemAdapter.isRating = false;
             }
         });
 

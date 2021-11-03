@@ -107,6 +107,7 @@ ArrayList<String> request_users= new ArrayList<String>();;
                 ((MainActivity)getActivity()).replaceFragment(MemberListFragment.newInstance());
                 MemberListFragment.pid = pid;
                 MemberListFragment.writer = post_writer;
+                Member_ListItemAdapter.isRating = false;
             }
         });
 
@@ -125,39 +126,30 @@ ArrayList<String> request_users= new ArrayList<String>();;
                     public void onClick(DialogInterface dialog, int id) {
 
 
-                for(int i=0;i<request_users.size();i++) {
+                        for(int i=0;i<request_users.size();i++) {
 
 
-                    Response.Listener<String> responseListener = new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
+                            Response.Listener<String> responseListener = new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
 
+                                }
+                            };
+                            if(i==0) {
+                                requests.add(new MyPostCompleteRequest(3, pid, request_users.get(i), MainActivity.userName, responseListener));
+                            }
+                            else{
+                                requests.add(new MyPostCompleteRequest(2, pid, request_users.get(i), MainActivity.userName, responseListener));
+                            }
                         }
-                    };
-if(i==0) {
-    requests.add(new MyPostCompleteRequest(3, pid, request_users.get(i), MainActivity.userName, responseListener));
 
-
-}
-else{
-    requests.add(new MyPostCompleteRequest(2, pid, request_users.get(i), MainActivity.userName, responseListener));
-
-}
-
-
-
-                }
-                for(int j=0;j<requests.size();j++)
-                        queue.add(requests.get(j));
-
-
+                        for(int j=0;j<requests.size();j++)
+                            queue.add(requests.get(j));
 
                         ((MainActivity)getActivity()).replaceFragment(PostCompleteFragment.newInstance());
                         PostCompleteFragment.pid = pid;
 
                         dialog.cancel();
-
-
 
                     }
                 });
