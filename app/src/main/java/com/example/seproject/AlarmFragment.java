@@ -13,8 +13,13 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,6 +64,23 @@ public class AlarmFragment extends Fragment {
         userID = MainActivity.userID;
         userName = MainActivity.userName;
 
+        Response.Listener<String> responseListener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    boolean success = jsonObject.getBoolean("success");
+                    if (!success)
+                    {// 실패한 경우
+                        Toast.makeText(getActivity(), "오류가 발생했습니다.", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
         adapter = new Alarm_ListItemAdapter(new Alarm_ListItemAdapter.OnDeleteClickListener() {
             @Override
             public void onDelete(View v, int pos, String type) {
@@ -73,6 +95,10 @@ public class AlarmFragment extends Fragment {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
+
+                            AlarmRequest alarmRequest = new AlarmRequest(alarm.getType(), alarm.getPid(), alarm.getSender(), userName, 0, responseListener);
+                            RequestQueue queue = Volley.newRequestQueue(AlarmFragment.this.getActivity());
+                            queue.add(alarmRequest);
                         }
                     });
 
@@ -94,6 +120,10 @@ public class AlarmFragment extends Fragment {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
+
+                            AlarmRequest alarmRequest = new AlarmRequest(alarm.getType(), alarm.getPid(), alarm.getSender(), userName, 1, responseListener);
+                            RequestQueue queue = Volley.newRequestQueue(AlarmFragment.this.getActivity());
+                            queue.add(alarmRequest);
                         }
                     });
 
@@ -104,15 +134,10 @@ public class AlarmFragment extends Fragment {
                         }
                     });
 
-                    builder.show();                }
+                    builder.show();
+                }
             }
         });
-
-//        adapter.addItem(new Alarm_ListItem("User_0901", "개인 프로젝트 해서 포폴 만드...", 0));
-//        adapter.addItem(new Alarm_ListItem("User_0214","초고수 모집합니다.", 1));
-//        adapter.addItem(new Alarm_ListItem("User_0214", "ㄴㄴ 공모전", 2));
-//        adapter.addItem(new Alarm_ListItem("User_0214", "", 3));
-//        adapter.addItem(new Alarm_ListItem("User_0214", "개인 프로젝트 해서 포폴 만드...", 4));
 
         ImageButton trash_btn = (ImageButton)view.findViewById(R.id.trash_btn);
         trash_btn.setOnClickListener(new View.OnClickListener(){
@@ -128,6 +153,23 @@ public class AlarmFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
+
+                        for(int i = 0 ; i<adapter.getCount(); i++){
+                            Alarm_ListItem item = (Alarm_ListItem) adapter.getItem(i);
+                            if(item.getType() == 0){
+                                //sender에게 거절 알림 보내기 request
+                                AlarmRequest alarmRequest = new AlarmRequest(item.getType(), item.getPid(), item.getSender(), userName, 3, responseListener);
+                                //only receiver 족에서 알람 삭제
+                                RequestQueue queue = Volley.newRequestQueue(AlarmFragment.this.getActivity());
+                                queue.add(alarmRequest);
+                            }
+                        }
+
+                        AlarmRequest alarmRequest = new AlarmRequest(-1, -1, "", userName, 2, responseListener);
+                        //only receiver 족에서 알람 삭제
+                        RequestQueue queue = Volley.newRequestQueue(AlarmFragment.this.getActivity());
+                        queue.add(alarmRequest);
+
                     }
                 });
 
@@ -141,6 +183,7 @@ public class AlarmFragment extends Fragment {
                 builder.show();
             }
         });
+
 
 
         AlarmFragment.GetData task = new AlarmFragment.GetData();
@@ -258,10 +301,8 @@ public class AlarmFragment extends Fragment {
                 String title = item.getString(TAG_TITLE);
 
                 if(userName.equals(receiver)){
-                    adapter.addItem(new Alarm_ListItem(sender, title , Integer.parseInt(type)));
+                    adapter.addItem(new Alarm_ListItem(sender, title , Integer.parseInt(type), Integer.parseInt(pid_str)));
                 }
-
-
             }
             listView.setAdapter(adapter);
 

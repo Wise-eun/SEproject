@@ -189,30 +189,22 @@ public class SearchUserFragment extends Fragment {
                 String id = item.getString(TAG_ID);
                 String name = item.getString(TAG_NAME);
 
-search_name = search_et.getText().toString();
-                if (name.equals(search_name)) // 검색하고자 하는 사용자의 이름이 서버에 있는지 확인
+                search_name = search_et.getText().toString();
+                if (name.equals(search_name) && !name.equals(MainActivity.userName)) // 검색하고자 하는 사용자의 이름이 서버에 있는지 확인
                 {
-
-
                     no_user_tv.setVisibility(View.INVISIBLE);
                     search_name = String.copyValueOf(name.toCharArray());//메세지 보낼 사용자 닉네임 복사
                     search_id = String.copyValueOf(id.toCharArray());//메세지 보낼 사용자 아이디 복사
                     user_name_tv.setText(search_name);
 
                     layout.setVisibility(View.VISIBLE);
-break;
+                    break;
                 }
                 else{
                     //검색한 사용자가 없습니다. setText하기.
                     layout.setVisibility(View.INVISIBLE);
                     no_user_tv.setVisibility(View.VISIBLE);
                 }
-                /*
-                HashMap<String, String> hashMap = new HashMap<>();
-
-                hashMap.put(TAG_ID, id);
-                hashMap.put(TAG_NUM, num);
-*/
 
             }
 

@@ -120,13 +120,12 @@ public class MyPostModifyFragment extends Fragment {
 
             PostModifyRequest postModifyRequest = new PostModifyRequest(pid, update_content, responseListener);
             RequestQueue queue = Volley.newRequestQueue(MyPostModifyFragment.this.getActivity());
-                queue.add(postModifyRequest);
+            queue.add(postModifyRequest);
 
 
+            ((MainActivity)getActivity()).replaceFragment(MyPostDetailFragment.newInstance());
+            MyPostDetailFragment.pid = pid;
 
-
-                ((MainActivity)getActivity()).replaceFragment(MyPostDetailFragment.newInstance());
-                MyPostDetailFragment.pid = pid;
             }
         });
 

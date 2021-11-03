@@ -54,12 +54,6 @@ public class MsgListFragment extends Fragment {
         adapter = new Msg_ListItemAdapter();
         userID = MainActivity.userID;
         userName = MainActivity.userName;
-        /*
-        adapter.addItem(new Msg_ListItem("User_name", "아 넵! 010-0000-0000입니다!", "2021-09-23 18:31"));
-        adapter.addItem(new Msg_ListItem("User_2", "인원이 다 차서..! 전화번호 알려주세요ㅎㅎ", "2021-09-23 18:25"));
-        adapter.addItem(new Msg_ListItem("User_non", "저 메시지 답장 좀 부탁드려요...", "2021-09-21 17:30"));
-        adapter.addItem(new Msg_ListItem("User_many", "아 그거 말씀인데요 저는 그렇게 생각한 적이...", "2021-09-21 17:30"));
-*/
 
         write_msg_btn = (ImageButton) view.findViewById(R.id.write_msg_btn);
 
@@ -232,9 +226,6 @@ public class MsgListFragment extends Fragment {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     final Msg_ListItem item = (Msg_ListItem) adapter.getItem(position);
 
-
-
-                    //((MainActivity)getActivity()).getSupportFragmentManager().beginTransaction().replace(R.layout.message_list,   new MsgDetailFragment()).addToBackStack(null).commit();
                     ((MainActivity)getActivity()).replaceFragment(MsgDetailFragment.newInstance()); //화면전환
                     MsgDetailFragment.where_in = 1;
                     targetName = item.getType();
