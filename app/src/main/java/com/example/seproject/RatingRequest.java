@@ -11,11 +11,13 @@ public class RatingRequest extends StringRequest {
     final static private  String URL = "http://steak2121.ivyro.net/rating.php";
     private Map<String,String> map;
 
-    public RatingRequest(String userName, Float rating, Response.Listener<String> listener){
+    public RatingRequest(String sender, String receiver, int pid, Float rating, Response.Listener<String> listener){
         super(Method.POST,URL,listener, null);
 
         map = new HashMap<>();
-        map.put("userName",userName);
+        map.put("sender",sender);
+        map.put("receiver", receiver);
+        map.put("pid", pid+"");
         map.put("rating",rating+"");
     }
     @Override

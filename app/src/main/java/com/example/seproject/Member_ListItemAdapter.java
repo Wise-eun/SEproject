@@ -1,6 +1,7 @@
 package com.example.seproject;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,6 +70,18 @@ public class Member_ListItemAdapter extends BaseAdapter {
         }
         else{
             rating_btn.setVisibility(View.VISIBLE);
+            if(listItem.getIsComplete()){
+                //평가 완료일 경우
+                rating_btn.setBackgroundColor(Color.GRAY);
+                rating_btn.setTextColor(Color.WHITE);
+                rating_btn.setText("완료");
+                rating_btn.setEnabled(false);
+            }
+            else{
+                rating_btn.setBackgroundColor(Color.RED);
+                rating_btn.setTextColor(Color.WHITE);
+                rating_btn.setText("평가");
+            }
         }
 
         if(listItem.getIsLeader()){
@@ -77,6 +90,8 @@ public class Member_ListItemAdapter extends BaseAdapter {
         else{
             team_leader_img.setVisibility(View.INVISIBLE);
         }
+
+
 
         rating_btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){

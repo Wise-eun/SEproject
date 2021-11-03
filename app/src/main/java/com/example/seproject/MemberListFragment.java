@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.BadParcelableException;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,8 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -42,10 +41,19 @@ public class MemberListFragment extends Fragment {
     public static String writer;
 
     private static String TAG = "phptest_LoadActivity";
-    private static final String TAG_JSON2 = "loadTeam";
+    private static final String TAG_JSON = "loadTeam";
+    private static final String TAG_JSON2 = "loadRating";
+
     private static final String TAG_PID = "pid";
-    private static final String TAG_TEAM = "userName";
+    private static final String TAG_PID2 = "pid";
+
+    private static final String TAG_USERNAME = "userName";
+    private static final String TAG_SENDER = "sender";
+    private static final String TAG_RECEIVER = "receiver";
+
     private String mJsonString_team;
+    private String mJsonString_rating;
+
     View view;
 
 
@@ -59,11 +67,15 @@ public class MemberListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-         view = inflater.inflate(R.layout.member_list, container, false);
-         listView = (ListView) view.findViewById(R.id.member_listview);
+        view = inflater.inflate(R.layout.member_list, container, false);
+        listView = (ListView) view.findViewById(R.id.member_listview);
 
-        MemberListFragment.GetData_team task2 = new MemberListFragment.GetData_team();
-        task2.execute("http://steak2121.ivyro.net/loadTeam.php");
+        MemberListFragment.GetData_team task = new MemberListFragment.GetData_team();
+        task.execute("http://steak2121.ivyro.net/loadTeam.php");
+
+        MemberListFragment.GetData_rating task2 = new MemberListFragment.GetData_rating();
+        task2.execute("http://steak2121.ivyro.net/loadRating.php");
+
         return view;
     }
 
@@ -157,12 +169,10 @@ public class MemberListFragment extends Fragment {
 
     }
 
-
-
     private void showResult_team() {
         try {
             JSONObject jsonObject = new JSONObject(mJsonString_team);
-            JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON2);
+            JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
 
             adapter = new Member_ListItemAdapter(new Member_ListItemAdapter.OnClickListener() {
                 @Override
@@ -170,10 +180,12 @@ public class MemberListFragment extends Fragment {
                     Member_ListItem member = (Member_ListItem) adapter.getItem(pos);
                     if(type.equals("name")) {
                         //이름 눌렀을 때 발생시킬 이벤트
-                        ProfileDetailActivity.userName = member.getName();
+                        if(!member.getName().equals(MainActivity.userName)){
+                            ProfileDetailActivity.userName = member.getName();
 
-                        Intent intent = new Intent(getContext(), ProfileDetailActivity.class);
-                        startActivity(intent);
+                            Intent intent = new Intent(getContext(), ProfileDetailActivity.class);
+                            startActivity(intent);
+                        }
                     }
                     else{
                         String userName = member.getName();
@@ -194,31 +206,33 @@ public class MemberListFragment extends Fragment {
                                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {
-                                        try {
-                                            JSONObject jsonObject = new JSONObject(response);
-                                            boolean success = jsonObject.getBoolean("success");
-                                            if (success) {
-                                                Toast.makeText(getActivity(),"평가 완료",Toast.LENGTH_SHORT).show();
-                                            }
-                                            else{
-                                                Toast.makeText(getActivity(),"평가 실패",Toast.LENGTH_SHORT).show();
-                                                return ;
-                                            }
-
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
-                                        }
+//                                        try {
+//                                            JSONObject jsonObject = new JSONObject(response);
+//                                            boolean success = jsonObject.getBoolean("success");
+//                                            if (success) {
+//                                                Toast.makeText(getActivity(),"평가 완료",Toast.LENGTH_SHORT).show();
+//                                            }
+//                                            else{
+//                                                Toast.makeText(getActivity(),"평가 실패",Toast.LENGTH_SHORT).show();
+//                                                return ;
+//                                            }
+//
+//                                        } catch (JSONException e) {
+//                                            e.printStackTrace();
+//                                        }
 
                                     }
                                 };
                                 //서버로 Volley를 이용해서 요청
-                                RatingRequest ratingRequest = new RatingRequest(userName, rating, responseListener);
 
+                                RatingRequest ratingRequest = new RatingRequest(MainActivity.userName, userName, pid, rating, responseListener);
                                 RequestQueue queue = Volley.newRequestQueue(MemberListFragment.this.getActivity());
                                 queue.add(ratingRequest);
 
                                 dialog.cancel();
 
+
+                                listView.setAdapter(adapter);
                             }
                         });
 
@@ -248,16 +262,16 @@ public class MemberListFragment extends Fragment {
                 JSONObject item = jsonArray.getJSONObject(i);
 
                 String pid_str = item.getString(TAG_PID);
-                String userName = item.getString(TAG_TEAM);
+                String userName = item.getString(TAG_USERNAME);
 
                 if(pid_str.equals(Integer.toString(pid))){//pid 같을 경우
 
 //팀원 추가 (닉네임)
                     if(writer.equals(userName)){
-                        adapter.addItem(new Member_ListItem(userName, true));
+                        adapter.addItem(new Member_ListItem(userName, true, true));
                     }
                     else{
-                        adapter.addItem(new Member_ListItem(userName, false));
+                        adapter.addItem(new Member_ListItem(userName, false, true));
                     }
 
                     if(userName.equals(MainActivity.userName))//팀원 이름이랑 내 이름이랑 같을때
@@ -277,5 +291,134 @@ public class MemberListFragment extends Fragment {
         }
 
 
+    }
+
+    private class GetData_rating extends AsyncTask<String, Void, String> {
+        ProgressDialog progressDialog;
+        String errorString = null;
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+/*
+            progressDialog = ProgressDialog.show(v.this,
+                    "Please Wait", null, true, true);
+       */
+        }
+
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            //progressDialog.dismiss();
+
+            Log.d(TAG, "response  team- " + result);
+
+
+            if (result == null) {
+
+
+            } else {
+                mJsonString_rating = result;
+                showResult_rating();
+            }
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String serverURL = "http://steak2121.ivyro.net/loadRating.php";
+
+
+            try {
+
+                URL url = new URL(serverURL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+
+                httpURLConnection.setReadTimeout(5000);
+                httpURLConnection.setConnectTimeout(5000);
+                httpURLConnection.connect();
+
+
+                int responseStatusCode = httpURLConnection.getResponseCode();
+                Log.d(TAG, "response code - " + responseStatusCode);
+
+                InputStream inputStream;
+                if (responseStatusCode == HttpURLConnection.HTTP_OK) {
+                    inputStream = httpURLConnection.getInputStream();
+                } else {
+                    inputStream = httpURLConnection.getErrorStream();
+                }
+
+
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                StringBuilder sb = new StringBuilder();
+                String line;
+
+                while ((line = bufferedReader.readLine()) != null) {
+                    sb.append(line);
+                }
+
+
+                bufferedReader.close();
+
+
+                return sb.toString().trim();
+
+
+            } catch (Exception e) {
+
+                Log.d(TAG, "InsertData: Error ", e);
+                errorString = e.toString();
+
+                return null;
+            }
+
+        }
+
+    }
+
+    private void showResult_rating() {
+        try {
+            JSONObject jsonObject = new JSONObject(mJsonString_rating);
+            JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON2);
+
+            ArrayList<String> receiver_arr = new ArrayList<>();
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+
+                JSONObject item = jsonArray.getJSONObject(i);
+
+                String pid_str = item.optString(TAG_PID2, "no value");
+                String sender = item.optString(TAG_SENDER, "no value");
+                String receiver = item.optString(TAG_RECEIVER, "no value");
+
+                if(sender.equals(MainActivity.userName)){
+                    receiver_arr.add(receiver);
+                }
+            }
+
+            for (int i = 0 ; i<receiver_arr.size(); i++){
+                for (int j = 0; j<adapter.getCount(); j++){
+                    Member_ListItem item = (Member_ListItem) adapter.getItem(j);
+                    if (item.getName().equals(receiver_arr.get(i))){
+                        item.setComplete(false);
+                        break;
+                    }
+                }
+            }
+
+            listView.setAdapter(adapter);
+
+
+        } catch (JSONException  e) {
+
+            Log.d(TAG, "showResult : ", e);
+        }
     }
 }
