@@ -35,10 +35,12 @@ public class MainActivity extends AppCompatActivity {
     private Bundle bundle_toFragment = new Bundle();
     public static String userID;
     public static String userName;
+
     private static String TAG = "phptest_LoadActivity";
     private static final String TAG_JSON = "webnautes";
     private static final String TAG_NAME = "userName";
     private static final String TAG_ID = "userID";
+
     private String mJsonString;
     BottomNavigationView bottomNavigationView;
     HomeFragment homeFragment = new HomeFragment();
@@ -230,12 +232,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 }
-                /*
-                HashMap<String, String> hashMap = new HashMap<>();
 
-                hashMap.put(TAG_ID, id);
-                hashMap.put(TAG_NUM, num);
-*/
 
             }
 

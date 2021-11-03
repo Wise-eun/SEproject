@@ -3,6 +3,7 @@ package com.example.seproject;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +18,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.RequestQueue;
@@ -26,7 +29,9 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -36,18 +41,19 @@ public class PostWriteFragment extends Fragment {
     Spinner post_local_spinner;
     TextView category_name, date_tv, write_personnel_tv,mypost_title_tv;
     Button minus_btn, plus_btn,post_btn;
-    EditText content_et;
+    EditText content_et , post_local_et;
     public static int pid;
     public static String post_local;
     DatePickerDialog datePickerDialog;
     String title;
     String writer;
-    String deadline;
+    String deadline_str;
     int recruitment;
     String area;
     String content;
     String category;
 
+    private AlertDialog dialog;
     public static PostWriteFragment newInstance(){
         return new PostWriteFragment();
     }
@@ -66,12 +72,14 @@ public class PostWriteFragment extends Fragment {
         mypost_title_tv = (EditText)view.findViewById(R.id.mypost_title_tv);
         date_tv = (TextView)view.findViewById(R.id.date_tv);
         post_btn = (Button)view.findViewById(R.id.post_btn);
-
+        post_local_et = (EditText)view.findViewById(R.id.post_local_et);
         category_name.setText(CategoryFragment.category_str);
 
         ArrayAdapter<String> local_adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,local_items);
         local_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         post_local_spinner.setAdapter(local_adapter);
+
+
         post_local_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -114,7 +122,8 @@ public class PostWriteFragment extends Fragment {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                                date_tv.setText(year+"/"+(month+1)+"/"+dayOfMonth);
+
+                              date_tv.setText(year+"/"+(month+1)+"/"+dayOfMonth);
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog.show();
@@ -122,58 +131,87 @@ public class PostWriteFragment extends Fragment {
         });
         post_btn.setOnClickListener(new View.OnClickListener() { //작성버튼을 눌렀을 경우
 
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                pid = CategoryFragment.last_pid+1;
-                writer = MainActivity.userName;
-                title =mypost_title_tv.getText().toString();
-                deadline = date_tv.getText().toString();
-                recruitment = Integer.parseInt(write_personnel_tv.getText().toString());
-                area = post_local;
-                content =content_et.getText().toString();
-                category =CategoryFragment.category_str;
-                Log.d("TAG", "===========================================================") ;
-                Log.d("TAG", "response pid = " + pid);
-                Log.d("TAG", "response writer = " + writer);
-                Log.d("TAG", "response title = " + title);
-                Log.d("TAG", "response deadline = " + deadline);
-                Log.d("TAG", "response recruitment = " + recruitment);
-                Log.d("TAG", "response area = " + area);
-                Log.d("TAG", "response content = " + content);
-                Log.d("TAG", "response category = " + category);
 
-                Response.Listener<String> responseListener = new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success");
-                            if (success) {
 
-                                Toast.makeText(getActivity(),"게시물 작성 완료.",Toast.LENGTH_SHORT).show();
-                                ((MainActivity)getActivity()).replaceFragment(CategoryFragment.newInstance()); //화면전환
+                try {
 
+                    String deadline_str = date_tv.getText().toString();
+                    SimpleDateFormat transFormat = new SimpleDateFormat("yyyy/MM/dd");
+                    Date deadline = transFormat.parse(deadline_str);
+
+                    Date now = new Date();
+
+
+
+
+                if (deadline.before(now)) //선택한 날짜가 현재날짜보다 이전일경우 "마감날짜를 다시 설정하시기 바랍니다."
+                {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(PostWriteFragment.this.getActivity());
+                    dialog = builder.setMessage("마감날짜를 다시 설정하시기 바랍니다.").setPositiveButton("확인", null).create();
+                    dialog.show();
+                    return;
+                }
+                else {
+
+                    pid = CategoryFragment.last_pid + 1;
+                    writer = MainActivity.userName;
+                    title = mypost_title_tv.getText().toString();
+
+                    recruitment = Integer.parseInt(write_personnel_tv.getText().toString());
+                    post_local = post_local + " " + post_local_et.getText().toString();
+                    area = post_local;
+                    content = content_et.getText().toString();
+                    category = CategoryFragment.category_str;
+                    Log.d("TAG", "===========================================================");
+                    Log.d("TAG", "response pid = " + pid);
+                    Log.d("TAG", "response writer = " + writer);
+                    Log.d("TAG", "response title = " + title);
+                    Log.d("TAG", "response deadline = " + deadline);
+                    Log.d("TAG", "response recruitment = " + recruitment);
+                    Log.d("TAG", "response area = " + area);
+                    Log.d("TAG", "response content = " + content);
+                    Log.d("TAG", "response category = " + category);
+
+                    Response.Listener<String> responseListener = new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+                                boolean success = jsonObject.getBoolean("success");
+                                if (success) {
+
+                                    Toast.makeText(getActivity(), "게시물 작성 완료.", Toast.LENGTH_SHORT).show();
+                                    ((MainActivity) getActivity()).replaceFragment(CategoryFragment.newInstance()); //화면전환
+
+                                } else {
+                                    Toast.makeText(getActivity(), "게시물 작성 실패.", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                            else{
-                                Toast.makeText(getActivity(),"게시물 작성 실패.",Toast.LENGTH_SHORT).show();
-                                return ;
-                            }
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
+                    };
 
-                    }
-                };
-
-                //서버로 Volley를 이용해서 요청
-                PostWriteRequest postWriteRequest = new PostWriteRequest(pid, writer,title, deadline, recruitment,area,content,category,responseListener);
-                // public PostWriteRequest(int pid, String writer, String title,String deadline, int recruitment, String area, String content, String category,Response.Listener<Strin
-                RequestQueue queue = Volley.newRequestQueue(PostWriteFragment.this.getActivity());
-                queue.add(postWriteRequest);
+                    //서버로 Volley를 이용해서 요청
+                    PostWriteRequest postWriteRequest = new PostWriteRequest(pid, writer, title, deadline_str, recruitment, area, content, category, responseListener);
+                    // public PostWriteRequest(int pid, String writer, String title,String deadline, int recruitment, String area, String content, String category,Response.Listener<Strin
+                    RequestQueue queue = Volley.newRequestQueue(PostWriteFragment.this.getActivity());
+                    queue.add(postWriteRequest);
 
 
+                }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
+
+
         });
 
 
