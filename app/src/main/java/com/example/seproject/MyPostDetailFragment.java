@@ -179,6 +179,23 @@ ArrayList<String> request_users= new ArrayList<String>();;
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
+
+
+
+                        Response.Listener<String> responseListener = new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+
+                            }
+                        };
+
+
+                        MyPostDeleteRequest myPostDeleteRequest = new MyPostDeleteRequest(pid, MainActivity.userName, responseListener);
+                        RequestQueue queue = Volley.newRequestQueue(MyPostDetailFragment.this.getActivity());
+                        queue.add(myPostDeleteRequest);
+
+                        ((MainActivity)getActivity()).replaceFragment(HomeFragment.newInstance());
+
                         dialog.cancel();
                     }
                 });
