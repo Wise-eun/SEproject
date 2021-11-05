@@ -64,6 +64,8 @@ public class AlarmFragment extends Fragment {
         userID = MainActivity.userID;
         userName = MainActivity.userName;
 
+
+
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -99,6 +101,10 @@ public class AlarmFragment extends Fragment {
                             AlarmRequest alarmRequest = new AlarmRequest(alarm.getType(), alarm.getPid(), alarm.getSender(), userName, 0, responseListener);
                             RequestQueue queue = Volley.newRequestQueue(AlarmFragment.this.getActivity());
                             queue.add(alarmRequest);
+
+                            adapter.deleteItem(pos);
+                            adapter.notifyDataSetChanged();
+
                         }
                     });
 
@@ -110,6 +116,7 @@ public class AlarmFragment extends Fragment {
                     });
 
                     builder.show();
+
                 }
                 else{
                     //거절 눌렀을 때 발생시킬 이벤트
@@ -124,6 +131,11 @@ public class AlarmFragment extends Fragment {
                             AlarmRequest alarmRequest = new AlarmRequest(alarm.getType(), alarm.getPid(), alarm.getSender(), userName, 1, responseListener);
                             RequestQueue queue = Volley.newRequestQueue(AlarmFragment.this.getActivity());
                             queue.add(alarmRequest);
+
+                            adapter.deleteItem(pos);
+                            adapter.notifyDataSetChanged();
+
+
                         }
                     });
 
@@ -135,7 +147,10 @@ public class AlarmFragment extends Fragment {
                     });
 
                     builder.show();
+
                 }
+
+
             }
         });
 
@@ -145,13 +160,12 @@ public class AlarmFragment extends Fragment {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle(" 모든 소식을 삭제하시겠습니까? ");
 
-//                builder.setView(R.drawable.thank_you);
-
                 builder.setMessage(" ( 참여 신청들은 모두 거절됩니다. ) ");
                 builder.setCancelable(false);
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
+
                         dialog.cancel();
 
                         for(int i = 0 ; i<adapter.getCount(); i++){
@@ -170,7 +184,11 @@ public class AlarmFragment extends Fragment {
                         RequestQueue queue = Volley.newRequestQueue(AlarmFragment.this.getActivity());
                         queue.add(alarmRequest);
 
+                        adapter.clearItem();
+                        adapter.notifyDataSetChanged();
+
                     }
+
                 });
 
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -181,9 +199,11 @@ public class AlarmFragment extends Fragment {
                 });
 
                 builder.show();
-            }
-        });
 
+
+            }
+
+        });
 
 
         AlarmFragment.GetData task = new AlarmFragment.GetData();
@@ -282,13 +302,12 @@ public class AlarmFragment extends Fragment {
 
     }
 
-
-
-
     private void showResult() {
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
+
+            adapter.clearItem();
 
             for (int i = jsonArray.length()-1; i >= 0 ; i--) {
 

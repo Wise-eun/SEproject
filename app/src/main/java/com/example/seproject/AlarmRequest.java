@@ -22,7 +22,7 @@ public class AlarmRequest  extends StringRequest {
         map.put("type",type+"");
         map.put("pid",pid+"");
         map.put("sender",sender);
-        map.put("writer",receiver);
+        map.put("receiver",receiver);
         map.put("kinds", kinds+"");
 
     }

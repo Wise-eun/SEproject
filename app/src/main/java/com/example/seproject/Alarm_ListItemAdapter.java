@@ -16,6 +16,7 @@ public class Alarm_ListItemAdapter extends BaseAdapter {
     private ArrayList<Alarm_ListItem> items = new ArrayList<Alarm_ListItem>();
     private OnDeleteClickListener listener;
 
+
     public interface OnDeleteClickListener{
         void onDelete(View v, int pos, String type);
     }
@@ -103,4 +104,11 @@ public class Alarm_ListItemAdapter extends BaseAdapter {
     public void addItem(Alarm_ListItem item){
         items.add(item);
     }
+
+    public void clearItem() {items.clear();}
+
+    public void deleteItem(int pos){
+        items.remove(pos);
+    }
+
 }
