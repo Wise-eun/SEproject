@@ -110,6 +110,10 @@ public class PostWriteFragment extends Fragment {
             }
         });
 
+        Date now = new Date();
+        SimpleDateFormat transFormat = new SimpleDateFormat("yyyy/MM/dd");
+
+        date_tv.setText(transFormat.format(now));
         date_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
