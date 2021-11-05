@@ -187,9 +187,9 @@ public class JoinActivity  extends AppCompatActivity implements Serializable {
                             if (success) {
 
                                 AlertDialog.Builder builder = new AlertDialog.Builder(JoinActivity.this);
-                                dialog = builder.setMessage("사용할 수 있는 아이디입니다.").setPositiveButton("확인", null).create();
+                                dialog = builder.setMessage("사용할 수 있는 닉네임입니다.").setPositiveButton("확인", null).create();
                                 dialog.show();
-                                //name_insert.setEnabled(false); //닉네임값 고정
+                                name_insert.setEnabled(false); //닉네임값 고정
                                 validate2 = true; //검증 완료
 
                             }

@@ -569,9 +569,13 @@ int type =0;
                             ((MainActivity) getActivity()).replaceFragment(PostCompleteFragment.newInstance());
                             PostCompleteFragment.pid = item.getPid();
                         }
-                        else{ // 현재 모집중인 상태
+                        else if (item.getWriter().equals(MainActivity.userName)){ // 현재 모집중인 상태
                             ((MainActivity) getActivity()).replaceFragment(MyPostDetailFragment.newInstance());
                             MyPostDetailFragment.pid = item.getPid();
+                        }
+                        else{
+                            ((MainActivity) getActivity()).replaceFragment(PostDetailFragment.newInstance());
+                            PostDetailFragment.pid = item.getPid();
                         }
 
 

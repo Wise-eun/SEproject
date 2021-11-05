@@ -173,14 +173,12 @@ public class AlarmFragment extends Fragment {
                             if(item.getType() == 0){
                                 //sender에게 거절 알림 보내기 request
                                 AlarmRequest alarmRequest = new AlarmRequest(item.getType(), item.getPid(), item.getSender(), userName, 3, responseListener);
-                                //only receiver 족에서 알람 삭제
                                 RequestQueue queue = Volley.newRequestQueue(AlarmFragment.this.getActivity());
                                 queue.add(alarmRequest);
                             }
                         }
 
                         AlarmRequest alarmRequest = new AlarmRequest(-1, -1, "", userName, 2, responseListener);
-                        //only receiver 족에서 알람 삭제
                         RequestQueue queue = Volley.newRequestQueue(AlarmFragment.this.getActivity());
                         queue.add(alarmRequest);
 
