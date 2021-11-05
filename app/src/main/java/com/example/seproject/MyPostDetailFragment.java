@@ -126,25 +126,31 @@ ArrayList<String> request_users= new ArrayList<String>();;
                     public void onClick(DialogInterface dialog, int id) {
 
 
+                        Response.Listener<String> responseListener = new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+
+                            }
+                        };
+
+
+                        MyPostCompleteRequest myPostCompleteRequest = new MyPostCompleteRequest(3, pid, "", MainActivity.userName, responseListener);
+                        RequestQueue queue = Volley.newRequestQueue(MyPostDetailFragment.this.getActivity());
+                        queue.add(myPostCompleteRequest);
+
                         for(int i=0;i<request_users.size();i++) {
 
 
-                            Response.Listener<String> responseListener = new Response.Listener<String>() {
-                                @Override
-                                public void onResponse(String response) {
 
-                                }
-                            };
-                            if(i==0) {
-                                requests.add(new MyPostCompleteRequest(3, pid, request_users.get(i), MainActivity.userName, responseListener));
-                            }
-                            else{
-                                requests.add(new MyPostCompleteRequest(2, pid, request_users.get(i), MainActivity.userName, responseListener));
-                            }
+
+                                myPostCompleteRequest = new MyPostCompleteRequest(2, pid, request_users.get(i), MainActivity.userName, responseListener);
+                                queue = Volley.newRequestQueue(MyPostDetailFragment.this.getActivity());
+                                queue.add(myPostCompleteRequest);
+
+
                         }
 
-                        for(int j=0;j<requests.size();j++)
-                            queue.add(requests.get(j));
+
 
                         ((MainActivity)getActivity()).replaceFragment(PostCompleteFragment.newInstance());
                         PostCompleteFragment.pid = pid;

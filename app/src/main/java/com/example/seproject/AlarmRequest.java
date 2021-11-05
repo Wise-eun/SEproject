@@ -26,6 +26,8 @@ public class AlarmRequest  extends StringRequest {
         map.put("kinds", kinds+"");
 
     }
+
+
     @Override
     protected Map<String, String> getParams() throws AuthFailureError {
         return map;

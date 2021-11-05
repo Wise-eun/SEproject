@@ -75,6 +75,9 @@ int type =0;
         radio_group = (RadioGroup) view.findViewById(R.id.radio_group);
         radio_group.setOnCheckedChangeListener(radioGroupButtonChangeListener);
 
+
+        pids = new ArrayList<String>();
+
         WorkFragment.GetData_team task2 = new WorkFragment.GetData_team();
         task2.execute("http://steak2121.ivyro.net/loadTeam.php");
 
