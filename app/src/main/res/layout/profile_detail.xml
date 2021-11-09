@@ -15,9 +15,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
             android:text="프로필 보기"
+            android:fontFamily="@font/notosanskrregular"
+            android:layout_marginBottom="-10dp"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -29,9 +30,10 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:layout_width="400dp"
-            android:layout_height="2dp"
-            android:layout_margin="10dp"
+            android:layout_width="412dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/dark_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -66,6 +68,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="User_name"
+                    android:fontFamily="@font/notosanskrregular"
+                    android:includeFontPadding="false"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     tools:layout_editor_absoluteX="157dp"
@@ -78,6 +82,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:text="직업/학교/지역"
+                    android:fontFamily="@font/notosanskrregular"
+                    android:includeFontPadding="false"
                     tools:layout_editor_absoluteX="157dp"
                     tools:layout_editor_absoluteY="57dp" />
 
@@ -85,9 +91,12 @@
                     android:id="@+id/send_msg_btn"
                     android:layout_width="130dp"
                     android:layout_height="38dp"
-                    android:background="@drawable/round_btn"
+                    android:background="#FF7C01"
                     android:text="메시지 보내기"
+                    android:fontFamily="@font/notosanskrregular"
+                    android:includeFontPadding="false"
                     android:textAllCaps="false"
+                    android:textColor="@color/white"
                     tools:layout_editor_absoluteX="157dp"
                     tools:layout_editor_absoluteY="78dp" />
             </LinearLayout>
@@ -103,8 +112,10 @@
 
             <TextView
                 android:id="@+id/rating_tv"
-                android:layout_width="40dp"
+                android:layout_width="50dp"
                 android:layout_height="40dp"
+                android:fontFamily="@font/notosanskrblack"
+                android:includeFontPadding="false"
                 android:text="3.9"
                 android:textSize="26sp"
                 android:textStyle="bold"
@@ -114,20 +125,25 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/line"
             android:layout_width="400dp"
-            android:layout_height="2dp"
-            android:layout_margin="10dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/dark_gray"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"></TextView>
+            app:layout_constraintStart_toStartOf="parent"
+            ></TextView>
 
         <TextView
             android:id="@+id/self_intro_tv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/notosanskrregular"
+            android:includeFontPadding="false"
             android:text="저는 영남대 컴공에 재학중이구여 할 수 있는 언어는 한국어 젤 잘해여ㅋ 이런 저라도 받아주시겠어여? 신청 거절하면 미오미오!"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/line" />
     </LinearLayout>

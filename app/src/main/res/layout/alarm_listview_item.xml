@@ -2,14 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
     <LinearLayout
         android:id="@+id/linearLayout5"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/member_image"
@@ -22,9 +22,12 @@
         <TextView
             android:id="@+id/content_tv"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/notosanskrregular"
             android:gravity="center_vertical"
+            android:includeFontPadding="false"
             android:text="User_1님이 [개인 프로젝트 해서 포폴 만드...]글에 참여 신청을 하였습니다."
             android:textColor="#000000"
             android:textSize="18dp"
@@ -35,77 +38,85 @@
     <Button
         android:id="@+id/accept_btn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#FF9800"
-        android:shadowColor="#FF9800"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/any_button_round"
+        android:backgroundTint="#ff7c01"
+        android:shadowColor="#FF7C01"
         android:text="수락"
+        android:fontFamily="@font/notosanskrregular"
+        android:includeFontPadding="false"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
 
     <Button
         android:id="@+id/refuse_btn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/gray"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/any_button_round"
+        android:backgroundTint="@color/gray"
         android:shadowColor="#FF9800"
         android:text="거절"
+        android:fontFamily="@font/notosanskrregular"
+        android:includeFontPadding="false"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/accept_btn"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
 
-<!--        <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="120dp"-->
-<!--        android:orientation="vertical">-->
+    <!--        <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="120dp"-->
+    <!--        android:orientation="vertical">-->
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal">-->
-
-
-
-<!--        </LinearLayout>-->
-
-<!--        <Button-->
-<!--            android:id="@+id/accept_btn"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginLeft="200dp"-->
-<!--            android:background="#FF9800"-->
-<!--            android:shadowColor="#FF9800"-->
-<!--            android:text="수락"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="20sp" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/refuse_btn"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginLeft="10dp"-->
-<!--            android:background="@color/gray"-->
-<!--            android:shadowColor="#FF9800"-->
-<!--            android:text="거절"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textSize="20sp" />-->
-
-        <!--        <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:layout_marginTop="10dp">-->
-
-<!--            -->
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:orientation="horizontal">-->
 
 
-<!--        </LinearLayout>-->
+    <!--        </LinearLayout>-->
+
+    <!--        <Button-->
+    <!--            android:id="@+id/accept_btn"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginLeft="200dp"-->
+    <!--            android:background="#FF9800"-->
+    <!--            android:shadowColor="#FF9800"-->
+    <!--            android:text="수락"-->
+    <!--            android:textColor="@color/white"-->
+    <!--            android:textSize="20sp" />-->
+
+    <!--        <Button-->
+    <!--            android:id="@+id/refuse_btn"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginLeft="10dp"-->
+    <!--            android:background="@color/gray"-->
+    <!--            android:shadowColor="#FF9800"-->
+    <!--            android:text="거절"-->
+    <!--            android:textColor="@color/black"-->
+    <!--            android:textSize="20sp" />-->
+
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:orientation="horizontal"-->
+    <!--            android:layout_marginTop="10dp">-->
+
+    <!--            -->
 
 
-<!--    </LinearLayout>-->
+    <!--        </LinearLayout>-->
 
+
+    <!--    </LinearLayout>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,14 +7,16 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:layout_width="330dp"
+        android:layout_width="320dp"
         android:layout_height="60dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
 
         <ImageView
             android:id="@+id/member_image"
-            android:layout_width="60dp"
+            android:layout_width="61dp"
             android:layout_height="60dp"
+            android:layout_marginLeft="20dp"
             app:srcCompat="@drawable/ic_round_account_circle_24"
             tools:layout_editor_absoluteX="36dp"
             tools:layout_editor_absoluteY="26dp" />
@@ -27,17 +29,23 @@
             <TextView
                 android:id="@+id/name_tv"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/notosanskrregular"
+                android:layout_gravity="center_vertical"
+                android:includeFontPadding="false"
                 android:text="User_1"
                 android:textColor="#000000"
-                android:textSize="22dp" />
+                android:textSize="20dp" />
 
             <ImageView
                 android:id="@+id/team_leader_img"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_marginLeft="5dp"
                 android:layout_marginTop="20dp"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_marginBottom="100dp"
                 app:srcCompat="@drawable/ic_baseline_shield_24" />
 
         </LinearLayout>
@@ -47,13 +55,18 @@
 
     <Button
         android:id="@+id/rating_btn"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#FF9800"
-        android:shadowColor="#FF9800"
+        android:layout_width="71dp"
+        android:layout_height="34dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/any_button_round"
+        android:backgroundTint="#ff7c01"
+        android:fontFamily="@font/notosanskrregular"
+        android:includeFontPadding="false"
+        android:shadowColor="#FF7C01"
         android:text="평가"
         android:textColor="@color/white"
-        android:textSize="24sp" />
+        android:textSize="18sp" />
 
 
 </LinearLayout>

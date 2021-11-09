@@ -9,29 +9,31 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
         android:text="회원가입"
+        android:fontFamily="@font/notosanskrregular"
+        android:layout_marginBottom="-10dp"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.059"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.008" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/write_personnel_tv2"
-        android:layout_width="400dp"
+        android:layout_width="417dp"
         android:layout_height="2dp"
-        android:layout_marginTop="56dp"
         android:background="@color/dark_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.078" />
 
     <EditText
         android:id="@+id/pwd_insert_join_et"
@@ -76,15 +78,13 @@
         android:id="@+id/pwd_check_insert_et"
         android:layout_width="206dp"
         android:layout_height="42dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="324dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.092"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pwd_insert_join_et"
+        app:layout_constraintVertical_bias="0.082"
+        tools:layout_editor_absoluteX="149dp" />
 
     <EditText
         android:id="@+id/name_insert_et"
