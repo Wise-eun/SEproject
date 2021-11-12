@@ -93,11 +93,11 @@ public class ProfileEditFragment extends Fragment {
         edit_btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
 
-user_school = schcool_insert_et.getText().toString();
-user_local = user_local + " " + local_insert_et.getText().toString();
-//user_country.concat(local_insert_et.getText().toString());
-user_school = schcool_insert_et.getText().toString();
-                user_local = user_local + " " + local_insert_et.getText().toString();
+        user_school = schcool_insert_et.getText().toString();
+        user_local = user_local + " " + local_insert_et.getText().toString();
+
+        user_school = schcool_insert_et.getText().toString();
+
 
 
                 //새로운 자기소개로 업데이트 해줘야함..
