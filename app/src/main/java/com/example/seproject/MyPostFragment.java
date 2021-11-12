@@ -32,7 +32,6 @@ public class MyPostFragment extends Fragment {
     ListView listView;
     Post_ListItemAdapter post_adapter;
 
-
     private static String TAG = "phptest_LoadActivity";
     private static final String TAG_JSON = "webnautes";
     private static final String TAG_PID = "pid";
@@ -47,8 +46,6 @@ public class MyPostFragment extends Fragment {
     private String mJsonString;
 
 
-
-
     public MyPostFragment(){}
     public static MyPostFragment newInstance(){
         return new MyPostFragment();
@@ -60,16 +57,11 @@ public class MyPostFragment extends Fragment {
         listView = (ListView) view.findViewById(R.id.post_listview);
         post_adapter = new Post_ListItemAdapter();
 
-
-
         MyPostFragment.GetData_post task = new MyPostFragment.GetData_post();
         task.execute("http://steak2121.ivyro.net/loadPost.php");
 
-
-
         return view;
     }
-
 
 
     ////data Load Post
@@ -78,30 +70,17 @@ public class MyPostFragment extends Fragment {
         ProgressDialog progressDialog;
         String errorString = null;
 
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-/*
-            progressDialog = ProgressDialog.show(v.this,
-                    "Please Wait", null, true, true);
-       */
         }
-
 
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            //progressDialog.dismiss();
-
-            Log.d(TAG, "response  - " + result);
-
-
-            if (result == null) {
-
-
-            } else {
+            if (result == null) { }
+            else {
                 mJsonString = result;
                 showResult_post();
             }
@@ -112,20 +91,16 @@ public class MyPostFragment extends Fragment {
 
             String serverURL = "http://steak2121.ivyro.net/loadPost.php";
 
-
             try {
 
                 URL url = new URL(serverURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 
-
                 httpURLConnection.setReadTimeout(5000);
                 httpURLConnection.setConnectTimeout(5000);
                 httpURLConnection.connect();
 
-
                 int responseStatusCode = httpURLConnection.getResponseCode();
-                Log.d(TAG, "response code - " + responseStatusCode);
 
                 InputStream inputStream;
                 if (responseStatusCode == HttpURLConnection.HTTP_OK) {
@@ -133,7 +108,6 @@ public class MyPostFragment extends Fragment {
                 } else {
                     inputStream = httpURLConnection.getErrorStream();
                 }
-
 
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -145,26 +119,18 @@ public class MyPostFragment extends Fragment {
                     sb.append(line);
                 }
 
-
                 bufferedReader.close();
 
-
                 return sb.toString().trim();
-
 
             } catch (Exception e) {
 
                 Log.d(TAG, "InsertData: Error ", e);
                 errorString = e.toString();
-
                 return null;
             }
-
         }
-
     }
-
-
 
 
     private void showResult_post() {
@@ -207,9 +173,6 @@ public class MyPostFragment extends Fragment {
                         int pid = Integer.parseInt(pid_str);
                         post_adapter.addItem(new Post_ListItem(pid,writer, title, "("+userCount + "/"+recruitment+")", Ddays_str,deadline));
 
-                        Log.d(TAG, "date = "+date+" Today = "+today);
-
-
                     }
                     else if(Math.abs(Ddays) < 60){
                         String Ddays_str = "D+";
@@ -217,9 +180,6 @@ public class MyPostFragment extends Fragment {
 
                         int pid = Integer.parseInt(pid_str);
                         post_adapter.addItem(new Post_ListItem(pid, writer, title, "(" + userCount + "/" + recruitment + ")", Ddays_str, deadline));
-
-
-                        Log.d(TAG, "date = " + date + " Today = " + today);
 
                     }
                     else{
@@ -229,20 +189,14 @@ public class MyPostFragment extends Fragment {
                         post_adapter.addItem(new Post_ListItem(pid, writer, title, "(" + userCount + "/" + recruitment + ")", Ddays_str, deadline));
 
                     }
-
-
-
                 }
 
-
                 listView.setAdapter(post_adapter);
-
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @SuppressLint("ResourceType")
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         final Post_ListItem item = (Post_ListItem) post_adapter.getItem(position);
-
 
                         try {
                             Calendar cal = Calendar.getInstance();
@@ -261,24 +215,14 @@ public class MyPostFragment extends Fragment {
                                 MyPostDetailFragment.pid = item.getPid();
                             }
 
-
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
                     }
                 });
             }
-
-
         } catch (JSONException | ParseException e) {
-
             Log.d(TAG, "showResult : ", e);
         }
-
-
     }
-
-
-
-
 }

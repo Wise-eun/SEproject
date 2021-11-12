@@ -113,8 +113,6 @@ int type =0;
             WorkFragment.GetData_post task = new WorkFragment.GetData_post();
             task.execute("http://steak2121.ivyro.net/loadPost.php");
 
-
-
         }
         else if(i == R.id.radio_button_complete)
         {
@@ -124,15 +122,13 @@ int type =0;
             WorkFragment.GetData_post task = new WorkFragment.GetData_post();
             task.execute("http://steak2121.ivyro.net/loadPost.php");
 
-
-
         }
     }
 
     };
 
-//////////////////////////////////////////TEAM 정보 불러오기
 
+//////////////////////////////////////////TEAM 정보 불러오기
 
 
     private class GetData_team extends AsyncTask<String, Void, String> {

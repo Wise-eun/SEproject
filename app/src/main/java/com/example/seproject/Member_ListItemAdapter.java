@@ -92,14 +92,11 @@ public class Member_ListItemAdapter extends BaseAdapter {
         }
 
 
-
         rating_btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 listener.onClick(view, position, "rating");
             }
         });
-
-
 
         return convertView;
     }

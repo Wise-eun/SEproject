@@ -56,19 +56,13 @@ public class MyPostDetailFragment extends Fragment {
     private String mJsonString_request;
     //요청테이블 getData에 필요한 친구
     private static final String TAG_REQUEST = "userName";
-ArrayList<String> request_users= new ArrayList<String>();;
+    ArrayList<String> request_users= new ArrayList<String>();;
     //팀원테이블 getData에 필요한 친구
     private static final String TAG_TEAM = "userName";
 
-    int whereIn;
-
-    TextView category_name;
-    TextView post_name_tv;
-    TextView post_personnel_tv;
-    TextView post_date_tv;
-    TextView post_local_tv;
-    TextView post_content_tv;
+    TextView category_name, post_name_tv, post_personnel_tv, post_date_tv, post_local_tv, post_content_tv;
     RecyclerView post_member_listview;
+    Button post_complete_btn, post_delete_btn, post_edit_btn;
 
     String post_writer;
 
@@ -86,7 +80,6 @@ ArrayList<String> request_users= new ArrayList<String>();;
 
         View view = inflater.inflate(R.layout.mypost_detail, container, false);
 
-
         category_name = (TextView) view.findViewById(R.id.category_name);
         post_name_tv = (TextView) view.findViewById(R.id.post_name_tv);
         post_personnel_tv = (TextView) view.findViewById(R.id.post_personnel_tv);
@@ -95,11 +88,10 @@ ArrayList<String> request_users= new ArrayList<String>();;
         post_content_tv = (TextView) view.findViewById(R.id.post_content_tv);
         post_member_listview = (RecyclerView)view.findViewById(R.id.post_member_listview);
 
-
         request_users = new ArrayList<String>();
-        Button post_complete_btn = view.findViewById(R.id.post_complete_btn);
-        Button post_delete_btn = view.findViewById(R.id.post_delete_btn);
-        Button post_edit_btn = view.findViewById(R.id.post_edit_btn);
+        post_complete_btn = view.findViewById(R.id.post_complete_btn);
+        post_delete_btn = view.findViewById(R.id.post_delete_btn);
+        post_edit_btn = view.findViewById(R.id.post_edit_btn);
 
         ImageButton member_list_btn = (ImageButton)view.findViewById(R.id.member_list_btn);
         member_list_btn.setOnClickListener(new View.OnClickListener(){
@@ -125,7 +117,6 @@ ArrayList<String> request_users= new ArrayList<String>();;
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
 
-
                         Response.Listener<String> responseListener = new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -133,24 +124,17 @@ ArrayList<String> request_users= new ArrayList<String>();;
                             }
                         };
 
-
                         MyPostCompleteRequest myPostCompleteRequest = new MyPostCompleteRequest(3, pid, "", MainActivity.userName, responseListener);
                         RequestQueue queue = Volley.newRequestQueue(MyPostDetailFragment.this.getActivity());
                         queue.add(myPostCompleteRequest);
 
                         for(int i=0;i<request_users.size();i++) {
 
-
-
-
                                 myPostCompleteRequest = new MyPostCompleteRequest(2, pid, request_users.get(i), MainActivity.userName, responseListener);
                                 queue = Volley.newRequestQueue(MyPostDetailFragment.this.getActivity());
                                 queue.add(myPostCompleteRequest);
 
-
                         }
-
-
 
                         ((MainActivity)getActivity()).replaceFragment(PostCompleteFragment.newInstance());
                         PostCompleteFragment.pid = pid;
@@ -172,7 +156,6 @@ ArrayList<String> request_users= new ArrayList<String>();;
         });
 
 
-
         post_delete_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -186,15 +169,10 @@ ArrayList<String> request_users= new ArrayList<String>();;
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
 
-
-
                         Response.Listener<String> responseListener = new Response.Listener<String>() {
                             @Override
-                            public void onResponse(String response) {
-
-                            }
+                            public void onResponse(String response) {}
                         };
-
 
                         MyPostDeleteRequest myPostDeleteRequest = new MyPostDeleteRequest(pid, MainActivity.userName, responseListener);
                         RequestQueue queue = Volley.newRequestQueue(MyPostDetailFragment.this.getActivity());
@@ -225,17 +203,14 @@ ArrayList<String> request_users= new ArrayList<String>();;
         });
 
 
-
         MyPostDetailFragment.GetData_post task = new MyPostDetailFragment.GetData_post();
         task.execute("http://steak2121.ivyro.net/loadPost.php");
-
 
         MyPostDetailFragment.GetData_team task2 = new MyPostDetailFragment.GetData_team();
         task2.execute("http://steak2121.ivyro.net/loadTeam.php");
 
         MyPostDetailFragment.GetData_request task3= new MyPostDetailFragment.GetData_request();
         task3.execute("http://steak2121.ivyro.net/loadRequest.php");
-
 
         return view;
     }
@@ -250,10 +225,6 @@ ArrayList<String> request_users= new ArrayList<String>();;
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-/*
-            progressDialog = ProgressDialog.show(v.this,
-                    "Please Wait", null, true, true);
-       */
         }
 
 
@@ -261,15 +232,8 @@ ArrayList<String> request_users= new ArrayList<String>();;
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            //progressDialog.dismiss();
-
-            Log.d(TAG, "response  - " + result);
-
-
-            if (result == null) {
-
-
-            } else {
+            if (result == null) {}
+            else {
                 mJsonString = result;
                 showResult_post();
             }
@@ -280,20 +244,16 @@ ArrayList<String> request_users= new ArrayList<String>();;
 
             String serverURL = "http://steak2121.ivyro.net/loadPost.php";
 
-
             try {
 
                 URL url = new URL(serverURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 
-
                 httpURLConnection.setReadTimeout(5000);
                 httpURLConnection.setConnectTimeout(5000);
                 httpURLConnection.connect();
 
-
                 int responseStatusCode = httpURLConnection.getResponseCode();
-                Log.d(TAG, "response code - " + responseStatusCode);
 
                 InputStream inputStream;
                 if (responseStatusCode == HttpURLConnection.HTTP_OK) {
@@ -301,7 +261,6 @@ ArrayList<String> request_users= new ArrayList<String>();;
                 } else {
                     inputStream = httpURLConnection.getErrorStream();
                 }
-
 
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -313,12 +272,9 @@ ArrayList<String> request_users= new ArrayList<String>();;
                     sb.append(line);
                 }
 
-
                 bufferedReader.close();
 
-
                 return sb.toString().trim();
-
 
             } catch (Exception e) {
 
@@ -327,12 +283,8 @@ ArrayList<String> request_users= new ArrayList<String>();;
 
                 return null;
             }
-
         }
-
     }
-
-
 
 
 
@@ -356,68 +308,44 @@ ArrayList<String> request_users= new ArrayList<String>();;
                 String userCount = item.getString(TAG_COUNT);
 
 
-                if(pid_str.equals(Integer.toString(pid))){//pid 같을 경우
+                if(pid_str.equals(Integer.toString(pid))) {//pid 같을 경우
 
                     post_writer = writer;
                     category_name.setText(category);
-                    post_name_tv .setText(title);
-                    post_personnel_tv.setText("("+userCount + "/"+recruitment+")");
-                    post_date_tv .setText(deadline);
+                    post_name_tv.setText(title);
+                    post_personnel_tv.setText("(" + userCount + "/" + recruitment + ")");
+                    post_date_tv.setText(deadline);
                     post_local_tv.setText(area);
                     post_content_tv.setText(content);
-                    //  post_member_listview = (RecyclerView)view.findViewById(R.id.post_member_listview);
-
 
                     break;
                 }
-
-
             }
-
 
         } catch (JSONException e) {
 
             Log.d(TAG, "showResult : ", e);
         }
-
-
     }
 
 
-
-
 //////////////////////////////////////////TEAM 정보 불러오기
-
-
 
     private class GetData_team extends AsyncTask<String, Void, String> {
         ProgressDialog progressDialog;
         String errorString = null;
 
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-/*
-            progressDialog = ProgressDialog.show(v.this,
-                    "Please Wait", null, true, true);
-       */
         }
-
 
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            //progressDialog.dismiss();
-
-            Log.d(TAG, "response  team- " + result);
-
-
-            if (result == null) {
-
-
-            } else {
+            if (result == null) {}
+            else {
                 mJsonString_team = result;
                 showResult_team();
             }
@@ -434,14 +362,11 @@ ArrayList<String> request_users= new ArrayList<String>();;
                 URL url = new URL(serverURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 
-
                 httpURLConnection.setReadTimeout(5000);
                 httpURLConnection.setConnectTimeout(5000);
                 httpURLConnection.connect();
 
-
                 int responseStatusCode = httpURLConnection.getResponseCode();
-                Log.d(TAG, "response code - " + responseStatusCode);
 
                 InputStream inputStream;
                 if (responseStatusCode == HttpURLConnection.HTTP_OK) {
@@ -449,7 +374,6 @@ ArrayList<String> request_users= new ArrayList<String>();;
                 } else {
                     inputStream = httpURLConnection.getErrorStream();
                 }
-
 
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -461,12 +385,9 @@ ArrayList<String> request_users= new ArrayList<String>();;
                     sb.append(line);
                 }
 
-
                 bufferedReader.close();
 
-
                 return sb.toString().trim();
-
 
             } catch (Exception e) {
 
@@ -475,13 +396,8 @@ ArrayList<String> request_users= new ArrayList<String>();;
 
                 return null;
             }
-
         }
-
     }
-
-
-
 
 
     private void showResult_team() {
@@ -496,7 +412,6 @@ ArrayList<String> request_users= new ArrayList<String>();;
 
             ArrayList<PostMember_ListItem> items = new ArrayList<PostMember_ListItem>();
 
-
             for (int i = 0; i < jsonArray.length(); i++) {
 
                 JSONObject item = jsonArray.getJSONObject(i);
@@ -505,8 +420,7 @@ ArrayList<String> request_users= new ArrayList<String>();;
                 String userName = item.getString(TAG_TEAM);
 
                 if(pid_str.equals(Integer.toString(pid))){//pid 같을 경우
-
-//팀원 추가 (닉네임)
+                    //팀원 추가 (닉네임)
                     //post_member_listview.add
                     if(post_writer.equals(userName)){
                         items.add(new PostMember_ListItem(userName, true));
@@ -515,55 +429,34 @@ ArrayList<String> request_users= new ArrayList<String>();;
                         items.add(new PostMember_ListItem(userName, false));
                     }
                 }
-
-
             }
 
             adapter.setPostMemberItems(items);
-
 
         } catch (JSONException  e) {
 
             Log.d(TAG, "showResult : ", e);
         }
-
-
     }
 
 
-
     //////////////////////////////////////////REQUEST 정보 불러오기
-
-
 
     private class GetData_request extends AsyncTask<String, Void, String> {
         ProgressDialog progressDialog;
         String errorString = null;
 
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-/*
-            progressDialog = ProgressDialog.show(v.this,
-                    "Please Wait", null, true, true);
-       */
         }
-
 
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            //progressDialog.dismiss();
-
-            Log.d(TAG, "response  request- " + result);
-
-
-            if (result == null) {
-
-
-            } else {
+            if (result == null) {}
+            else {
                 mJsonString_request = result;
                 showResult_request();
             }
@@ -574,20 +467,16 @@ ArrayList<String> request_users= new ArrayList<String>();;
 
             String serverURL = "http://steak2121.ivyro.net/loadRequest.php";
 
-
             try {
 
                 URL url = new URL(serverURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 
-
                 httpURLConnection.setReadTimeout(5000);
                 httpURLConnection.setConnectTimeout(5000);
                 httpURLConnection.connect();
 
-
                 int responseStatusCode = httpURLConnection.getResponseCode();
-                Log.d(TAG, "response code - " + responseStatusCode);
 
                 InputStream inputStream;
                 if (responseStatusCode == HttpURLConnection.HTTP_OK) {
@@ -595,7 +484,6 @@ ArrayList<String> request_users= new ArrayList<String>();;
                 } else {
                     inputStream = httpURLConnection.getErrorStream();
                 }
-
 
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -610,9 +498,7 @@ ArrayList<String> request_users= new ArrayList<String>();;
 
                 bufferedReader.close();
 
-
                 return sb.toString().trim();
-
 
             } catch (Exception e) {
 
@@ -621,9 +507,7 @@ ArrayList<String> request_users= new ArrayList<String>();;
 
                 return null;
             }
-
         }
-
     }
 
     private void showResult_request() {
@@ -640,24 +524,14 @@ ArrayList<String> request_users= new ArrayList<String>();;
                 String userName = item.getString(TAG_TEAM);
 
                 if(pid_str.equals(Integer.toString(pid))){//pid 같을 경우
-
                         request_users.add(userName); //요청한 사람들 Name 가져와서 배열에 저장함
-
                 }
 
-
             }
-            Log.d(TAG, "===========================================users   " );
-            for(int i=0; i<request_users.size();i++)
-                Log.d(TAG, "=========users :  " + request_users.get(i));
+
         } catch (JSONException  e) {
 
             Log.d(TAG, "showResult : ", e);
         }
-
-
     }
-
-
-
 }

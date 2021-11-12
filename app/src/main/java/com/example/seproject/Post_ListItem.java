@@ -6,7 +6,7 @@ public class Post_ListItem {
     private String personnel;
     private String day;
     private int pid;
-private String deadline;
+    private String deadline;
     public String getPersonnel() {
         return personnel;
     }

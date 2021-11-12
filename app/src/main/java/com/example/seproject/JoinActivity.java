@@ -40,8 +40,6 @@ public class JoinActivity  extends AppCompatActivity implements Serializable {
         id_overlap_btn = findViewById(R.id.id_overlap_btn);
         name_overlap_btn = findViewById(R.id.name_overlap_btn);
 
-
-
         //회원가입 버튼 클릭 시 수행
         join_btn_join.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,8 +50,6 @@ public class JoinActivity  extends AppCompatActivity implements Serializable {
                 String userName = name_insert.getText().toString();
                 String userPasswordCheck = pwd_check_insert_join.getText().toString();
 
-
-
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -62,7 +58,6 @@ public class JoinActivity  extends AppCompatActivity implements Serializable {
                             boolean success = jsonObject.getBoolean("success");
                             if(!(userPassword.equals(userPasswordCheck))){
                                 Toast.makeText(getApplicationContext(), "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
-
                             }
                             else if(userID.equals("") || userPassword.equals("") || userPasswordCheck.equals("")) {
                                 Toast.makeText(getApplicationContext(), "모두 기입하였는지 한번 더 확인해주세요.", Toast.LENGTH_SHORT).show();
@@ -79,17 +74,10 @@ public class JoinActivity  extends AppCompatActivity implements Serializable {
                                 startActivity(intent);
 
                             }
-
-
-
-
-
-
                             else {
                                 Toast.makeText(getApplicationContext(), "회원 등록에 실패하였습니다.", Toast.LENGTH_SHORT).show();
                                 return;
                             }
-
 
 
                         } catch (JSONException e) {
@@ -106,8 +94,7 @@ public class JoinActivity  extends AppCompatActivity implements Serializable {
         });
 
 
-
-//ID중복검사 버튼 클릭시 수행
+        //ID중복검사 버튼 클릭시 수행
         id_overlap_btn.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -159,16 +146,12 @@ public class JoinActivity  extends AppCompatActivity implements Serializable {
         });
 
 
-//닉네임중복검사 버튼 클릭시 수행
+        //닉네임중복검사 버튼 클릭시 수행
         name_overlap_btn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                 String userName = name_insert.getText().toString();
-                /*
-                if (validate2) {
-                    return; //검증 완료
-                }*/
 
                 if (userName.equals("")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(JoinActivity.this);

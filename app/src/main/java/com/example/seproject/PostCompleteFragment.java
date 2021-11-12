@@ -64,8 +64,6 @@ public class PostCompleteFragment extends Fragment {
     //팀원테이블 getData에 필요한 친구
     private static final String TAG_TEAM = "userName";
 
-    int whereIn;
-
     TextView category_name;
     TextView post_name_tv;
     TextView post_personnel_tv;
@@ -76,20 +74,16 @@ public class PostCompleteFragment extends Fragment {
 
     String post_writer;
 
-
     public PostCompleteFragment() {}
 
     public static PostCompleteFragment newInstance(){
         return new PostCompleteFragment();
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.post_complete, container, false);
-
 
         category_name = (TextView) view.findViewById(R.id.category_name);
         post_name_tv = (TextView) view.findViewById(R.id.post_name_tv);
@@ -114,13 +108,11 @@ public class PostCompleteFragment extends Fragment {
         PostCompleteFragment.GetData_post task = new PostCompleteFragment.GetData_post();
         task.execute("http://steak2121.ivyro.net/loadPost.php");
 
-
         PostCompleteFragment.GetData_team task2 = new PostCompleteFragment.GetData_team();
         task2.execute("http://steak2121.ivyro.net/loadTeam.php");
 
         PostCompleteFragment.GetData_request task3= new PostCompleteFragment.GetData_request();
         task3.execute("http://steak2121.ivyro.net/loadRequest.php");
-
 
         return view;
     }
@@ -135,10 +127,6 @@ public class PostCompleteFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-/*
-            progressDialog = ProgressDialog.show(v.this,
-                    "Please Wait", null, true, true);
-       */
         }
 
 
@@ -146,15 +134,8 @@ public class PostCompleteFragment extends Fragment {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            //progressDialog.dismiss();
-
-            Log.d(TAG, "response  - " + result);
-
-
-            if (result == null) {
-
-
-            } else {
+            if (result == null) {}
+            else {
                 mJsonString = result;
                 showResult_post();
             }
@@ -165,20 +146,16 @@ public class PostCompleteFragment extends Fragment {
 
             String serverURL = "http://steak2121.ivyro.net/loadPost.php";
 
-
             try {
 
                 URL url = new URL(serverURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 
-
                 httpURLConnection.setReadTimeout(5000);
                 httpURLConnection.setConnectTimeout(5000);
                 httpURLConnection.connect();
 
-
                 int responseStatusCode = httpURLConnection.getResponseCode();
-                Log.d(TAG, "response code - " + responseStatusCode);
 
                 InputStream inputStream;
                 if (responseStatusCode == HttpURLConnection.HTTP_OK) {
@@ -186,7 +163,6 @@ public class PostCompleteFragment extends Fragment {
                 } else {
                     inputStream = httpURLConnection.getErrorStream();
                 }
-
 
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -198,12 +174,9 @@ public class PostCompleteFragment extends Fragment {
                     sb.append(line);
                 }
 
-
                 bufferedReader.close();
 
-
                 return sb.toString().trim();
-
 
             } catch (Exception e) {
 
@@ -212,13 +185,8 @@ public class PostCompleteFragment extends Fragment {
 
                 return null;
             }
-
         }
-
     }
-
-
-
 
 
     private void showResult_post() {
@@ -271,19 +239,13 @@ public class PostCompleteFragment extends Fragment {
 
                     break;
                 }
-
-
             }
-
 
         } catch (JSONException | ParseException e) {
 
             Log.d(TAG, "showResult : ", e);
         }
-
-
     }
-
 
 
 

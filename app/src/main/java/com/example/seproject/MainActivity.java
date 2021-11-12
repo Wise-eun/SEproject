@@ -28,9 +28,6 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
-
-
-
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private Bundle bundle_toFragment = new Bundle();
     public static String userID;
@@ -43,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String mJsonString;
     BottomNavigationView bottomNavigationView;
+
     HomeFragment homeFragment = new HomeFragment();
     WorkFragment workFragment = new WorkFragment();
     ProfileFragment profileFragment = new ProfileFragment();
@@ -66,20 +64,17 @@ public class MainActivity extends AppCompatActivity {
         if(from != null){
             if(from.equals("profile")){
                 replaceFragment(sendMsgFragment);
-
             }
         }
         else{
             replaceFragment(homeFragment);
         }
 
-
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnItemSelectedListener(new ItemSelectedListener());
 
 
         MainActivity.GetData task = new MainActivity.GetData();
-
         task.execute("http://steak2121.ivyro.net/loadUser.php");
 
     }
@@ -127,10 +122,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-/*
-            progressDialog = ProgressDialog.show(v.this,
-                    "Please Wait", null, true, true);
-       */
         }
 
 

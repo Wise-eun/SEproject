@@ -60,8 +60,8 @@ public class MsgDetailFragment extends Fragment {
         { @Override
         public void onClick(View v) {
             // TODO Auto-generated method stub
-//메세지 전송으로 화면이동
-           // SearchUserFragment.search_name = null; // write 들어가는 경로 다른거 차단.
+            //메세지 전송으로 화면이동
+            // SearchUserFragment.search_name = null; // write 들어가는 경로 다른거 차단.
             SendMsgFragment.where_in = 1;
             ((MainActivity)getActivity()).replaceFragment(SendMsgFragment.newInstance()); //화면전환
 
@@ -75,31 +75,20 @@ public class MsgDetailFragment extends Fragment {
         {msg_you_name = MsgListFragment.targetName;
             msg_user_name_tv.setText(msg_you_name);}
 
-
-
         MsgDetailFragment.GetData task = new MsgDetailFragment.GetData();
         task.execute("http://steak2121.ivyro.net/loadMessage.php");
-
 
         return view;
     }
 
 
-
-    ////data Load
-
     private class GetData extends AsyncTask<String, Void, String> {
         ProgressDialog progressDialog;
         String errorString = null;
 
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-/*
-            progressDialog = ProgressDialog.show(v.this,
-                    "Please Wait", null, true, true);
-       */
         }
 
 
@@ -107,15 +96,8 @@ public class MsgDetailFragment extends Fragment {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            //progressDialog.dismiss();
-
-            Log.d(TAG, "response  - " + result);
-
-
-            if (result == null) {
-
-
-            } else {
+            if (result == null) {}
+            else {
                 mJsonString = result;
                 showResult();
             }
@@ -132,14 +114,11 @@ public class MsgDetailFragment extends Fragment {
                 URL url = new URL(serverURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 
-
                 httpURLConnection.setReadTimeout(5000);
                 httpURLConnection.setConnectTimeout(5000);
                 httpURLConnection.connect();
 
-
                 int responseStatusCode = httpURLConnection.getResponseCode();
-                Log.d(TAG, "response code - " + responseStatusCode);
 
                 InputStream inputStream;
                 if (responseStatusCode == HttpURLConnection.HTTP_OK) {
@@ -147,7 +126,6 @@ public class MsgDetailFragment extends Fragment {
                 } else {
                     inputStream = httpURLConnection.getErrorStream();
                 }
-
 
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -159,12 +137,9 @@ public class MsgDetailFragment extends Fragment {
                     sb.append(line);
                 }
 
-
                 bufferedReader.close();
 
-
                 return sb.toString().trim();
-
 
             } catch (Exception e) {
 
@@ -173,11 +148,8 @@ public class MsgDetailFragment extends Fragment {
 
                 return null;
             }
-
         }
-
     }
-
 
 
 
@@ -196,22 +168,14 @@ public class MsgDetailFragment extends Fragment {
                 String date = item.getString(TAG_DATE);
 
 
-
-
                 if (userName.equals(sender) && msg_you_name.equals(receiver)) // 보낸 사람과 본인의 ID가 같을경우 & 받는사람이 해당 메세지의 상대방일 경우
                 {
-
-
                     adapter.addItem(new Msg_ListItem("보낸 메시지", content, date));
-
                }
                 else if(userName.equals(receiver) && msg_you_name.equals(sender)){ // 받는사람과 본인의 ID가 같을경우 & 보낸사람이 해당 메세지의 상대방일 경우
                     adapter.addItem(new Msg_ListItem("받은 메시지", content, date));
-
                 }
-
             }
-
 
             listView.setAdapter(adapter);
 

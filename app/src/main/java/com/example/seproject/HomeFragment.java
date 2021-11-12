@@ -36,19 +36,6 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
-        Bundle bundle = getArguments();
-        String userID ;
-
-        //로그인 이후에 제대로 아이디값 받아오는지 확인하는 용도
-//        if (bundle != null){
-//            TextView homeFragment_tv = (TextView) v.findViewById(R.id.homeFragment);
-//            userID = bundle.getString("userID");
-//            homeFragment_tv.setText(userID);
-//       }
-//        else{
-//            TextView homeFragment_tv = (TextView) v.findViewById(R.id.homeFragment);
-//            homeFragment_tv.setText("null받음");
-//        }
 
         alarm_btn = (ImageButton) v.findViewById(R.id.alarm_btn);
         alarm_btn.setOnClickListener(new View.OnClickListener(){
@@ -65,7 +52,7 @@ public class HomeFragment extends Fragment {
         });
 
         search_btn = (ImageButton) v.findViewById(R.id.search_btn);
-       search_et = (EditText) v.findViewById(R.id.search_et);
+        search_et = (EditText) v.findViewById(R.id.search_et);
         search_btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 String search_input = search_et.getText().toString();
@@ -76,14 +63,10 @@ public class HomeFragment extends Fragment {
                     dialog.show();
                 }
                 else{
-
                     ((MainActivity)getActivity()).replaceFragment(SearchFragment.newInstance());
-
                 }
-                //다른거랑 똑같이 적었는데 왜 화면이 안바뀔까?
             }
         });
-
 
         idea_category = (ImageButton) v.findViewById(R.id.idea_category);
         idea_category.setOnClickListener(new View.OnClickListener(){

@@ -61,15 +61,11 @@ public class MyPostModifyFragment extends Fragment {
 
     public static MyPostModifyFragment newInstance(){
         return new MyPostModifyFragment();
-
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.mypost_modify, container, false);
-
 
         category_name = (TextView) view.findViewById(R.id.category_name);
         mypost_title_tv = (TextView) view.findViewById(R.id.mypost_title_tv);
@@ -79,12 +75,8 @@ public class MyPostModifyFragment extends Fragment {
         modify_personnel_tv = (TextView) view.findViewById(R.id.modify_personnel_tv);
         modify_btn= (Button) view.findViewById(R.id.modify_btn);
 
-
-
-
         GetData_post task = new GetData_post();
         task.execute("http://steak2121.ivyro.net/loadPost.php");
-
 
         modify_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -95,16 +87,12 @@ public class MyPostModifyFragment extends Fragment {
                 @Override
                 public void onResponse(String response) {
 
-
                     try {
                         JSONObject jsonObject = new JSONObject(response);
                         boolean success = jsonObject.getBoolean("success");
                         if (success) { // 성공한 경우
 
                             Toast.makeText(getActivity(),"게시물이 수정되었습니다.",Toast.LENGTH_SHORT).show();
-
-
-
 
                         } else {// 실패한 경우
                             Toast.makeText(getActivity(), "수정이 실패하였습니다.", Toast.LENGTH_SHORT).show();
@@ -113,8 +101,6 @@ public class MyPostModifyFragment extends Fragment {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
-
                 }
             };
 
@@ -135,7 +121,6 @@ public class MyPostModifyFragment extends Fragment {
 
 
 
-
     private class GetData_post extends AsyncTask<String, Void, String> {
         ProgressDialog progressDialog;
         String errorString = null;
@@ -144,25 +129,13 @@ public class MyPostModifyFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-/*
-            progressDialog = ProgressDialog.show(v.this,
-                    "Please Wait", null, true, true);
-       */
         }
-
 
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            //progressDialog.dismiss();
-
-            Log.d(TAG, "response  - " + result);
-
-
             if (result == null) {
-
-
             } else {
                 mJsonString = result;
                 showResult_post();
@@ -174,20 +147,16 @@ public class MyPostModifyFragment extends Fragment {
 
             String serverURL = "http://steak2121.ivyro.net/loadPost.php";
 
-
             try {
 
                 URL url = new URL(serverURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 
-
                 httpURLConnection.setReadTimeout(5000);
                 httpURLConnection.setConnectTimeout(5000);
                 httpURLConnection.connect();
 
-
                 int responseStatusCode = httpURLConnection.getResponseCode();
-                Log.d(TAG, "response code - " + responseStatusCode);
 
                 InputStream inputStream;
                 if (responseStatusCode == HttpURLConnection.HTTP_OK) {
@@ -195,7 +164,6 @@ public class MyPostModifyFragment extends Fragment {
                 } else {
                     inputStream = httpURLConnection.getErrorStream();
                 }
-
 
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -207,12 +175,9 @@ public class MyPostModifyFragment extends Fragment {
                     sb.append(line);
                 }
 
-
                 bufferedReader.close();
 
-
                 return sb.toString().trim();
-
 
             } catch (Exception e) {
 
@@ -221,13 +186,8 @@ public class MyPostModifyFragment extends Fragment {
 
                 return null;
             }
-
         }
-
     }
-
-
-
 
 
     private void showResult_post() {
@@ -249,9 +209,7 @@ public class MyPostModifyFragment extends Fragment {
                 String category = item.getString(TAG_CATEGORY);
                 String userCount = item.getString(TAG_COUNT);
 
-
                 if(pid_str.equals(Integer.toString(pid))){//pid 같을 경우
-
 
                     category_name.setText(category);
                     mypost_title_tv .setText(title);
@@ -259,26 +217,14 @@ public class MyPostModifyFragment extends Fragment {
                     write_day_tv .setText(deadline);
                     write_local_tv.setText(area);
                     content_et.setText(content);
-                    //  post_member_listview = (RecyclerView)view.findViewById(R.id.post_member_listview);
-
 
                     break;
                 }
-
-
             }
-
 
         } catch (JSONException e) {
 
             Log.d(TAG, "showResult : ", e);
         }
-
-
     }
-
-
-
-
-
 }

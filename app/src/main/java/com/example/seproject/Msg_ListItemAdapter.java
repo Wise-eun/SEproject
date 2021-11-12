@@ -16,7 +16,6 @@ public class Msg_ListItemAdapter extends BaseAdapter {
     ArrayList<Msg_ListItem> items = new ArrayList();
     Context context;
 
-
     @Override
     public int getCount() {
         return items.size();
@@ -42,7 +41,6 @@ public class Msg_ListItemAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.msg_listview_item, parent, false);
         }
 
-
         TextView msg_type_tv = convertView.findViewById(R.id.msg_type_tv);
         TextView msg_content_tv = convertView.findViewById(R.id.msg_content_tv);
         TextView msg_date_tv = convertView.findViewById(R.id.msg_date_tv);
@@ -51,7 +49,6 @@ public class Msg_ListItemAdapter extends BaseAdapter {
         if(listItem.getType().equals("보낸 메시지")){
             msg_type_tv.setTextColor(Color.rgb(255,127,0));
         }
-
 
         msg_type_tv.setText(listItem.getType());
         msg_content_tv.setText(listItem.getContent());

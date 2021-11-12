@@ -46,7 +46,7 @@ public class MsgListFragment extends Fragment {
     public static MsgListFragment newInstance() {
         return new MsgListFragment();
     }
-//
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.message_list, container, false);
@@ -56,17 +56,11 @@ public class MsgListFragment extends Fragment {
         userName = MainActivity.userName;
 
         write_msg_btn = (ImageButton) view.findViewById(R.id.write_msg_btn);
-
-
-
         write_msg_btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 ((MainActivity)getActivity()).replaceFragment(SearchUserFragment.newInstance());
-
             }
         });
-
-
 
         MsgListFragment.GetData task = new MsgListFragment.GetData();
         task.execute("http://steak2121.ivyro.net/loadMessage.php");
@@ -83,30 +77,17 @@ public class MsgListFragment extends Fragment {
         ProgressDialog progressDialog;
         String errorString = null;
 
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-/*
-            progressDialog = ProgressDialog.show(v.this,
-                    "Please Wait", null, true, true);
-       */
         }
-
 
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            //progressDialog.dismiss();
-
-            Log.d(TAG, "response  - " + result);
-
-
-            if (result == null) {
-
-
-            } else {
+            if (result == null) {}
+            else {
                 mJsonString = result;
                 showResult();
             }
@@ -117,20 +98,16 @@ public class MsgListFragment extends Fragment {
 
             String serverURL = "http://steak2121.ivyro.net/loadMessage.php";
 
-
             try {
 
                 URL url = new URL(serverURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 
-
                 httpURLConnection.setReadTimeout(5000);
                 httpURLConnection.setConnectTimeout(5000);
                 httpURLConnection.connect();
 
-
                 int responseStatusCode = httpURLConnection.getResponseCode();
-                Log.d(TAG, "response code - " + responseStatusCode);
 
                 InputStream inputStream;
                 if (responseStatusCode == HttpURLConnection.HTTP_OK) {
@@ -138,7 +115,6 @@ public class MsgListFragment extends Fragment {
                 } else {
                     inputStream = httpURLConnection.getErrorStream();
                 }
-
 
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -150,12 +126,9 @@ public class MsgListFragment extends Fragment {
                     sb.append(line);
                 }
 
-
                 bufferedReader.close();
 
-
                 return sb.toString().trim();
-
 
             } catch (Exception e) {
 
@@ -164,12 +137,8 @@ public class MsgListFragment extends Fragment {
 
                 return null;
             }
-
         }
-
     }
-
-
 
 
     private void showResult() {
@@ -187,11 +156,8 @@ public class MsgListFragment extends Fragment {
                 String date = item.getString(TAG_DATE);
 
 
-
-
                 if (userName.equals(sender) || userName.equals(receiver)) // 보낸사람 또는 받는사람이 사용자일 경우
                 {
-
                     if(userName.equals(receiver))// 받는사람이 사용자 일 경우
                     {
                         String you = sender;
@@ -212,10 +178,7 @@ public class MsgListFragment extends Fragment {
                             adapter.addItem(new Msg_ListItem(receiver, content, date));
                         }
                     }
-
                 }
-
-
             }
             msg_users = new ArrayList<String>();
             listView.setAdapter(adapter);
@@ -235,10 +198,5 @@ public class MsgListFragment extends Fragment {
 
             Log.d(TAG, "showResult : ", e);
         }
-
-
     }
-
-
-
 }

@@ -55,6 +55,11 @@ public class CategoryFragment extends Fragment {
     String category ;
     public static int last_pid;
     private AlertDialog dialog;
+    TextView category_name;
+    ImageButton write_btn;
+
+
+
     public static CategoryFragment newInstance(){
         return new CategoryFragment();
     }
@@ -64,24 +69,21 @@ public class CategoryFragment extends Fragment {
 
         Bundle bundle = getArguments();
 
+        category_name = (TextView) v.findViewById(R.id.category_name);
 
-        //로그인 이후에 제대로 아이디값 받아오는지 확인하는 용도
         if (bundle != null){
-            TextView category_name = (TextView) v.findViewById(R.id.category_name);
             category = bundle.getString("category");
             category_name.setText(category);
             category_str = category;
         }
         else{
-            TextView category_name = (TextView) v.findViewById(R.id.category_name);
-            category_name.setText("null받음");
+            category_name.setText("error");
         }
 
         listView = (ListView) v.findViewById(R.id.listView);
         adapter = new Post_ListItemAdapter();
 
-
-        ImageButton write_btn = (ImageButton) v.findViewById(R.id.trash_btn);
+        write_btn = (ImageButton) v.findViewById(R.id.trash_btn);
         write_btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 if(deletion <= 5 )
@@ -99,12 +101,8 @@ public class CategoryFragment extends Fragment {
         CategoryFragment.GetData task = new CategoryFragment.GetData();
         task.execute("http://steak2121.ivyro.net/loadUser.php");
 
-
         CategoryFragment.GetData_post task2 = new CategoryFragment.GetData_post();
         task2.execute("http://steak2121.ivyro.net/loadPost.php");
-
-
-
 
         return v;
     }
@@ -118,26 +116,14 @@ private class GetData extends AsyncTask<String, Void, String> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-/*
-            progressDialog = ProgressDialog.show(v.this,
-                    "Please Wait", null, true, true);
-       */
     }
-
 
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
 
-        //progressDialog.dismiss();
-
-        Log.d(TAG, "response  - " + result);
-
-
-        if (result == null) {
-
-
-        } else {
+        if (result == null) {}
+        else {
             mJsonString = result;
             showResult();
         }
@@ -148,20 +134,16 @@ private class GetData extends AsyncTask<String, Void, String> {
 
         String serverURL = "http://steak2121.ivyro.net/loadUser.php";
 
-
         try {
 
             URL url = new URL(serverURL);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 
-
             httpURLConnection.setReadTimeout(5000);
             httpURLConnection.setConnectTimeout(5000);
             httpURLConnection.connect();
 
-
             int responseStatusCode = httpURLConnection.getResponseCode();
-            Log.d(TAG, "response code - " + responseStatusCode);
 
             InputStream inputStream;
             if (responseStatusCode == HttpURLConnection.HTTP_OK) {
@@ -169,7 +151,6 @@ private class GetData extends AsyncTask<String, Void, String> {
             } else {
                 inputStream = httpURLConnection.getErrorStream();
             }
-
 
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -184,9 +165,7 @@ private class GetData extends AsyncTask<String, Void, String> {
 
             bufferedReader.close();
 
-
             return sb.toString().trim();
-
 
         } catch (Exception e) {
 
@@ -195,9 +174,7 @@ private class GetData extends AsyncTask<String, Void, String> {
 
             return null;
         }
-
     }
-
 }
 
 
@@ -214,22 +191,14 @@ private class GetData extends AsyncTask<String, Void, String> {
 
                 if (name.equals(MainActivity.userName)) // 현재 사용자 ID와 서버에있는 정보중 ID가 같은것들의 정보만 가져옴
                 {
-
-
                     deletion = Integer.parseInt(deletion_str); //삭제횟수 저장
-
                 }
-
-
             }
-
-
 
         } catch (JSONException e) {
 
             Log.d(TAG, "showResult : ", e);
         }
-
     }
 
 
@@ -241,28 +210,14 @@ private class GetData extends AsyncTask<String, Void, String> {
 
 
         @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-/*
-            progressDialog = ProgressDialog.show(v.this,
-                    "Please Wait", null, true, true);
-       */
-        }
-
+        protected void onPreExecute() {}
 
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            //progressDialog.dismiss();
-
-            Log.d(TAG, "response  - " + result);
-
-
-            if (result == null) {
-
-
-            } else {
+            if (result == null) {}
+            else {
                 mJsonString = result;
                 showResult_post();
             }
@@ -273,20 +228,16 @@ private class GetData extends AsyncTask<String, Void, String> {
 
             String serverURL = "http://steak2121.ivyro.net/loadPost.php";
 
-
             try {
 
                 URL url = new URL(serverURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 
-
                 httpURLConnection.setReadTimeout(5000);
                 httpURLConnection.setConnectTimeout(5000);
                 httpURLConnection.connect();
 
-
                 int responseStatusCode = httpURLConnection.getResponseCode();
-                Log.d(TAG, "response code - " + responseStatusCode);
 
                 InputStream inputStream;
                 if (responseStatusCode == HttpURLConnection.HTTP_OK) {
@@ -294,7 +245,6 @@ private class GetData extends AsyncTask<String, Void, String> {
                 } else {
                     inputStream = httpURLConnection.getErrorStream();
                 }
-
 
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -306,12 +256,9 @@ private class GetData extends AsyncTask<String, Void, String> {
                     sb.append(line);
                 }
 
-
                 bufferedReader.close();
 
-
                 return sb.toString().trim();
-
 
             } catch (Exception e) {
 
@@ -324,8 +271,6 @@ private class GetData extends AsyncTask<String, Void, String> {
         }
 
     }
-
-
 
 
     private void showResult_post() {
@@ -368,7 +313,6 @@ private class GetData extends AsyncTask<String, Void, String> {
                     int pid = Integer.parseInt(pid_str);
                     adapter.addItem(new Post_ListItem(pid,writer, title, "("+userCount + "/"+recruitment+")", Ddays_str,deadline));
 
-                    Log.d(TAG, "date = "+date+" Today = "+today);
                  }
             }
 

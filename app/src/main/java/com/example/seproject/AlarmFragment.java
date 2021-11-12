@@ -60,11 +60,8 @@ public class AlarmFragment extends Fragment {
         View view = inflater.inflate(R.layout.alarm, container, false);
         listView = (ListView) view.findViewById(R.id.alarm_listview);
 
-
         userID = MainActivity.userID;
         userName = MainActivity.userName;
-
-
 
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
@@ -134,8 +131,6 @@ public class AlarmFragment extends Fragment {
 
                             adapter.deleteItem(pos);
                             adapter.notifyDataSetChanged();
-
-
                         }
                     });
 
@@ -218,10 +213,6 @@ public class AlarmFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-/*
-            progressDialog = ProgressDialog.show(v.this,
-                    "Please Wait", null, true, true);
-       */
         }
 
 
@@ -229,15 +220,8 @@ public class AlarmFragment extends Fragment {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            //progressDialog.dismiss();
-
-            Log.d(TAG, "response  - " + result);
-
-
-            if (result == null) {
-
-
-            } else {
+            if (result == null) {}
+            else {
                 mJsonString = result;
                 showResult();
             }
@@ -248,20 +232,16 @@ public class AlarmFragment extends Fragment {
 
             String serverURL = "http://steak2121.ivyro.net/loadAlarm.php";
 
-
             try {
 
                 URL url = new URL(serverURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 
-
                 httpURLConnection.setReadTimeout(5000);
                 httpURLConnection.setConnectTimeout(5000);
                 httpURLConnection.connect();
 
-
                 int responseStatusCode = httpURLConnection.getResponseCode();
-                Log.d(TAG, "response code - " + responseStatusCode);
 
                 InputStream inputStream;
                 if (responseStatusCode == HttpURLConnection.HTTP_OK) {
@@ -284,9 +264,7 @@ public class AlarmFragment extends Fragment {
 
                 bufferedReader.close();
 
-
                 return sb.toString().trim();
-
 
             } catch (Exception e) {
 
@@ -295,9 +273,7 @@ public class AlarmFragment extends Fragment {
 
                 return null;
             }
-
         }
-
     }
 
     private void showResult() {
@@ -307,8 +283,7 @@ public class AlarmFragment extends Fragment {
 
             adapter.clearItem();
 
-            for (int i = jsonArray.length()-1; i >= 0 ; i--) {
-
+            for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject item = jsonArray.getJSONObject(i);
 
                 String sender = item.getString(TAG_SENDER);
@@ -322,7 +297,6 @@ public class AlarmFragment extends Fragment {
                 }
             }
             listView.setAdapter(adapter);
-
 
         }
         catch (JSONException e) {

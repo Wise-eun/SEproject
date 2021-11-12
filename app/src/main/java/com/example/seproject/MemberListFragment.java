@@ -56,16 +56,12 @@ public class MemberListFragment extends Fragment {
 
     View view;
 
-
-
-
     public static MemberListFragment newInstance(){
         return new MemberListFragment();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
         view = inflater.inflate(R.layout.member_list, container, false);
         listView = (ListView) view.findViewById(R.id.member_listview);
@@ -87,10 +83,6 @@ public class MemberListFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-/*
-            progressDialog = ProgressDialog.show(v.this,
-                    "Please Wait", null, true, true);
-       */
         }
 
 
@@ -98,15 +90,8 @@ public class MemberListFragment extends Fragment {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            //progressDialog.dismiss();
-
-            Log.d(TAG, "response  team- " + result);
-
-
-            if (result == null) {
-
-
-            } else {
+            if (result == null) {}
+            else {
                 mJsonString_team = result;
                 showResult_team();
             }
@@ -117,20 +102,16 @@ public class MemberListFragment extends Fragment {
 
             String serverURL = "http://steak2121.ivyro.net/loadTeam.php";
 
-
             try {
 
                 URL url = new URL(serverURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 
-
                 httpURLConnection.setReadTimeout(5000);
                 httpURLConnection.setConnectTimeout(5000);
                 httpURLConnection.connect();
 
-
                 int responseStatusCode = httpURLConnection.getResponseCode();
-                Log.d(TAG, "response code - " + responseStatusCode);
 
                 InputStream inputStream;
                 if (responseStatusCode == HttpURLConnection.HTTP_OK) {
@@ -150,12 +131,9 @@ public class MemberListFragment extends Fragment {
                     sb.append(line);
                 }
 
-
                 bufferedReader.close();
 
-
                 return sb.toString().trim();
-
 
             } catch (Exception e) {
 
@@ -164,9 +142,7 @@ public class MemberListFragment extends Fragment {
 
                 return null;
             }
-
         }
-
     }
 
     private void showResult_team() {
@@ -231,7 +207,6 @@ public class MemberListFragment extends Fragment {
 
                                 dialog.cancel();
 
-
                                 listView.setAdapter(adapter);
                             }
                         });
@@ -253,10 +228,6 @@ public class MemberListFragment extends Fragment {
                 }
             });
 
-//            listView.setAdapter(adapter);
-
-
-
             for (int i = 0; i < jsonArray.length(); i++) {
 
                 JSONObject item = jsonArray.getJSONObject(i);
@@ -265,25 +236,17 @@ public class MemberListFragment extends Fragment {
                 String userName = item.getString(TAG_USERNAME);
 
                 if(pid_str.equals(Integer.toString(pid))){//pid 같을 경우
-
-//팀원 추가 (닉네임)
+                    //팀원 추가 (닉네임)
                     if(writer.equals(userName)){
                         adapter.addItem(new Member_ListItem(userName, true, true));
                     }
                     else{
                         adapter.addItem(new Member_ListItem(userName, false, true));
                     }
-
-                    if(userName.equals(MainActivity.userName))//팀원 이름이랑 내 이름이랑 같을때
-                    {
-                        //취소하기 버튼 활성화 .
-//                        participate = true;
-//                        post_apply_btn.setText("취소하기");
-                    }
                 }
             }
-            listView.setAdapter(adapter);
 
+            listView.setAdapter(adapter);
 
         } catch (JSONException  e) {
 
@@ -301,26 +264,14 @@ public class MemberListFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-/*
-            progressDialog = ProgressDialog.show(v.this,
-                    "Please Wait", null, true, true);
-       */
         }
-
 
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            //progressDialog.dismiss();
-
-            Log.d(TAG, "response  team- " + result);
-
-
-            if (result == null) {
-
-
-            } else {
+            if (result == null) {}
+            else {
                 mJsonString_rating = result;
                 showResult_rating();
             }
@@ -331,20 +282,16 @@ public class MemberListFragment extends Fragment {
 
             String serverURL = "http://steak2121.ivyro.net/loadRating.php";
 
-
             try {
 
                 URL url = new URL(serverURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 
-
                 httpURLConnection.setReadTimeout(5000);
                 httpURLConnection.setConnectTimeout(5000);
                 httpURLConnection.connect();
 
-
                 int responseStatusCode = httpURLConnection.getResponseCode();
-                Log.d(TAG, "response code - " + responseStatusCode);
 
                 InputStream inputStream;
                 if (responseStatusCode == HttpURLConnection.HTTP_OK) {
@@ -352,7 +299,6 @@ public class MemberListFragment extends Fragment {
                 } else {
                     inputStream = httpURLConnection.getErrorStream();
                 }
-
 
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -364,12 +310,9 @@ public class MemberListFragment extends Fragment {
                     sb.append(line);
                 }
 
-
                 bufferedReader.close();
 
-
                 return sb.toString().trim();
-
 
             } catch (Exception e) {
 
@@ -378,9 +321,7 @@ public class MemberListFragment extends Fragment {
 
                 return null;
             }
-
         }
-
     }
 
     private void showResult_rating() {
@@ -414,7 +355,6 @@ public class MemberListFragment extends Fragment {
             }
 
             listView.setAdapter(adapter);
-
 
         } catch (JSONException  e) {
 
