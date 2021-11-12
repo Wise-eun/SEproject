@@ -15,6 +15,7 @@
         tools:layout_editor_absoluteY="114dp">
 
         <TextView
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -39,6 +40,8 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
+            android:inputType="textMultiLine"
+            android:gravity="top"
             android:id="@+id/write_msg_insert_et"
             android:layout_width="350dp"
             android:layout_height="500dp"
@@ -46,7 +49,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/roundline_gray"
             android:hint="내용을 입력해주세요"
-            android:inputType="textPersonName"></EditText>
+            ></EditText>
     </LinearLayout>
 
     <Button
