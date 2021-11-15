@@ -93,51 +93,38 @@ public class ProfileEditFragment extends Fragment {
         edit_btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
 
-        user_school = schcool_insert_et.getText().toString();
-        user_local = user_local + " " + local_insert_et.getText().toString();
-
-        user_school = schcool_insert_et.getText().toString();
-
-
-
-                //새로운 자기소개로 업데이트 해줘야함..
-                Response.Listener<String> responseListener = new Response.Listener<String>() {
-
-                    @Override
-                    public void onResponse(String response) {
-
-
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success");
+            user_school = schcool_insert_et.getText().toString();
+            user_local = user_local + " " + local_insert_et.getText().toString();
+            user_school = schcool_insert_et.getText().toString();
 
 
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+            Response.Listener<String> responseListener = new Response.Listener<String>() {
 
+                @Override
+                public void onResponse(String response) {
+                    try {
 
+                        JSONObject jsonObject = new JSONObject(response);
+                        boolean success = jsonObject.getBoolean("success");
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                };
-                if(user_job.equals("-") || user_job.equals("기타") )
-                    user_job = "";
-                if(user_local.equals("-")|| user_local.equals("기타") )
-                    user_local = "";
-                ProfileUpdateRequest updateProfileRequest = new ProfileUpdateRequest(ProfileFragment.userID, user_job,user_school,user_local, responseListener);
-                RequestQueue queue = Volley.newRequestQueue(ProfileEditFragment.this.getActivity());
-                queue.add(updateProfileRequest);
 
+                }
+            };
 
-
-
+            if(user_job.equals("-") || user_job.equals("기타") )
+                user_job = "";
+            if(user_local.equals("-")|| user_local.equals("기타") )
+                user_local = "";
+            ProfileUpdateRequest updateProfileRequest = new ProfileUpdateRequest(ProfileFragment.userID, user_job,user_school,user_local, responseListener);
+            RequestQueue queue = Volley.newRequestQueue(ProfileEditFragment.this.getActivity());
+            queue.add(updateProfileRequest);
 
                 //프로필 화면으로 다시 이동
                 ((MainActivity)getActivity()).replaceFragment(ProfileFragment.newInstance());
-
-
-
-
 
             }
         });

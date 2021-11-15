@@ -50,23 +50,23 @@ public class SelfIntroEditFragment extends Fragment {
                     public void onResponse(String response) {
 
 
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success");
-                            if (success) { // 성공한 경우
-
-                                Toast.makeText(getActivity(),"성공적으로 자기소개가 수정되었습니다.",Toast.LENGTH_SHORT).show();
-
-
-
-
-                            } else {// 실패한 경우
-                                Toast.makeText(getActivity(), "수정이 실패하였습니다.", Toast.LENGTH_SHORT).show();
-                                return;
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+//                        try {
+//                            JSONObject jsonObject = new JSONObject(response);
+//                            boolean success = jsonObject.getBoolean("success");
+//                            if (success) { // 성공한 경우
+//
+//                                Toast.makeText(getActivity(),"성공적으로 자기소개가 수정되었습니다.",Toast.LENGTH_SHORT).show();
+//
+//
+//
+//
+//                            } else {// 실패한 경우
+//                                Toast.makeText(getActivity(), "수정이 실패하였습니다.", Toast.LENGTH_SHORT).show();
+//                                return;
+//                            }
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
 
 
                     }
@@ -76,7 +76,7 @@ public class SelfIntroEditFragment extends Fragment {
                 RequestQueue queue = Volley.newRequestQueue(SelfIntroEditFragment.this.getActivity());
                 queue.add(updateSelfintroRequestRequest);
 
-
+                ((MainActivity)getActivity()).replaceFragment(ProfileFragment.newInstance());
 
             }
         });
