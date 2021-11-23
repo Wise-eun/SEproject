@@ -1,10 +1,12 @@
 package com.example.seproject;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,9 +48,10 @@ public class MainActivity extends AppCompatActivity {
     ProfileFragment profileFragment = new ProfileFragment();
 
     SendMsgFragment sendMsgFragment = new SendMsgFragment();
-
+private  BackPressCloseHandler backPressCloseHandler;
     public void onBackPressed(){
         getSupportFragmentManager().popBackStack();
+        backPressCloseHandler.onBackPressed();
     }
 
 
@@ -57,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        backPressCloseHandler = new BackPressCloseHandler(this);
+
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.add(R.id.flFragment, homeFragment.newInstance()).commit();
