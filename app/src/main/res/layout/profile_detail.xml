@@ -129,7 +129,7 @@
                     android:includeFontPadding="false"
                     android:text="메세지 보내기"
                     android:textAllCaps="false"
-                    android:textColor="#5E5D5D"
+                    android:textColor="#ffffff"
                     tools:layout_editor_absoluteX="157dp"
                     tools:layout_editor_absoluteY="78dp" />
             </LinearLayout>

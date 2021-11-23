@@ -70,8 +70,7 @@
                 android:fontFamily="@font/notosanskrblack"
                 android:includeFontPadding="false"
                 android:textColor="#2196F3"
-                android:textSize="18dp"
-                android:textStyle="bold"></TextView>
+                android:textSize="18dp"></TextView>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
