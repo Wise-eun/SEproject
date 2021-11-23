@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
@@ -10,7 +10,10 @@
         android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:layout_margin="5dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/member_image"
@@ -58,15 +61,16 @@
         android:layout_width="71dp"
         android:layout_height="34dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginRight="25dp"
-        android:background="@drawable/any_button_round"
-        android:backgroundTint="#ff7c01"
+        android:layout_margin="15dp"
+        android:background="@drawable/any_button_round_complete"
         android:fontFamily="@font/notosanskrregular"
         android:includeFontPadding="false"
-        android:shadowColor="#FF7C01"
         android:text="평가"
         android:textColor="@color/white"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
