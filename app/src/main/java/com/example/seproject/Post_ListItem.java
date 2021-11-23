@@ -1,6 +1,6 @@
 package com.example.seproject;
 
-public class Post_ListItem {
+public class Post_ListItem implements Comparable<Post_ListItem> {
     private String writer;
     private String title;
     private String personnel;
@@ -55,4 +55,9 @@ public class Post_ListItem {
         this.pid = pid;
         this.deadline= deadline;
     }
+
+    public int compareTo(Post_ListItem other){
+        return this.deadline.compareTo(other.deadline);
+    }
+
 }

@@ -317,6 +317,8 @@ private class GetData extends AsyncTask<String, Void, String> {
             }
 
             last_pid = Integer.parseInt(pid_str); // 마지막 게시물 번호받기
+            adapter.sortItem();
+
             listView.setAdapter(adapter);
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

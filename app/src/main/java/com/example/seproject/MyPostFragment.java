@@ -191,6 +191,7 @@ public class MyPostFragment extends Fragment {
                     }
                 }
 
+                post_adapter.sortItem();
                 listView.setAdapter(post_adapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @SuppressLint("ResourceType")

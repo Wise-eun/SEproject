@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class Post_ListItemAdapter extends BaseAdapter {
     private ArrayList<Post_ListItem> items = new ArrayList<Post_ListItem>();
@@ -65,4 +67,9 @@ public class Post_ListItemAdapter extends BaseAdapter {
     }
 
     public void clearItems() {items.clear();}
+
+    public void sortItem(){
+        Collections.sort(items);
+    }
+
 }

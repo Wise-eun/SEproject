@@ -553,6 +553,7 @@ int type =0;
 
             }
 
+            adapter.sortItem();
             listView.setAdapter(adapter);
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
