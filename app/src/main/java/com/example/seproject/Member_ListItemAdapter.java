@@ -72,13 +72,13 @@ public class Member_ListItemAdapter extends BaseAdapter {
             rating_btn.setVisibility(View.VISIBLE);
             if(listItem.getIsComplete()){
                 //평가 완료일 경우
-                rating_btn.setBackgroundColor(Color.GRAY);
+                rating_btn.setBackgroundResource(R.drawable.any_button_round_complete);
                 rating_btn.setTextColor(Color.WHITE);
                 rating_btn.setText("완료");
                 rating_btn.setEnabled(false);
             }
             else{
-                rating_btn.setBackgroundColor(Color.RED);
+                rating_btn.setBackgroundResource(R.drawable.any_button_round);
                 rating_btn.setTextColor(Color.WHITE);
                 rating_btn.setText("평가");
             }
@@ -94,6 +94,7 @@ public class Member_ListItemAdapter extends BaseAdapter {
 
         rating_btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
+
                 listener.onClick(view, position, "rating");
             }
         });

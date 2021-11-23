@@ -207,7 +207,12 @@ public class MemberListFragment extends Fragment {
 
                                 dialog.cancel();
 
-                                listView.setAdapter(adapter);
+//                                adapter.notifyDataSetChanged();
+//                                listView.setAdapter(adapter);
+
+                                getActivity().getSupportFragmentManager().popBackStack();
+                                ((MainActivity) getActivity()).replaceFragment(MemberListFragment.newInstance());
+
                             }
                         });
 
@@ -339,7 +344,7 @@ public class MemberListFragment extends Fragment {
                 String sender = item.optString(TAG_SENDER, "no value");
                 String receiver = item.optString(TAG_RECEIVER, "no value");
 
-                if(sender.equals(MainActivity.userName)){
+                if(sender.equals(MainActivity.userName) && Integer.parseInt(pid_str) == pid){
                     receiver_arr.add(receiver);
                 }
             }
