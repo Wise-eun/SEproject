@@ -14,9 +14,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
             android:text="비밀번호 변경"
+            android:fontFamily="@font/notosanskrregular"
+            android:layout_marginBottom="-10dp"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -27,22 +28,27 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
         <TextView
-            android:layout_width="400dp"
-            android:layout_height="2dp"
-            android:layout_margin="10dp"
+            android:layout_width="412dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/dark_gray"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="현재 비밀번호"/>
+                android:fontFamily="@font/notosanskrregular"
+                android:includeFontPadding="false"
+                android:text="현재 비밀번호"
+                android:textColor="#000000"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/currentPwd_insert_et"
@@ -50,17 +56,25 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:fontFamily="@font/notosanskrregular"
+                android:includeFontPadding="false"
+                android:textSize="18sp"/>
 
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="새 비밀번호"/>
+                android:fontFamily="@font/notosanskrregular"
+                android:includeFontPadding="false"
+                android:text="새 비밀번호"
+                android:textColor="#000000"
+                android:textSize="18sp"/>
 
             <EditText
                 android:id="@+id/newPwd_insert_et"
@@ -68,7 +82,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:fontFamily="@font/notosanskrregular"
+                android:includeFontPadding="false"
+                android:textSize="18sp"/>
 
 
         </LinearLayout>
@@ -76,10 +93,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="새 비밀번호 확인"/>
+                android:fontFamily="@font/notosanskrregular"
+                android:includeFontPadding="false"
+                android:text="새 비밀번호 확인"
+                android:textColor="#000000"
+                android:textSize="18sp"/>
 
             <EditText
                 android:id="@+id/newPwd_check_insert_et"
@@ -87,7 +109,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:fontFamily="@font/notosanskrregular"
+                android:includeFontPadding="false"
+                android:textSize="18sp"/>
 
 
         </LinearLayout>
@@ -98,9 +123,13 @@
         android:id="@+id/pwd_edit_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="수정"
+        android:text="변경"
+        android:fontFamily="@font/notosanskrregular"
+        android:includeFontPadding="false"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="#FF7C01"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

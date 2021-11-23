@@ -40,13 +40,14 @@ android:id="@+id/msg_list_container"
         android:id="@+id/write_msg_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="237dp"
+        android:layout_marginRight="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/msg_tv"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_round_control_point_24" />
+        app:srcCompat="@drawable/ic_round_control_point_24"
+        android:background="#ffffff"/>
 
     <ListView
         android:id="@+id/msg_list_listview"

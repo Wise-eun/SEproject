@@ -20,6 +20,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/notosanskrregular"
+            android:includeFontPadding="false"
             android:text="프로필 수정"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -32,13 +34,13 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:layout_width="400dp"
-            android:layout_height="2dp"
-            android:layout_margin="10dp"
+            android:layout_width="412dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/dark_gray"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,17 +51,22 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanskrbold"
+                android:includeFontPadding="false"
                 android:padding="10dp"
                 android:text="닉네임"
                 android:textColor="@color/black"
-                android:textStyle="bold" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/user_name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanskrregular"
+                android:includeFontPadding="false"
                 android:padding="10dp"
-                android:text="User_name" />
+                android:text="User_name"
+                android:textSize="18sp"/>
         </LinearLayout>
 
 
@@ -72,18 +79,23 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanskrbold"
+                android:includeFontPadding="false"
                 android:padding="10dp"
                 android:text="직업"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
+                android:textSize="18sp"
+                android:textColor="@color/black" />
 
             <Spinner
                 android:id="@+id/job_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:dropDownWidth="200dp"
+                android:fontFamily="@font/notosanskrregular"
+                android:includeFontPadding="false"
                 android:padding="10dp"
-                android:spinnerMode="dropdown" />
+                android:spinnerMode="dropdown"
+                android:textSize="18sp"/>
 
 
         </LinearLayout>
@@ -97,10 +109,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanskrbold"
+                android:includeFontPadding="false"
                 android:padding="10dp"
                 android:text="학력"
                 android:textColor="@color/black"
-                android:textStyle="bold" />
+                android:textSize="18sp"/>
 
             <EditText
                 android:id="@+id/shcool_insert_et"
@@ -108,8 +122,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:fontFamily="@font/notosanskrregular"
                 android:hint="내용을 입력해주세요"
-                android:inputType="textPersonName" />
+                android:includeFontPadding="false"
+                android:inputType="textPersonName"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -122,10 +139,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanskrbold"
+                android:includeFontPadding="false"
                 android:padding="10dp"
                 android:text="지역"
                 android:textColor="@color/black"
-                android:textStyle="bold" />
+                android:textSize="18sp"/>
 
             <Spinner
                 android:id="@+id/local_spinner"
@@ -133,7 +152,8 @@
                 android:layout_height="wrap_content"
                 android:dropDownWidth="200dp"
                 android:padding="10dp"
-                android:spinnerMode="dropdown" />
+                android:spinnerMode="dropdown"
+                android:textSize="18sp"/>
 
             <EditText
                 android:id="@+id/local_insert_et"
@@ -141,7 +161,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:fontFamily="@font/notosanskrregular"
+                android:includeFontPadding="false"
+                android:inputType="textPersonName"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -152,8 +175,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="수정"
+        android:backgroundTint="#FF7C01"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/white"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

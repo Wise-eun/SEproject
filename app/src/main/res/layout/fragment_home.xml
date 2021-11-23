@@ -32,7 +32,7 @@
         android:text="W"
         android:fontFamily="@font/notosanskrbold"
         android:includeFontPadding="false"
-        android:textColor="@color/orange"
+        android:textColor="#FF7C01"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="@+id/homeFragment"
         app:layout_constraintEnd_toEndOf="@+id/homeFragment"

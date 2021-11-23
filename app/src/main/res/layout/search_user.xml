@@ -37,6 +37,8 @@
             android:layout_marginLeft="20dp"
             android:text="User_name"
             android:textSize="20dp"
+            android:fontFamily="@font/notosanskrregular"
+            android:includeFontPadding="false"
             android:textStyle="bold" />
 
 
@@ -49,6 +51,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:text="사용자 검색"
+        android:fontFamily="@font/notosanskrregular"
+        android:includeFontPadding="false"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -61,7 +65,7 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="400dp"
+        android:layout_width="412dp"
         android:layout_height="2dp"
         android:layout_marginTop="52dp"
         android:background="@color/dark_gray"
@@ -99,6 +103,8 @@
                 android:backgroundTint="@color/white"
                 android:ems="10"
                 android:hint="사용자의 닉네임을 입력해주세요"
+                android:fontFamily="@font/notosanskrregular"
+                android:includeFontPadding="false"
                 android:inputType="textPersonName"
                 android:paddingLeft="10dp" />
 

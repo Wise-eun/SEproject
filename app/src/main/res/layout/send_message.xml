@@ -15,11 +15,12 @@
         tools:layout_editor_absoluteY="114dp">
 
         <TextView
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/notosanskrregular"
+            android:includeFontPadding="false"
             android:text="메시지 보내기"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -30,23 +31,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
-
         <TextView
-            android:layout_width="400dp"
-            android:layout_height="2dp"
-            android:layout_margin="10dp"
+            android:layout_width="412dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/dark_gray"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
+            app:layout_constraintStart_toStartOf="parent"/>
         <EditText
             android:inputType="textMultiLine"
             android:gravity="top"
             android:id="@+id/write_msg_insert_et"
-            android:layout_width="350dp"
+            android:layout_width="fill_parent"
             android:layout_height="500dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
+            android:padding="20dp"
+            android:layout_margin="20dp"
+            android:fontFamily="@font/notosanskrregular"
+            android:includeFontPadding="false"
             android:background="@drawable/roundline_gray"
             android:hint="내용을 입력해주세요"
             ></EditText>
@@ -57,9 +59,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="전송"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
+        android:backgroundTint="#FF7C01"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"></Button>
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/white"/>
 
 
 
