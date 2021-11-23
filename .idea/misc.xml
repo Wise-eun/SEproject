@@ -5,13 +5,14 @@
       <map>
         <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/drawable/any_button_round.xml" value="0.14583333333333334" />
         <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/drawable/post_listview_item_dday.xml" value="0.536" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/drawable/post_listview_item_dday_complete.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/drawable/post_listview_item_round.xml" value="0.4" />
         <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/font/fontstyle.xml" value="0.15989583333333332" />
         <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/layout/alarm.xml" value="0.536" />
         <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/layout/alarm_listview_item.xml" value="0.264" />
         <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/layout/category.xml" value="0.2" />
         <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/layout/category6.xml" value="0.264" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/layout/fragment_home.xml" value="0.5428571428571428" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/layout/fragment_home.xml" value="0.536" />
         <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/layout/fragment_profile.xml" value="0.32170542635658916" />
         <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/layout/fragment_work.xml" value="0.32421875" />
         <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/layout/join.xml" value="0.536" />
@@ -24,7 +25,7 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/layout/mypost.xml" value="0.536" />
         <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/layout/mypost_detail.xml" value="0.1296875" />
         <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/layout/mypost_modify.xml" value="0.152" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/layout/post_complete.xml" value="0.1296875" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/layout/post_complete.xml" value="0.4" />
         <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/layout/post_detail.xml" value="0.34297520661157027" />
         <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/layout/post_listview_item.xml" value="0.536" />
         <entry key="..\:/Users/User/AndroidStudioProjects/SEproject/app/src/main/res/layout/post_member_listview_item.xml" value="1.0" />

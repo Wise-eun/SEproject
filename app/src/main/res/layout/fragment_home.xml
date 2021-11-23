@@ -70,6 +70,8 @@
             android:layout_weight="1"
             android:backgroundTint="@color/white"
             android:ems="10"
+            android:fontFamily="@font/notosanskrregular"
+            android:includeFontPadding="false"
             android:hint="찾을내용을 검색해주세요"
             android:inputType="textPersonName"
             android:paddingLeft="10dp" />
@@ -153,6 +155,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         app:layout_constraintEnd_toStartOf="@+id/etc_category"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toEndOf="@+id/literature_category"
         app:layout_constraintTop_toTopOf="@+id/literature_category"
         app:srcCompat="@drawable/round_btn" />
@@ -188,8 +191,7 @@
         android:id="@+id/etc_category"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/ucc_category"
+        app:layout_constraintEnd_toEndOf="@+id/science_category"
         app:layout_constraintTop_toTopOf="@+id/supporters_category"
         app:srcCompat="@drawable/round_btn" />
 
@@ -197,6 +199,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="기획/아이디어"
+        android:fontFamily="@font/notosanskrregular"
+        android:includeFontPadding="false"
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/design_category"
         app:layout_constraintEnd_toEndOf="@+id/idea_category"
@@ -207,6 +211,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="광고/마케팅"
+        android:fontFamily="@font/notosanskrregular"
+        android:includeFontPadding="false"
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/computer_category"
         app:layout_constraintEnd_toEndOf="@+id/advertise_category"
@@ -217,6 +223,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="영상/UCC/사진"
+        android:fontFamily="@font/notosanskrregular"
+        android:includeFontPadding="false"
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/science_category"
         app:layout_constraintEnd_toEndOf="@+id/ucc_category"
@@ -227,6 +235,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="미술/디자인"
+        android:fontFamily="@font/notosanskrregular"
+        android:includeFontPadding="false"
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/literature_category"
         app:layout_constraintEnd_toEndOf="@+id/design_category"
@@ -234,8 +244,11 @@
         app:layout_constraintTop_toBottomOf="@+id/design_category" />
 
     <TextView
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/notosanskrregular"
+        android:includeFontPadding="false"
         android:text="IT/컴퓨터"
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/supporters_category"
@@ -246,18 +259,24 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/notosanskrregular"
+        android:includeFontPadding="false"
         android:text="과학/공학"
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/etc_category"
         app:layout_constraintEnd_toEndOf="@+id/science_category"
+        app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toStartOf="@+id/science_category"
-        app:layout_constraintTop_toBottomOf="@+id/science_category" />
+        app:layout_constraintTop_toBottomOf="@+id/science_category"
+        app:layout_constraintVertical_bias="0.416" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:text="문학/글"
+        android:fontFamily="@font/notosanskrregular"
+        android:includeFontPadding="false"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="@+id/literature_category"
         app:layout_constraintHorizontal_bias="0.436"
@@ -269,6 +288,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:text="서포터즈/봉사활동"
+        android:fontFamily="@font/notosanskrregular"
+        android:includeFontPadding="false"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="@+id/supporters_category"
         app:layout_constraintHorizontal_bias="0.666"
@@ -280,6 +301,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:text="기타"
+        android:fontFamily="@font/notosanskrregular"
+        android:includeFontPadding="false"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="@+id/etc_category"
         app:layout_constraintStart_toStartOf="@+id/etc_category"
