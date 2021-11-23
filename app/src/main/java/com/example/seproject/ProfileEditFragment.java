@@ -1,6 +1,7 @@
 package com.example.seproject;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -123,8 +124,16 @@ public class ProfileEditFragment extends Fragment {
             RequestQueue queue = Volley.newRequestQueue(ProfileEditFragment.this.getActivity());
             queue.add(updateProfileRequest);
 
-                //프로필 화면으로 다시 이동
-                ((MainActivity)getActivity()).replaceFragment(ProfileFragment.newInstance());
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        //프로필 화면으로 다시 이동
+                        ((MainActivity)getActivity()).replaceFragment(ProfileFragment.newInstance());
+
+                    }
+                }, 500); //딜레이 타임 조절
+
 
             }
         });
