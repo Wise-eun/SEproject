@@ -459,7 +459,7 @@ public class PostDetailFragment extends Fragment {
 
             ArrayList<PostMember_ListItem> items = new ArrayList<PostMember_ListItem>();
 
-
+//
 
             for (int i = 0; i < jsonArray.length(); i++) {
 
