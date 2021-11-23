@@ -89,8 +89,37 @@
                     tools:layout_editor_absoluteX="157dp"
                     tools:layout_editor_absoluteY="57dp" />
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/star_image"
+                        android:layout_width="30dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="3dp"
+                        app:srcCompat="@drawable/ic_baseline_star_border_24"
+                        tools:layout_editor_absoluteX="272dp"
+                        tools:layout_editor_absoluteY="32dp" />
+
+                    <TextView
+                        android:id="@+id/rating_tv"
+                        android:layout_width="89dp"
+                        android:layout_height="40dp"
+                        android:padding="2dp"
+                        android:fontFamily="@font/notosanskrblack"
+                        android:includeFontPadding="false"
+                        android:text="3"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="312dp"
+                        tools:layout_editor_absoluteY="32dp" />
+
+
+                </LinearLayout>
+
                 <Button
-                    android:id="@+id/send_msg_btn"
+                    android:id="@+id/profie_edit_btn"
                     android:layout_width="130dp"
                     android:layout_height="32dp"
                     android:layout_marginTop="7px"
@@ -103,29 +132,11 @@
                     android:textColor="#FFFFFF"
                     tools:layout_editor_absoluteX="157dp"
                     tools:layout_editor_absoluteY="78dp" />
+
             </LinearLayout>
 
 
-            <ImageView
-                android:id="@+id/star_image"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                app:srcCompat="@drawable/ic_baseline_star_border_24"
-                tools:layout_editor_absoluteX="272dp"
-                tools:layout_editor_absoluteY="32dp" />
-
-            <TextView
-                android:id="@+id/rating_tv"
-                android:layout_width="62dp"
-                android:layout_height="40dp"
-                android:fontFamily="@font/notosanskrblack"
-                android:includeFontPadding="false"
-                android:text="3"
-                android:textSize="26sp"
-                android:textStyle="bold"
-                tools:layout_editor_absoluteX="312dp"
-                tools:layout_editor_absoluteY="32dp" />
-
+            >
         </LinearLayout>
 
         <TextView

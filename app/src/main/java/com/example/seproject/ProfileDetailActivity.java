@@ -1,22 +1,15 @@
 package com.example.seproject;
 
-import static java.security.AccessController.getContext;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -65,7 +58,7 @@ public class ProfileDetailActivity extends AppCompatActivity implements Serializ
         user_info_tv = findViewById(R.id.user_info_tv);
         rating_tv = findViewById(R.id.rating_tv);
         self_intro_tv = findViewById(R.id.self_intro_tv);
-        send_msg_btn = findViewById(R.id.send_msg_btn);
+        send_msg_btn = findViewById(R.id.profie_edit_btn);
 
         ProfileDetailActivity.GetData task = new ProfileDetailActivity.GetData();
         task.execute("http://steak2121.ivyro.net/loadUser.php");

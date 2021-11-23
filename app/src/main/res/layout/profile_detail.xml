@@ -67,9 +67,10 @@
                     android:id="@+id/user_name_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="User_name"
                     android:fontFamily="@font/notosanskrregular"
                     android:includeFontPadding="false"
+                    android:text="User_name"
+                    android:textColor="#000000"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     tools:layout_editor_absoluteX="157dp"
@@ -81,46 +82,58 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
-                    android:text="직업/학교/지역"
                     android:fontFamily="@font/notosanskrregular"
                     android:includeFontPadding="false"
+                    android:text="직업/학교/지역"
+                    android:textColor="#000000"
                     tools:layout_editor_absoluteX="157dp"
                     tools:layout_editor_absoluteY="57dp" />
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/star_image"
+                        android:layout_width="30dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="3dp"
+                        app:srcCompat="@drawable/ic_baseline_star_border_24"
+                        tools:layout_editor_absoluteX="272dp"
+                        tools:layout_editor_absoluteY="32dp" />
+
+                    <TextView
+                        android:id="@+id/rating_tv"
+                        android:layout_width="89dp"
+                        android:layout_height="40dp"
+                        android:padding="2dp"
+                        android:fontFamily="@font/notosanskrblack"
+                        android:includeFontPadding="false"
+                        android:text="3"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="312dp"
+                        tools:layout_editor_absoluteY="32dp" />
+
+
+                </LinearLayout>
+
                 <Button
-                    android:id="@+id/send_msg_btn"
+                    android:id="@+id/profie_edit_btn"
                     android:layout_width="130dp"
-                    android:layout_height="38dp"
-                    android:background="#FF7C01"
-                    android:text="메시지 보내기"
+                    android:layout_height="32dp"
+                    android:layout_marginTop="7px"
+                    android:background="@drawable/any_button_round"
+                    android:backgroundTint="#FF7C01"
                     android:fontFamily="@font/notosanskrregular"
                     android:includeFontPadding="false"
+                    android:text="메세지 보내기"
                     android:textAllCaps="false"
-                    android:textColor="@color/white"
+                    android:textColor="#FFFFFF"
                     tools:layout_editor_absoluteX="157dp"
                     tools:layout_editor_absoluteY="78dp" />
             </LinearLayout>
 
-
-            <ImageView
-                android:id="@+id/star_image"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                app:srcCompat="@drawable/ic_baseline_star_border_24"
-                tools:layout_editor_absoluteX="272dp"
-                tools:layout_editor_absoluteY="32dp" />
-
-            <TextView
-                android:id="@+id/rating_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:fontFamily="@font/notosanskrblack"
-                android:includeFontPadding="false"
-                android:text="3.9"
-                android:textSize="26sp"
-                android:textStyle="bold"
-                tools:layout_editor_absoluteX="312dp"
-                tools:layout_editor_absoluteY="32dp" />
 
         </LinearLayout>
 
@@ -139,11 +152,12 @@
             android:id="@+id/self_intro_tv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
+            android:layout_margin="15dp"
             android:fontFamily="@font/notosanskrregular"
             android:includeFontPadding="false"
             android:text="저는 영남대 컴공에 재학중이구여 할 수 있는 언어는 한국어 젤 잘해여ㅋ 이런 저라도 받아주시겠어여? 신청 거절하면 미오미오!"
             android:textSize="18sp"
+            android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/line" />
     </LinearLayout>

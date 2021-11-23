@@ -58,7 +58,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        profile_edit_btn = (Button) view.findViewById(R.id.send_msg_btn);
+        profile_edit_btn = (Button) view.findViewById(R.id.profie_edit_btn);
 
         user_name_tv = (TextView) view.findViewById(R.id.user_name_tv);
         user_info_tv = (TextView) view.findViewById(R.id.user_info_tv);
