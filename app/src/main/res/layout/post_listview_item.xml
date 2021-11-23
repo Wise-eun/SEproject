@@ -40,7 +40,7 @@
 
                 <TextView
                     android:id="@+id/title_tv"
-                    android:layout_width="260dp"
+                    android:layout_width="255dp"
                     android:layout_height="53dp"
                     android:layout_marginTop="-15dp"
                     android:layout_marginBottom="-4dp"
@@ -48,7 +48,7 @@
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
                     android:paddingRight="5dp"
-                    android:text="[ㅇㅇ공모건] 우짤래미공모전입니다"
+                    android:text="[ㅇㅇ공모건] 우짤래공모전입니다"
                     android:textColor="#000000"
                     android:textSize="18dp" />
 
@@ -59,7 +59,7 @@
                     android:layout_marginTop="-15dp"
                     android:fontFamily="@font/notosanskrblack"
                     android:gravity="center_vertical"
-                    android:text="(1/14)"
+                    android:text="(1/4)"
                     android:textColor="#2196F3"
                     android:textSize="20dp" />
             </LinearLayout>
