@@ -486,7 +486,7 @@ public class PostDetailFragment extends Fragment {
                     {
                         //취소하기 버튼 활성화 .
                         participate = true;
-                        post_apply_btn.setText("취소하기");
+                        post_apply_btn.setText("탈퇴하기");
                     }
                 }
             }
