@@ -47,11 +47,12 @@
         <TextView
             android:id="@+id/msg_content_tv"
             android:layout_width="390dp"
-            android:layout_height="30dp"
-            android:gravity="center_vertical"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:text="인원이 다 차서...! 전화번호 알려주세요 ㅎㅎ"
+            android:paddingBottom="5dp"
+            android:gravity="center_vertical"
+            android:text="인원이 다 차서...! 전화번호 알려주세요 ㅎㅎ 아 너무 실례이려나ㅎㅎ"
             android:textColor="#000000"
             android:textSize="20sp" />
 
