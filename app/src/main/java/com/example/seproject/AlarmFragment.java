@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,6 +47,7 @@ public class AlarmFragment extends Fragment {
     private static final String TAG_PID = "pid";
     private static final String TAG_TYPE = "type";
     private static final String TAG_TITLE = "title";
+    private static final String TAG_DELETETITLE = "deleteTitle";
     private String mJsonString;
     String userID,userName;
 
@@ -99,8 +101,16 @@ public class AlarmFragment extends Fragment {
                             RequestQueue queue = Volley.newRequestQueue(AlarmFragment.this.getActivity());
                             queue.add(alarmRequest);
 
-                            getActivity().getSupportFragmentManager().popBackStack();
-                            ((MainActivity) getActivity()).replaceFragment(AlarmFragment.newInstance());
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    //프로필 화면으로 다시 이동
+                                    getActivity().getSupportFragmentManager().popBackStack();
+                                    ((MainActivity) getActivity()).replaceFragment(AlarmFragment.newInstance());
+                                }
+                            }, 500); //딜레이 타임 조절
+
 
 
 //                            adapter.deleteItem(pos);
@@ -231,7 +241,11 @@ public class AlarmFragment extends Fragment {
             if (result == null) {}
             else {
                 mJsonString = result;
-                showResult();
+                try {
+                    showResult();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
@@ -284,7 +298,7 @@ public class AlarmFragment extends Fragment {
         }
     }
 
-    private void showResult() {
+    private void showResult() throws JSONException {
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
@@ -299,13 +313,19 @@ public class AlarmFragment extends Fragment {
                 String type = item.getString(TAG_TYPE);
                 String pid_str = item.getString(TAG_PID);
                 String title = item.getString(TAG_TITLE);
+                String deleteTitle = item.getString(TAG_DELETETITLE);
 
-                if(userName.equals(receiver)){
-                    adapter.addItem(new Alarm_ListItem(sender, title , Integer.parseInt(type), Integer.parseInt(pid_str)));
+                if (userName.equals(receiver)) {
+                    if (type.equals("5")) {
+                        adapter.addItem(new Alarm_ListItem(sender, deleteTitle, Integer.parseInt(type), Integer.parseInt(pid_str)));
+                    } else {
+                        adapter.addItem(new Alarm_ListItem(sender, title, Integer.parseInt(type), Integer.parseInt(pid_str)));
+
+                    }
                 }
-            }
-            listView.setAdapter(adapter);
+                listView.setAdapter(adapter);
 
+            }
         }
         catch (JSONException e) {
             Log.d(TAG, "showResult : ", e);

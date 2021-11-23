@@ -47,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
 
     SendMsgFragment sendMsgFragment = new SendMsgFragment();
 
+    public void onBackPressed(){
+        getSupportFragmentManager().popBackStack();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -52,7 +52,8 @@ public class Post_ListItemAdapter extends BaseAdapter {
         day_tv.setText(listItem.getDay());
 
         if(listItem.getDay().equals("완료") || listItem.getDay().contains("D+")){
-            day_tv.setBackgroundColor(Color.WHITE);
+            day_tv.setBackgroundResource(R.drawable.post_listview_item_dday_complete);
+//            day_tv.setBackgroundColor(Color.WHITE);
             day_tv.setTextColor(Color.parseColor("#FF9800"));
         }
         else{
