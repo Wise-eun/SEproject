@@ -232,11 +232,11 @@ public class ProfileFragment extends Fragment {
                 {
                    // user_name_tv,user_info_tv,rating_tv
                     user_name_tv.setText(name);
-                    if(job.equals(""))
+                    if(job.equals("") || job.equals("-"))
                         job = "없음";
-                    if(school.equals(""))
+                    if(school.equals("") || school.equals("-"))
                         school = "없음";
-                    if(local.equals(""))
+                    if(local.equals("") || local.equals("- "))
                         local = "없음";
                     user_info_tv.setText(job+"/"+school+"/"+local);
                     float rating_num = Float.parseFloat(rating);
@@ -248,10 +248,12 @@ public class ProfileFragment extends Fragment {
 
                     selfIntro = String.copyValueOf(selfintro.toCharArray()); //자기소개 복사.
                     userName = String.copyValueOf(name.toCharArray());//사용자 닉네임 복사
-                    userJob = String.copyValueOf(job.toCharArray());//사용자 직업 복사
+                    //userJob = String.copyValueOf(job.toCharArray());//사용자 직업 복사
                     userSchool = String.copyValueOf(school.toCharArray());//사용자 학교 복사
-                    userLocal = String.copyValueOf(local.toCharArray());//사용자 지역 복사
+                    //userLocal = String.copyValueOf(local.toCharArray());//사용자 지역 복사
                     userPW = String.copyValueOf(pw.toCharArray());//사용자 비번 복사
+                    userJob = job;
+                    userLocal = local;
 
                 }
                 /*
