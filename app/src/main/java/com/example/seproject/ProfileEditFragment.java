@@ -2,6 +2,7 @@ package com.example.seproject;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,8 @@ public class ProfileEditFragment extends Fragment {
     TextView user_name_tv;
     EditText schcool_insert_et, local_insert_et;
 
+int job_num;
+int local_num;
 
     public ProfileEditFragment(){}
 
@@ -57,6 +60,9 @@ public class ProfileEditFragment extends Fragment {
         ArrayAdapter<String> job_adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,job_items);
         job_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         job_spinner.setAdapter(job_adapter);
+
+
+
         job_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -70,11 +76,30 @@ public class ProfileEditFragment extends Fragment {
             }
         });
 
+        if(!(ProfileFragment.userJob.equals("없음"))) {
+            for (int i = 0; i < job_items.length; i++) {
+                if (ProfileFragment.userJob.equals(job_items[i])) {
+
+                    job_num = i;
+
+                    break;
+                }
+            }
+
+            job_spinner.setSelection(job_num);
+
+        }
+
+
+
         Spinner local_spinner = (Spinner) view.findViewById(R.id.local_spinner);
 
         ArrayAdapter<String> local_adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,local_items);
         local_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         local_spinner.setAdapter(local_adapter);
+
+
+
         local_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -87,6 +112,28 @@ public class ProfileEditFragment extends Fragment {
 
             }
         });
+
+
+        if(!(ProfileFragment.userLocal.equals("없음") || ProfileFragment.userLocal.equals("- "))) {
+            int idx = ProfileFragment.userLocal.indexOf(" ");
+
+            String userLocal1 = ProfileFragment.userLocal.substring(0, idx);
+            String userLocal2 = ProfileFragment.userLocal.substring(idx + 1);
+            for (int i = 0; i < local_items.length; i++) {
+                if (userLocal1.equals(local_items[i])) {
+
+                    local_num = i;
+                    break;
+                }
+            }
+            local_spinner.setSelection(local_num);
+
+            local_insert_et.setText(userLocal2);
+        }
+        if(!(ProfileFragment.userSchool.equals("없음")))
+            schcool_insert_et.setText(ProfileFragment.userSchool);
+
+
 
 
         //최종적으로 수정하기 버튼을 눌렀을 경우
