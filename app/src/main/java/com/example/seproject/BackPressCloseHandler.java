@@ -13,12 +13,12 @@ public class BackPressCloseHandler {
     }
 
     public void onBackPressed() {
-        if (System.currentTimeMillis() > backkeyPressedTime + 2000) {
+        if (System.currentTimeMillis() > backkeyPressedTime + 500) {
             backkeyPressedTime = System.currentTimeMillis();
             showGuide();
             return;
         }
-        if (System.currentTimeMillis() <= backkeyPressedTime + 2000) {
+        if (System.currentTimeMillis() <= backkeyPressedTime + 300) {
             activity.finish();
             toast.cancel();
         }
