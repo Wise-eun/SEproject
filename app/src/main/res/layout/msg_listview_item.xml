@@ -14,20 +14,31 @@
 
             <TextView
                 android:id="@+id/msg_type_tv"
-                android:layout_width="250dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:gravity="center_vertical"
                 android:text="보낸 메시지"
+                android:layout_gravity="left"
                 android:textColor="@color/black"
                 android:textSize="20sp"
+
                 android:textStyle="bold" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                />
+
             <TextView
                 android:id="@+id/msg_date_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
+                android:layout_margin="10dp"
                 android:text="2021-09-23 18:25"
+                android:layout_gravity="end"
                 android:textColor="#000000"
                 android:textSize="15sp" />
 
