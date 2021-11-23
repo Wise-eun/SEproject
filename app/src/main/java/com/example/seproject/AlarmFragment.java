@@ -316,7 +316,7 @@ public class AlarmFragment extends Fragment {
                 String deleteTitle = item.getString(TAG_DELETETITLE);
 
                 if (userName.equals(receiver) && !sender.equals(receiver)) {
-                    if (type.equals("5") || type.equals("6")) {
+                    if (type.equals("5") || type.equals("6") || type.equals(("7"))) {
                         adapter.addItem(new Alarm_ListItem(sender, deleteTitle, Integer.parseInt(type), Integer.parseInt(pid_str)));
                     } else {
                         adapter.addItem(new Alarm_ListItem(sender, title, Integer.parseInt(type), Integer.parseInt(pid_str)));

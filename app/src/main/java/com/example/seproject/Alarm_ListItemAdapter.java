@@ -61,7 +61,7 @@ public class Alarm_ListItemAdapter extends BaseAdapter {
         if(type==0){
             content_tv.setText(sender + "님이 [" + title + "]글에 참여 신청을 하였습니다.");
         }
-        else if(type==1){
+        else if(type==1 || type==7){
             content_tv.setText(sender + "님이 [" + title + "]글의 참여 신청을 거절하였습니다.");
         }
         else if(type==2){
