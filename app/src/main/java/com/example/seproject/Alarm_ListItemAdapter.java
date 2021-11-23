@@ -71,7 +71,7 @@ public class Alarm_ListItemAdapter extends BaseAdapter {
             content_tv.setText(sender + "님이 메시지를 보냈습니다.");
         }
         else{
-            content_tv.setText(sender + "님이 [" + title + "]글의 팀에서 탈퇴했습니다.");
+            content_tv.setText(sender + "님의 팀 [" + title + "] 에서 탈퇴했습니다.");
         }
 
         if(type==0){

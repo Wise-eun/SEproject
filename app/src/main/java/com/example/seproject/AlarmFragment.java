@@ -99,8 +99,12 @@ public class AlarmFragment extends Fragment {
                             RequestQueue queue = Volley.newRequestQueue(AlarmFragment.this.getActivity());
                             queue.add(alarmRequest);
 
-                            adapter.deleteItem(pos);
-                            adapter.notifyDataSetChanged();
+                            getActivity().getSupportFragmentManager().popBackStack();
+                            ((MainActivity) getActivity()).replaceFragment(AlarmFragment.newInstance());
+
+
+//                            adapter.deleteItem(pos);
+//                            adapter.notifyDataSetChanged();
 
                         }
                     });
@@ -129,8 +133,10 @@ public class AlarmFragment extends Fragment {
                             RequestQueue queue = Volley.newRequestQueue(AlarmFragment.this.getActivity());
                             queue.add(alarmRequest);
 
-                            adapter.deleteItem(pos);
-                            adapter.notifyDataSetChanged();
+//                            adapter.deleteItem(pos);
+//                            adapter.notifyDataSetChanged();
+                            getActivity().getSupportFragmentManager().popBackStack();
+                            ((MainActivity) getActivity()).replaceFragment(AlarmFragment.newInstance());
                         }
                     });
 
@@ -177,9 +183,11 @@ public class AlarmFragment extends Fragment {
                         RequestQueue queue = Volley.newRequestQueue(AlarmFragment.this.getActivity());
                         queue.add(alarmRequest);
 
-                        adapter.clearItem();
-                        adapter.notifyDataSetChanged();
+//                        adapter.clearItem();
+//                        adapter.notifyDataSetChanged();
 
+                        getActivity().getSupportFragmentManager().popBackStack();
+                        ((MainActivity) getActivity()).replaceFragment(AlarmFragment.newInstance());
                     }
 
                 });
