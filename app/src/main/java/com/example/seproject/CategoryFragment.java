@@ -86,7 +86,7 @@ public class CategoryFragment extends Fragment {
         write_btn = (ImageButton) v.findViewById(R.id.trash_btn);
         write_btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                if(deletion <= 5 )
+                if(deletion <5 )
                 ((MainActivity)getActivity()).replaceFragment(PostWriteFragment.newInstance());
                 else{
                     AlertDialog.Builder builder = new AlertDialog.Builder(CategoryFragment.this.getActivity());

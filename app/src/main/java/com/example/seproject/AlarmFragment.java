@@ -315,12 +315,11 @@ public class AlarmFragment extends Fragment {
                 String title = item.getString(TAG_TITLE);
                 String deleteTitle = item.getString(TAG_DELETETITLE);
 
-                if (userName.equals(receiver)) {
-                    if (type.equals("5")) {
+                if (userName.equals(receiver) && !sender.equals(receiver)) {
+                    if (type.equals("5") || type.equals("6")) {
                         adapter.addItem(new Alarm_ListItem(sender, deleteTitle, Integer.parseInt(type), Integer.parseInt(pid_str)));
                     } else {
                         adapter.addItem(new Alarm_ListItem(sender, title, Integer.parseInt(type), Integer.parseInt(pid_str)));
-
                     }
                 }
                 listView.setAdapter(adapter);

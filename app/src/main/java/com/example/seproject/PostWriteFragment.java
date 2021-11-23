@@ -158,6 +158,12 @@ public class PostWriteFragment extends Fragment {
                     dialog.show();
                     return;
                 }
+                if(mypost_title_tv.getText() == null ||mypost_title_tv.getText().toString().equals("")  ){ //제목이 없을 경우
+                    AlertDialog.Builder builder = new AlertDialog.Builder(PostWriteFragment.this.getActivity());
+                    dialog = builder.setMessage("제목을 입력해주시기 바랍니다.").setPositiveButton("확인", null).create();
+                    dialog.show();
+                    return;
+                }
                 else {
 
                     pid = CategoryFragment.last_pid + 1;

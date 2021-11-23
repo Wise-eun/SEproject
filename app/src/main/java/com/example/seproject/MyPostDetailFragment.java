@@ -16,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -159,7 +161,7 @@ public class MyPostDetailFragment extends Fragment {
         post_delete_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String titleMsg = " 이 게시물을 삭제하시겠습니까? ";
+                String titleMsg = " 5개이상 삭제 시 글 작성이 제한됩니다. 삭제하시겠습니까? ";
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle(titleMsg);
@@ -178,8 +180,8 @@ public class MyPostDetailFragment extends Fragment {
                         RequestQueue queue = Volley.newRequestQueue(MyPostDetailFragment.this.getActivity());
                         queue.add(myPostDeleteRequest);
 
-                        ((MainActivity)getActivity()).replaceFragment(HomeFragment.newInstance());
 
+                        getActivity().getSupportFragmentManager().popBackStack();
                         dialog.cancel();
                     }
                 });

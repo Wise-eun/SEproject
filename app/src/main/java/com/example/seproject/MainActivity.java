@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().popBackStack();
     }
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,14 +93,14 @@ public class MainActivity extends AppCompatActivity {
             int id = item.getItemId();
 
             if (id == R.id.menu_home) {
-                transaction.replace(R.id.flFragment, homeFragment).commitAllowingStateLoss();
+                transaction.replace(R.id.flFragment, homeFragment).addToBackStack(null).commit();
                 return true;
             } else if (id == R.id.menu_work) {
-                transaction.replace(R.id.flFragment, workFragment).commitAllowingStateLoss();
+                transaction.replace(R.id.flFragment, workFragment).addToBackStack(null).commit();
                 return true;
             } else if (id == R.id.menu_profile) {
                 profileFragment.setArguments(bundle_toFragment);
-                transaction.replace(R.id.flFragment, profileFragment).commitAllowingStateLoss();
+                transaction.replace(R.id.flFragment, profileFragment).addToBackStack(null).commit();
 
                 return true;
             }
