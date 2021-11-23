@@ -2,6 +2,7 @@ package com.example.seproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,37 +65,26 @@ public class SendMsgFragment extends Fragment {
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-//                        try {
-//                            JSONObject jsonObject = new JSONObject(response);
-//                            boolean success = jsonObject.getBoolean("success");
-//                           if (success) {
-//
-//                               Toast.makeText(getActivity(),"메세지 전송에 성공하였습니다.",Toast.LENGTH_SHORT).show();
-//                                ((MainActivity)getActivity()).replaceFragment(MsgDetailFragment.newInstance()); //화면전환
-//                               MsgDetailFragment.where_in = 2;
-//                            }
-//
-//                            else {
-//                               Toast.makeText(getActivity(),"메세지 전송에 실패하였습니다.",Toast.LENGTH_SHORT).show();
-//                                return;
-//                            }
-//
-//
-//
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
+
                     }
                 };
-
-                ((MainActivity)getActivity()).replaceFragment(MsgDetailFragment.newInstance()); //화면전환
-                MsgDetailFragment.where_in = 2;
 
                 //서버로 Volley를 이용해서 요청
                 SendMsgRequest sendMsgRequest = new SendMsgRequest(sender, receiver, content, -1, 3, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(SendMsgFragment.this.getActivity());
                 queue.add(sendMsgRequest);
 
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        //프로필 화면으로 다시 이동
+                        ((MainActivity)getActivity()).replaceFragment(MsgDetailFragment.newInstance()); //화면전환
+                        MsgDetailFragment.where_in = 2;
+
+
+                    }
+                }, 500); //딜레이 타임 조절
 
 
             }
