@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#FF5722"
     tools:context=".MainActivity">
 
 
@@ -29,9 +29,9 @@
         android:id="@+id/homeFragment2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="W"
         android:fontFamily="@font/notosanskrbold"
         android:includeFontPadding="false"
+        android:text="W"
         android:textColor="#FF7C01"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="@+id/homeFragment"
@@ -73,8 +73,8 @@
             android:backgroundTint="@color/white"
             android:ems="10"
             android:fontFamily="@font/notosanskrregular"
-            android:includeFontPadding="false"
             android:hint="찾을 내용을 검색해주세요"
+            android:includeFontPadding="false"
             android:inputType="textPersonName"
             android:paddingLeft="10dp" />
 
@@ -115,96 +115,103 @@
 
     <ImageButton
         android:id="@+id/idea_category"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:layout_marginTop="30dp"
+        android:background="@drawable/round_btn"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:srcCompat="@drawable/round_btn"
-        android:background="#ffffff"/>
+        app:srcCompat="@drawable/free_icon_planing_2806921" />
 
     <ImageButton
         android:id="@+id/design_category"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:layout_marginTop="30dp"
+        android:background="@drawable/round_btn"
         app:layout_constraintStart_toStartOf="@+id/idea_category"
         app:layout_constraintTop_toBottomOf="@+id/idea_category"
-        app:srcCompat="@drawable/round_btn" />
+        app:srcCompat="@drawable/premium_icon_art_4783220" />
 
     <ImageButton
         android:id="@+id/literature_category"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:layout_marginTop="30dp"
+        android:background="@drawable/round_btn"
         app:layout_constraintStart_toStartOf="@+id/idea_category"
         app:layout_constraintTop_toBottomOf="@+id/design_category"
-        app:srcCompat="@drawable/round_btn" />
+        app:srcCompat="@drawable/free_icon_open_book_543706" />
 
     <ImageButton
         android:id="@+id/computer_category"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
+        android:background="@drawable/round_btn"
         app:layout_constraintEnd_toStartOf="@+id/science_category"
         app:layout_constraintStart_toEndOf="@+id/design_category"
         app:layout_constraintTop_toTopOf="@+id/design_category"
-        app:srcCompat="@drawable/round_btn" />
+        app:srcCompat="@drawable/premium_icon_computer_3667881" />
 
     <ImageButton
         android:id="@+id/supporters_category"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
+        android:background="@drawable/round_btn"
         app:layout_constraintEnd_toStartOf="@+id/etc_category"
-        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toEndOf="@+id/literature_category"
         app:layout_constraintTop_toTopOf="@+id/literature_category"
-        app:srcCompat="@drawable/round_btn" />
+        app:srcCompat="@drawable/premium_icon_volunteer_2731960" />
 
     <ImageButton
         android:id="@+id/advertise_category"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
+        android:background="@drawable/round_btn"
         app:layout_constraintEnd_toStartOf="@+id/ucc_category"
         app:layout_constraintStart_toEndOf="@+id/idea_category"
         app:layout_constraintTop_toTopOf="@+id/idea_category"
-        app:srcCompat="@drawable/round_btn" />
+        app:srcCompat="@drawable/free_icon_mobile_marketing_4228787" />
 
     <ImageButton
         android:id="@+id/ucc_category"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:background="@drawable/round_btn"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintTop_toTopOf="@+id/advertise_category"
-        app:srcCompat="@drawable/round_btn" />
+        app:srcCompat="@drawable/free_icon_camera_6238284" />
 
     <ImageButton
         android:id="@+id/science_category"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:background="@drawable/round_btn"
         app:layout_constraintEnd_toEndOf="@+id/ucc_category"
         app:layout_constraintTop_toTopOf="@+id/computer_category"
-        app:srcCompat="@drawable/round_btn" />
+        app:srcCompat="@drawable/science_book" />
 
     <ImageButton
         android:id="@+id/etc_category"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:background="@drawable/round_btn"
         app:layout_constraintEnd_toEndOf="@+id/science_category"
         app:layout_constraintTop_toTopOf="@+id/supporters_category"
-        app:srcCompat="@drawable/round_btn" />
+        app:srcCompat="@drawable/ic_outline_more_horiz_24" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="기획/아이디어"
         android:fontFamily="@font/notosanskrregular"
         android:includeFontPadding="false"
+        android:text="기획/아이디어"
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/design_category"
         app:layout_constraintEnd_toEndOf="@+id/idea_category"
@@ -214,9 +221,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="광고/마케팅"
         android:fontFamily="@font/notosanskrregular"
         android:includeFontPadding="false"
+        android:text="광고/마케팅"
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/computer_category"
         app:layout_constraintEnd_toEndOf="@+id/advertise_category"
@@ -226,9 +233,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="영상/UCC/사진"
         android:fontFamily="@font/notosanskrregular"
         android:includeFontPadding="false"
+        android:text="영상/UCC/사진"
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/science_category"
         app:layout_constraintEnd_toEndOf="@+id/ucc_category"
@@ -238,9 +245,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="미술/디자인"
         android:fontFamily="@font/notosanskrregular"
         android:includeFontPadding="false"
+        android:text="미술/디자인"
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/literature_category"
         app:layout_constraintEnd_toEndOf="@+id/design_category"
@@ -278,9 +285,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:text="문학/글"
         android:fontFamily="@font/notosanskrregular"
         android:includeFontPadding="false"
+        android:text="문학/글"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="@+id/literature_category"
         app:layout_constraintHorizontal_bias="0.436"
@@ -291,9 +298,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:text="서포터즈/봉사활동"
         android:fontFamily="@font/notosanskrregular"
         android:includeFontPadding="false"
+        android:text="서포터즈/봉사활동"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="@+id/supporters_category"
         app:layout_constraintHorizontal_bias="0.666"
@@ -304,9 +311,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:text="기타"
         android:fontFamily="@font/notosanskrregular"
         android:includeFontPadding="false"
+        android:text="기타"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="@+id/etc_category"
         app:layout_constraintStart_toStartOf="@+id/etc_category"
