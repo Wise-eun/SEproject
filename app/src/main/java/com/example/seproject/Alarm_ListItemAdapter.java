@@ -74,7 +74,7 @@ public class Alarm_ListItemAdapter extends BaseAdapter {
             content_tv.setText(sender + "님의 팀 [" + title + "]이 모집완료되었습니다. ");
         }
         else{
-            content_tv.setText(sender + "님의 팀 [" + title + "] 에서 탈퇴했습니다.");
+            content_tv.setText(sender + "님이 팀 [" + title + "] 에서 탈퇴했습니다.");
         }
 
         if(type==0){

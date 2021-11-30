@@ -47,7 +47,6 @@ public class AlarmFragment extends Fragment {
     private static final String TAG_PID = "pid";
     private static final String TAG_TYPE = "type";
     private static final String TAG_TITLE = "title";
-    private static final String TAG_DELETETITLE = "deleteTitle";
     private String mJsonString;
     String userID,userName;
 
@@ -313,14 +312,9 @@ public class AlarmFragment extends Fragment {
                 String type = item.getString(TAG_TYPE);
                 String pid_str = item.getString(TAG_PID);
                 String title = item.getString(TAG_TITLE);
-                String deleteTitle = item.getString(TAG_DELETETITLE);
 
                 if (userName.equals(receiver) && !sender.equals(receiver)) {
-                    if (type.equals("5") || type.equals("6") || type.equals(("7"))) {
-                        adapter.addItem(new Alarm_ListItem(sender, deleteTitle, Integer.parseInt(type), Integer.parseInt(pid_str)));
-                    } else {
-                        adapter.addItem(new Alarm_ListItem(sender, title, Integer.parseInt(type), Integer.parseInt(pid_str)));
-                    }
+                    adapter.addItem(new Alarm_ListItem(sender, title, Integer.parseInt(type), Integer.parseInt(pid_str)));
                 }
                 listView.setAdapter(adapter);
 
