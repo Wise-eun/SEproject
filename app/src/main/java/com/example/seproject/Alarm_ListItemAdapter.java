@@ -70,11 +70,14 @@ public class Alarm_ListItemAdapter extends BaseAdapter {
         else if(type==3){
             content_tv.setText(sender + "님이 메시지를 보냈습니다.");
         }
+        else if(type==4){
+            content_tv.setText(sender + "님이 팀 [" + title + "] 에서 탈퇴했습니다.");
+        }
         else if(type==6){
             content_tv.setText(sender + "님의 팀 [" + title + "]이 모집완료되었습니다. ");
         }
         else{
-            content_tv.setText(sender + "님이 팀 [" + title + "] 에서 탈퇴했습니다.");
+            content_tv.setText(sender + "님의 팀 [" + title + "] 에서 탈퇴되었습니다.");
         }
 
         if(type==0){
