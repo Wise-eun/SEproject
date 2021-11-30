@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -141,10 +142,24 @@ public class PostDetailFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int id) {
                         //팀원이 취소하기 버튼 누를경우
                         if(participate){ //팀원 table에서 delete , 알림 table insert
+
                             what = 0;
                             participate = false;
                             //신청하기 버튼 활성화
                             post_apply_btn.setText("신청하기");
+
+
+
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    //화면 새로고침
+                                    getActivity().getSupportFragmentManager().popBackStack();
+                                    ((MainActivity) getActivity()).replaceFragment(PostDetailFragment.newInstance());
+                                }
+                            }, 500); //딜레이 타임 조절
+
                         }
                         //신청자가 취소하기 버튼 누를경우
                         else if(request){ //요청 table에서 delete, 알람 table에서 delete
