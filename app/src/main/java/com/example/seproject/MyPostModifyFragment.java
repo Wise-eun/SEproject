@@ -3,6 +3,7 @@ package com.example.seproject;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -109,8 +110,20 @@ public class MyPostModifyFragment extends Fragment {
             queue.add(postModifyRequest);
 
 
-            ((MainActivity)getActivity()).replaceFragment(MyPostDetailFragment.newInstance());
-            MyPostDetailFragment.pid = pid;
+
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        //수정된 게시물로 다시 이동
+                        ((MainActivity)getActivity()).replaceFragment(MyPostDetailFragment.newInstance());
+                        MyPostDetailFragment.pid = pid;
+                    }
+                }, 500); //딜레이 타임 조절
+
+
+
+
 
             }
         });
