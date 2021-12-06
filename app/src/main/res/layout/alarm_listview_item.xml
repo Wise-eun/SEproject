@@ -30,7 +30,7 @@
             android:fontFamily="@font/notosanskrregular"
             android:gravity="center_vertical"
             android:includeFontPadding="false"
-            android:text="User_1님이 [개인 프로젝트 해서 포폴 만드...]글에 참여 신청을 하였습니다."
+            android:text=""
             android:textColor="#000000"
             android:textSize="18dp"
             app:layout_constraintStart_toEndOf="@+id/member_image"

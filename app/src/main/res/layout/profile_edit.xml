@@ -65,8 +65,7 @@
                 android:fontFamily="@font/notosanskrregular"
                 android:includeFontPadding="false"
                 android:padding="10dp"
-                android:text="User_name"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
         </LinearLayout>
 
 

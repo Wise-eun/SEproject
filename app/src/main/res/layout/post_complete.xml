@@ -56,7 +56,7 @@
                 android:layout_marginLeft="25dp"
                 android:fontFamily="@font/notosanskrregular"
                 android:includeFontPadding="false"
-                android:text="[ㅇㅇ공모전] 같이 하실 분 구해요"
+                android:text=""
                 android:textColor="#000000"
                 android:textSize="18dp"
                 android:textStyle="bold"></TextView>
@@ -66,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="(2/4)"
+                android:text=""
                 android:fontFamily="@font/notosanskrblack"
                 android:includeFontPadding="false"
                 android:textColor="#2196F3"
@@ -93,7 +93,7 @@
                 android:fontFamily="@font/notosanskrregular"
                 android:includeFontPadding="false"
                 android:layout_marginLeft="10dp"
-                android:text="2021.10.03"
+                android:text=""
                 android:textColor="#FF3E3E3E"></TextView>
         </LinearLayout>
         <LinearLayout
@@ -115,7 +115,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="대구광역시"
+                android:text=""
                 android:fontFamily="@font/notosanskrregular"
                 android:includeFontPadding="false"
                 android:textColor="#FF3E3E3E"></TextView>
@@ -170,7 +170,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="방황하였으며 공지는 무엇을 위하여 천하를 철환하였는가? 밥을 위하여서 그리하였는가? 아니다 그들은 커다란 이상 곧 만천하의 대중을 품에 안고 그들에게 밝은 길을 ㅊ자아 주며 그들을 행복스럽고 평화스러운 곳으로"
+            android:text=""
             android:fontFamily="@font/notosanskrregular"
             android:includeFontPadding="false"
             android:textSize="16sp"></TextView>

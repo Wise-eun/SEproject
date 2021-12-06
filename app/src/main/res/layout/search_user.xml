@@ -35,10 +35,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
-            android:text="User_name"
-            android:textSize="20dp"
             android:fontFamily="@font/notosanskrregular"
             android:includeFontPadding="false"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
 
